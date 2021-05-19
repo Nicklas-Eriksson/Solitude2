@@ -1,9 +1,6 @@
-﻿using System;
+﻿using Solitude2.Interfaces;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Solitude2.Interfaces;
 
 namespace Solitude2.Views.PlayerView
 {
@@ -18,6 +15,7 @@ namespace Solitude2.Views.PlayerView
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
                 Console.WriteLine($"Value: {item.Value}");
                 Console.ResetColor();
+                index++;
             }
         }
     }

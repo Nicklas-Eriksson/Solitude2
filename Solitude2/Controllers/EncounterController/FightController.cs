@@ -4,6 +4,7 @@ using Solitude2.Controllers.MenuController;
 using Solitude2.Controllers.PlayerController;
 using Solitude2.Models;
 using Solitude2.Views.EncounterView;
+using Solitude2.Views.PlayerView;
 using static Solitude2.Controllers.SystemController.StartGameController;
 
 namespace Solitude2.Controllers.EncounterController
@@ -31,8 +32,9 @@ namespace Solitude2.Controllers.EncounterController
             var player = CurrentPlayer;
             var playerDmg = CalculatePlayerDmg(player);
             var round = 0;
+            DrawStatsView.DisplayCombatInformation(monster);
 
-            while (monster.Alive || player.Alive)
+            while (monster.Alive)
             {
                 if (round % 2 == 0)//Player turn
                 {
@@ -51,17 +53,15 @@ namespace Solitude2.Controllers.EncounterController
                 }
             }
 
-            if (!monster.Alive)
-            {
-                player.Gold += monster.GoldDrop;
-                player.Inventory.Add(monster.Drop);
-                EnemyDropView.EnemyDrop(monster.GoldDrop, monster.Drop);
-            }
+            player.Gold += monster.GoldDrop;
+            player.Inventory.Add(monster.Drop);
+            EnemyDropView.EnemyDrop(monster.GoldDrop, monster.Drop);
+
         }
 
         private static float CalculatePlayerDmg(Player player)
         {
-            var critChance = Rnd.Next(1, (int) CurrentPlayer.CritPercent);
+            var critChance = Rnd.Next(1, (int)CurrentPlayer.CritPercent);
             float playerDmg;
             if (critChance == 1) //Critical hit
             {

@@ -4,6 +4,7 @@ using Solitude2.Models;
 using Solitude2.Utility;
 using Solitude2.Views.ShopView;
 using System.Linq;
+using Solitude2.Views.PlayerView;
 
 namespace Solitude2.Controllers.ShopController
 {
@@ -13,6 +14,7 @@ namespace Solitude2.Controllers.ShopController
         {
             var weapons = Facade.DbCommunication.GetWeapons().ToList();
             WeaponShopView.DisplayOptions(weapons);
+            DrawStatsView.PlayerStats();
             var weaponIndex = Helper.GetUserInput(weapons.Count) - 1;
             var chosenWeapon = (Weapon) weapons[weaponIndex];
             GrantUserItem(chosenWeapon);

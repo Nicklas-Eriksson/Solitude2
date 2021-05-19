@@ -30,7 +30,7 @@ namespace Solitude2.Views.PlayerView
             Console.WriteLine("╠════════════════════╝");
         }
 
-        internal static void DrawPlayerFrame()
+        private static void DrawPlayerFrame()
         {
             Console.SetCursorPosition(76, 7);
             Console.WriteLine("╔════════════════════╗");
@@ -60,7 +60,7 @@ namespace Solitude2.Views.PlayerView
             Console.WriteLine("╚════════════════════╝");
         }
 
-        internal static void MonsterStats(Monster m)
+        private static void MonsterStats(Monster m)
         {
             DrawMonsterFrame();
             var mName = m.Name;
@@ -78,6 +78,7 @@ namespace Solitude2.Views.PlayerView
             Console.SetCursorPosition(99, 12);
             Console.WriteLine($"Attack power: {mDmg}");
         }
+
         internal static void PlayerStats()
         {
             DrawPlayerFrame();

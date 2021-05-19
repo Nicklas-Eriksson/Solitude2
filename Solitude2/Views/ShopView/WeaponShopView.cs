@@ -39,7 +39,7 @@ namespace Solitude2.Views.ShopView
                     Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.WriteLine($"-{item.Bonus}");
                 }
-                else if (equippedWepDmg == MathF.Round(item.Bonus))
+                else if (Math.Abs(equippedWepDmg - MathF.Round(item.Bonus)) < 0.1)
                 {
                     Console.ForegroundColor = ConsoleColor.DarkMagenta;
                     Console.WriteLine($"{item.Bonus}");

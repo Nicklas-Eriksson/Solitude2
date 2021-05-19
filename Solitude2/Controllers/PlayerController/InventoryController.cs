@@ -1,4 +1,5 @@
 ﻿using Solitude2.Prints;
+using Solitude2.Utility;
 using Solitude2.Views.PlayerView;
 
 namespace Solitude2.Controllers.PlayerController
@@ -9,6 +10,8 @@ namespace Solitude2.Controllers.PlayerController
         {
             Logotype.Inventory();
             InventoryView.DisplayInventory(Facade.DbCommunication.GetPlayerInventory());
+            DrawStatsView.PlayerStats();
+            Helper.PressAnyKeyToContinue();
         }
     }
 }

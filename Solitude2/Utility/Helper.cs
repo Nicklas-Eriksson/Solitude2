@@ -1,10 +1,11 @@
 ﻿using Solitude2.Data;
 using System;
+using static System.Int32;
 using static System.Threading.Thread;
 
 namespace Solitude2.Utility
 {
-    internal class Helper
+    internal static class Helper
     {
         private static bool Success;
         private static string Input;
@@ -16,7 +17,7 @@ namespace Solitude2.Utility
             Console.Write("Option: ");
             Console.ResetColor();
             Input = Console.ReadLine().Trim();
-            Success = Int32.TryParse(Input, out Number);
+            Success = TryParse(Input, out Number);
             if (!Success || Number > maxOptions || Number <= 0)
             {
                 Error();
@@ -45,6 +46,13 @@ namespace Solitude2.Utility
                 Console.WriteLine("Successfully deleted table contents.");
             }
             catch (Exception e) { Console.WriteLine(e); }
+        }
+
+        public static bool PressAnyKeyToContinue()
+        {
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            Console.WriteLine("Press any key to continue..");
+            return Console.ReadLine() != null;
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using Solitude2.Controllers.SystemController;
-using Solitude2.Prints;
+﻿using Solitude2.Prints;
 using System.Threading;
 
 namespace Solitude2.Views.PlayerView
@@ -10,7 +9,6 @@ namespace Solitude2.Views.PlayerView
         {
             Logotype.GameOver();
             Thread.Sleep(1300);
-            ExitController.Exit();
         }
     }
 }
