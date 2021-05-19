@@ -64,8 +64,8 @@ namespace Solitude2.Views.PlayerView
         {
             DrawMonsterFrame();
             var mName = m.Name;
-            float mCurrentHp = m.CurrentHP,
-                 mMaxHp = m.MaxHP,
+            float mCurrentHp = m.CurrentHp,
+                 mMaxHp = m.MaxHp,
                  mDmg = m.Dmg;
             var mLvl = m.Level;
 

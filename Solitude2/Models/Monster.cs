@@ -19,8 +19,8 @@ namespace Solitude2.Models
         public Item Drop { get; set; } = null;
         public int TalentDrop { get; set; } = 1;
         public string Description { get; set; } = "Non";
-        public float MaxHP { get; set; } = default;
-        public float CurrentHP { get; set; } = default;
+        public float MaxHp { get; set; } = default;
+        public float CurrentHp { get; set; } = default;
         public float Dmg { get => Dmg; set => Dmg = Level * 10F; }
     }
 }

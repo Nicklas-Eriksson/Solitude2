@@ -4,7 +4,7 @@ using Solitude2.Prints;
 
 namespace Solitude2.Views.MenuView
 {
-    public class MainMenuView
+    public static class MainMenuView
     {
         /// <summary>
         /// 5 options.

@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using Solitude2.Controllers.SystemController;
-using Solitude2.Models;
+﻿using Solitude2.Controllers.SystemController;
 using Solitude2.Prints;
+using System;
+using System.Collections.Generic;
 using static System.Threading.Thread;
 
 namespace Solitude2.Views.SystemView

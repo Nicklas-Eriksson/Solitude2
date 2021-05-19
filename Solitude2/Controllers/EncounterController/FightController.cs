@@ -20,14 +20,14 @@ namespace Solitude2.Controllers.EncounterController
             MainMenuController.Options();
         }
 
-        internal static Monster NewMonster()
+        private static Monster NewMonster()
         {
             var monsterList = (List<Monster>)Facade.DbCommunication.GetMonsters();
             var rndNr = Rnd.Next(0, monsterList.Count);
             return monsterList[rndNr];
         }
 
-        internal static void FightingSequence(Monster monster)
+        private static void FightingSequence(Monster monster)
         {
             var player = CurrentPlayer;
             var playerDmg = CalculatePlayerDmg(player);
@@ -38,9 +38,9 @@ namespace Solitude2.Controllers.EncounterController
             {
                 if (round % 2 == 0)//Player turn
                 {
-                    monster.CurrentHP -= playerDmg;
+                    monster.CurrentHp -= playerDmg;
                     FightView.DmgDealt(playerDmg);
-                    HealthCheckController.HealthCheck(monster.CurrentHP, monster.Name);
+                    HealthCheckController.HealthCheck(monster.CurrentHp, monster.Name);
                     round++;
                 }
                 else//Monster turn

@@ -16,7 +16,7 @@ namespace Solitude2.Utility
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write("Option: ");
             Console.ResetColor();
-            Input = Console.ReadLine().Trim();
+            Input = Console.ReadLine()?.Trim();
             Success = TryParse(Input, out Number);
             if (!Success || Number > maxOptions || Number <= 0)
             {

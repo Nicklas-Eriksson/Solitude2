@@ -1,6 +1,6 @@
 ﻿namespace Solitude2.Controllers.MenuController
 {
-    internal class TalentTreeMenuController
+    internal static class TalentTreeMenuController
     {
     }
 }

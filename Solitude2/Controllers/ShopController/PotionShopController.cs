@@ -22,7 +22,7 @@ namespace Solitude2.Controllers.ShopController
             GrantUserItem(userInput, potions);
         }
 
-        internal static void GrantUserItem(int potionIndex, List<IItem> potions)
+        private static void GrantUserItem(int potionIndex, List<IItem> potions)
         {
             var player = StartGameController.CurrentPlayer;
             var potion = (Potion) potions[potionIndex];

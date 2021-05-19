@@ -5,7 +5,7 @@ using Solitude2.Views.PlayerView;
 
 namespace Solitude2.Views.ShopView
 {
-    public class PowerUpShopView
+    public static class PowerUpShopView
     {
         /// <summary>
         /// 3 options

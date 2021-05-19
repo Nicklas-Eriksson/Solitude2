@@ -6,7 +6,7 @@ using static System.Threading.Thread;
 
 namespace Solitude2.Views.SystemView
 {
-    public class LoadGameView
+    public static class LoadGameView
     {
         /// <summary>
         /// Prompts user to load a previous game.
@@ -28,7 +28,7 @@ namespace Solitude2.Views.SystemView
         }
 
 
-        internal static void ChooseACharacter(List<Player> players)
+        internal static void ChooseACharacter(IEnumerable<Player> players)
         {
             Console.WriteLine("Here are all the saved games:\n");
             var index = 1;

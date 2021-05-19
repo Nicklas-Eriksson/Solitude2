@@ -4,7 +4,7 @@ using Solitude2.Prints;
 
 namespace Solitude2.Views.SystemView
 {
-    public class ExitView
+    public static class ExitView
     {
         public static void ExitGame()
         {

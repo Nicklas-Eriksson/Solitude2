@@ -6,7 +6,7 @@ using Solitude2.Views.SystemView;
 
 namespace Solitude2.Controllers.SystemController
 {
-    public class StartGameController
+    public static class StartGameController
     {
         internal static Player CurrentPlayer = new();
 

@@ -5,13 +5,13 @@ namespace Solitude2.Data
 {
     internal static class ItemSeed
     {
-        private static readonly MyDbContext db = new();
+        private static readonly MyDbContext Db = new();
 
         internal static bool ItemForge()
         {
             try
             {
-                db.Items.AddRange
+                Db.Items.AddRange
                 (
                     NewItem("Cloth", 100, "Non"),
                     NewItem("Egg", 50, "Some kind of pattern is painted on it."),

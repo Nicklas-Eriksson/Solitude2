@@ -4,7 +4,7 @@ using Solitude2.Views.MenuView;
 
 namespace Solitude2.Controllers.MenuController
 {
-    internal class StoreMenuController
+    internal static class StoreMenuController
     {
         internal static void Options()
         {

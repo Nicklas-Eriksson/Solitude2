@@ -7,7 +7,7 @@ using Solitude2.Views.PlayerView;
 
 namespace Solitude2.Views.ShopView
 {
-    public class WeaponShopView
+    public static class WeaponShopView
     {
         /// <summary>
         /// 2 options
@@ -20,7 +20,7 @@ namespace Solitude2.Views.ShopView
             DrawStatsView.PlayerStats();
         }
 
-        internal static void DisplayInventory(IEnumerable<IItem> inventory)
+        private static void DisplayInventory(IEnumerable<IItem> inventory)
         {
             float equippedWepDmg;
             if (StartGameController.CurrentPlayer.EquippedWeapon != null)

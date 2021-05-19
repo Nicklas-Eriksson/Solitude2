@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Solitude2.Views.ShopView
 {
-    public class PotionShopView
+    public static class PotionShopView
     {
         /// <summary>
         /// 2 options.

@@ -4,7 +4,7 @@ using Solitude2.Views.PlayerView;
 
 namespace Solitude2.Controllers.PlayerController
 {
-    internal class InventoryController
+    internal static class InventoryController
     {
         internal static void Inventory()
         {

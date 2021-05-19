@@ -4,7 +4,7 @@ using Solitude2.Prints;
 
 namespace Solitude2.Views.MenuView
 {
-    public class StoreMenuView
+    public static class StoreMenuView
     {
         public static void IronSkillet()
         {
