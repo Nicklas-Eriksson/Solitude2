@@ -2,7 +2,7 @@
 using Solitude2.Facade;
 using Solitude2.Models;
 using Solitude2.Utility;
-using Solitude2.Views.SystemView;
+using Solitude2.Views.System;
 
 namespace Solitude2.Controllers.SystemController
 {

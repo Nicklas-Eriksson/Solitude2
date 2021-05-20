@@ -1,10 +1,9 @@
-﻿using Solitude2.Models;
-using Solitude2.Prints;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Solitude2.Prints;
 using static System.Threading.Thread;
 
-namespace Solitude2.Views.SystemView
+namespace Solitude2.Views.System
 {
     public static class NewGameView
     {
@@ -25,7 +24,7 @@ namespace Solitude2.Views.SystemView
             Console.ResetColor();
         }
 
-        internal static void WelcomeCharacter(Player player)
+        internal static void WelcomeCharacter(Models.Player player)
         {
             Console.WriteLine($"Welcome {player.Name}");
             Sleep(1500);

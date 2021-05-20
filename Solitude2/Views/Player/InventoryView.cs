@@ -1,10 +1,10 @@
-﻿using Solitude2.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading;
+using Solitude2.Interfaces;
 using Solitude2.Prints;
 
-namespace Solitude2.Views.PlayerView
+namespace Solitude2.Views.Player
 {
     internal static class InventoryView
     {

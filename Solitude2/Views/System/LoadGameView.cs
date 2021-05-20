@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using Solitude2.Models;
 using Solitude2.Prints;
+using Solitude2.Models;
 using static System.Threading.Thread;
 
-namespace Solitude2.Views.SystemView
+namespace Solitude2.Views.System
 {
     public static class LoadGameView
     {
@@ -32,7 +32,7 @@ namespace Solitude2.Views.SystemView
         }
 
 
-        internal static void ChooseACharacter(IEnumerable<Player> players)
+        internal static void ChooseACharacter(IEnumerable<Models.Player> players)
         {
             Console.WriteLine("Here are all the saved games:\n");
             var index = 1;

@@ -24,6 +24,9 @@ namespace Solitude2.Models
         /// <param name="name">Item name.</param>
         /// <param name="bonus">Item bonus.</param>
         /// <param name="goldValue">Gold value.</param>
+        /// /// <param name="isWeapon">If item is weapon > true. Else false.</param>
+        /// <param name="isPotion">If item is potion > true. Else false.</param>
+        /// <param name="isTrash">If item is trash > true. Else false.</param>
         public Item(string name, float bonus, float goldValue, bool isWeapon, bool isPotion, bool isTrash)
         {
             this.Name = name;

@@ -1,9 +1,8 @@
-﻿using Solitude2.Prints;
-using System;
-using System.Collections.Generic;
-using Solitude2.Views.PlayerView;
+﻿using System.Collections.Generic;
+using Solitude2.Prints;
+using Solitude2.Views.Player;
 
-namespace Solitude2.Views.ShopView
+namespace Solitude2.Views.Shop
 {
     public static class PowerUpShopView
     {

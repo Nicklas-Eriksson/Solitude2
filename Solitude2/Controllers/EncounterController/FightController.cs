@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Solitude2.Controllers.MenuController;
 using Solitude2.Models;
 using Solitude2.Views.EncounterView;
-using Solitude2.Views.PlayerView;
+using Solitude2.Views.Player;
 using static Solitude2.Controllers.SystemController.StartGameController;
 
 namespace Solitude2.Controllers.EncounterController

@@ -2,7 +2,7 @@
 using System.Threading;
 using static System.Threading.Thread;
 
-namespace Solitude2.Views.ShopView
+namespace Solitude2.Views.Shop
 {
     internal static class WithdrawGoldView
     {

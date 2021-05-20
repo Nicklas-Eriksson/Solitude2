@@ -3,11 +3,11 @@ using Solitude2.Controllers.SystemController;
 using Solitude2.Data;
 using Solitude2.Models;
 using Solitude2.Utility;
-using Solitude2.Views.ShopView;
 using System.Linq;
 using Solitude2.Controllers.MenuController;
 using Solitude2.Interfaces;
-using Solitude2.Views.PlayerView;
+using Solitude2.Views.Player;
+using Solitude2.Views.Shop;
 
 namespace Solitude2.Controllers.ShopController
 {

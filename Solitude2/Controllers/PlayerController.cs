@@ -2,8 +2,8 @@
 using Solitude2.Controllers.SystemController;
 using Solitude2.Facade;
 using Solitude2.Utility;
-using Solitude2.Views.PlayerView;
 using System;
+using Solitude2.Views.Player;
 
 namespace Solitude2.Controllers
 {
@@ -13,7 +13,7 @@ namespace Solitude2.Controllers
         {
             if (!StartGameController.CurrentPlayer.Alive)
             {
-                GameOverView.GameOver();
+                PlayerView.GameOver();
             }
         }
 
@@ -36,13 +36,17 @@ namespace Solitude2.Controllers
         internal static void GameOver()
         {
             Console.Clear();
-            GameOverView.GameOver();
+            PlayerView.GameOver();
             ExitController.Exit();
         }
 
         public static void CheckPlayerLevel()
         {
-            throw new NotImplementedException();
+            var player = StartGameController.CurrentPlayer;
+            if (player.CurrentLvl >= player.MaxLvl || !(player.CurrentExp >= player.ExpReqForLvl)) return;
+            player.CurrentExp -= player.ExpReqForLvl;
+            player.CurrentLvl++;
+            
         }
     }
 }

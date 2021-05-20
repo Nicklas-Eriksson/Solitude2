@@ -1,11 +1,11 @@
-﻿using Solitude2.Controllers.SystemController;
+﻿using System;
+using System.Collections.Generic;
+using Solitude2.Controllers.SystemController;
 using Solitude2.Interfaces;
 using Solitude2.Prints;
-using System;
-using System.Collections.Generic;
-using Solitude2.Views.PlayerView;
+using Solitude2.Views.Player;
 
-namespace Solitude2.Views.ShopView
+namespace Solitude2.Views.Shop
 {
     public static class WeaponShopView
     {

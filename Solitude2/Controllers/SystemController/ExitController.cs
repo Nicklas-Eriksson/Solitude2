@@ -1,5 +1,5 @@
 ﻿using System;
-using Solitude2.Views.SystemView;
+using Solitude2.Views.System;
 
 namespace Solitude2.Controllers.SystemController
 {

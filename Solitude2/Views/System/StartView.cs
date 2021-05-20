@@ -1,9 +1,9 @@
-﻿using Solitude2.Prints;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Solitude2.Prints;
 using static System.Threading.Thread;
 
-namespace Solitude2.Views.SystemView
+namespace Solitude2.Views.System
 {
     internal static class StartView
     {

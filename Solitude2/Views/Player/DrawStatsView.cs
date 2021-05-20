@@ -1,8 +1,8 @@
-﻿using Solitude2.Controllers.SystemController;
+﻿using System;
+using Solitude2.Controllers.SystemController;
 using Solitude2.Models;
-using System;
 
-namespace Solitude2.Views.PlayerView
+namespace Solitude2.Views.Player
 {
     internal static class DrawStatsView
     {

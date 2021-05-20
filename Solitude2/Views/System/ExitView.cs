@@ -2,7 +2,7 @@
 using System.Threading;
 using Solitude2.Prints;
 
-namespace Solitude2.Views.SystemView
+namespace Solitude2.Views.System
 {
     public static class ExitView
     {

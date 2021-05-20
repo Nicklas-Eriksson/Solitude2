@@ -1,10 +1,10 @@
-﻿using Solitude2.Interfaces;
-using Solitude2.Prints;
-using Solitude2.Views.PlayerView;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Solitude2.Interfaces;
+using Solitude2.Prints;
+using Solitude2.Views.Player;
 
-namespace Solitude2.Views.ShopView
+namespace Solitude2.Views.Shop
 {
     public static class PotionShopView
     {
