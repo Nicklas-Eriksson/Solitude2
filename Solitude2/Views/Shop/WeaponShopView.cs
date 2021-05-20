@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Solitude2.Controllers.SystemController;
+using Solitude2.Controllers.System;
 using Solitude2.Interfaces;
 using Solitude2.Prints;
 using Solitude2.Views.Player;

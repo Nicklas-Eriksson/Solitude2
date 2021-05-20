@@ -1,8 +1,8 @@
-﻿using Solitude2.Controllers.MenuController;
-using Solitude2.Controllers.SystemController;
-using Solitude2.Facade;
+﻿using Solitude2.Facade;
 using Solitude2.Utility;
 using System;
+using Solitude2.Controllers.Menu;
+using Solitude2.Controllers.System;
 using Solitude2.Views.Player;
 
 namespace Solitude2.Controllers
@@ -46,7 +46,7 @@ namespace Solitude2.Controllers
             if (player.CurrentLvl >= player.MaxLvl || !(player.CurrentExp >= player.ExpReqForLvl)) return;
             player.CurrentExp -= player.ExpReqForLvl;
             player.CurrentLvl++;
-            
+            PlayerView.LevelUp(player.CurrentLvl);
         }
     }
 }

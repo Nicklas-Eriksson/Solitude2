@@ -2,7 +2,7 @@
 using Solitude2.Views.Player;
 using Solitude2.Views.Shop;
 
-namespace Solitude2.Controllers.ShopController
+namespace Solitude2.Controllers.Shop
 {
     internal static class PowerUpShopController
     {

@@ -1,5 +1,5 @@
 ﻿using System;
-using Solitude2.Controllers.SystemController;
+using Solitude2.Controllers.System;
 using Solitude2.Models;
 
 namespace Solitude2.Data

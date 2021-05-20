@@ -1,4 +1,4 @@
-﻿using Solitude2.Controllers.SystemController;
+﻿using Solitude2.Controllers.System;
 
 namespace Solitude2
 {

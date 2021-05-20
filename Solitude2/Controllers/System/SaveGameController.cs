@@ -2,7 +2,7 @@
 using Solitude2.Data;
 using Solitude2.Views.System;
 
-namespace Solitude2.Controllers.SystemController
+namespace Solitude2.Controllers.System
 {
     internal static class SaveGameController
     {

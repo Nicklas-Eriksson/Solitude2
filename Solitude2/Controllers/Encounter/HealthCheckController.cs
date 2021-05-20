@@ -1,7 +1,7 @@
-﻿using Solitude2.Controllers.SystemController;
+﻿using Solitude2.Controllers.System;
 using Solitude2.Views.EncounterView;
 
-namespace Solitude2.Controllers.EncounterController
+namespace Solitude2.Controllers.Encounter
 {
     internal static class HealthCheckController
     {

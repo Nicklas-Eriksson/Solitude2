@@ -1,15 +1,15 @@
 ﻿using System;
-using Solitude2.Controllers.SystemController;
+using System.Linq;
+using Solitude2.Controllers.Menu;
+using Solitude2.Controllers.System;
 using Solitude2.Data;
+using Solitude2.Interfaces;
 using Solitude2.Models;
 using Solitude2.Utility;
-using System.Linq;
-using Solitude2.Controllers.MenuController;
-using Solitude2.Interfaces;
 using Solitude2.Views.Player;
 using Solitude2.Views.Shop;
 
-namespace Solitude2.Controllers.ShopController
+namespace Solitude2.Controllers.Shop
 {
     internal static class WeaponShopController
     {

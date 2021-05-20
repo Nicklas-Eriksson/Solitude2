@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using Solitude2.Controllers.MenuController;
+using Solitude2.Controllers.Menu;
 using Solitude2.Models;
 using Solitude2.Views.EncounterView;
 using Solitude2.Views.Player;
-using static Solitude2.Controllers.SystemController.StartGameController;
+using static Solitude2.Controllers.System.StartGameController;
 
-namespace Solitude2.Controllers.EncounterController
+namespace Solitude2.Controllers.Encounter
 {
     internal static class FightController
     {

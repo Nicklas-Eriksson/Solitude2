@@ -1,9 +1,9 @@
-﻿using Solitude2.Controllers.EncounterController;
-using Solitude2.Controllers.SystemController;
+﻿using Solitude2.Controllers.Encounter;
+using Solitude2.Controllers.System;
 using Solitude2.Utility;
 using Solitude2.Views.MenuView;
 
-namespace Solitude2.Controllers.MenuController
+namespace Solitude2.Controllers.Menu
 {
     internal static class MainMenuController
     {

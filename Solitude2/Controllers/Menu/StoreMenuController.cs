@@ -1,8 +1,8 @@
-﻿using Solitude2.Controllers.ShopController;
+﻿using Solitude2.Controllers.Shop;
 using Solitude2.Utility;
 using Solitude2.Views.MenuView;
 
-namespace Solitude2.Controllers.MenuController
+namespace Solitude2.Controllers.Menu
 {
     internal static class StoreMenuController
     {
