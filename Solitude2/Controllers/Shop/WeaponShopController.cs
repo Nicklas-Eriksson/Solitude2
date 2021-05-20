@@ -7,6 +7,7 @@ using Solitude2.Interfaces;
 using Solitude2.Models;
 using Solitude2.Utility;
 using Solitude2.Views.Player;
+using Solitude2.Views.SetCursorPosition;
 using Solitude2.Views.Shop;
 
 namespace Solitude2.Controllers.Shop

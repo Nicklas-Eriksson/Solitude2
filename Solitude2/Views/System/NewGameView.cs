@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Solitude2.Prints;
+using Solitude2.Views.SetCursorPosition;
 using static System.Threading.Thread;
 
 namespace Solitude2.Views.System
@@ -15,7 +16,7 @@ namespace Solitude2.Views.System
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Logotype.NewGame();
-            Frame.NewNoNr(new List<string> { "Welcome Wanderer.", "Lets create a new character."});
+            DrawMenu.DisplayMenuNoNumbers(new List<string> { "Welcome Wanderer.", "Lets create a new character."});
         }
 
         public static void NewCharacter()

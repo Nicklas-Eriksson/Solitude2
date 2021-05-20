@@ -5,6 +5,7 @@ using Solitude2.Views.EncounterView;
 using Solitude2.Views.Player;
 using System;
 using System.Collections.Generic;
+using Solitude2.Views.SetCursorPosition;
 using static Solitude2.Controllers.PlayerController;
 
 namespace Solitude2.Controllers.Encounter

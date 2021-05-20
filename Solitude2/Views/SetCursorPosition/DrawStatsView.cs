@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using Solitude2.Controllers;
-using Solitude2.Controllers.System;
 using Solitude2.Facade;
 using Solitude2.Models;
 
-namespace Solitude2.Views.Player
+namespace Solitude2.Views.SetCursorPosition
 {
     internal static class DrawStatsView
     {
         private static int Left, Top;
+
         internal static void DisplayCombatInformation(Monster m)
         {
             MonsterStats(m);

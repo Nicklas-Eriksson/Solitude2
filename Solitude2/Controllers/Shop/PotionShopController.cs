@@ -7,6 +7,7 @@ using Solitude2.Views.Shop;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Solitude2.Views.SetCursorPosition;
 
 namespace Solitude2.Controllers.Shop
 {

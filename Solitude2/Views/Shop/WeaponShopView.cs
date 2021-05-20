@@ -5,6 +5,7 @@ using Solitude2.Controllers.System;
 using Solitude2.Interfaces;
 using Solitude2.Prints;
 using Solitude2.Views.Player;
+using Solitude2.Views.SetCursorPosition;
 
 namespace Solitude2.Views.Shop
 {

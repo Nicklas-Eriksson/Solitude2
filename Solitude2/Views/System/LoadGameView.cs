@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Solitude2.Prints;
 using Solitude2.Models;
+using Solitude2.Views.SetCursorPosition;
 using static System.Threading.Thread;
 
 namespace Solitude2.Views.System
@@ -16,7 +17,7 @@ namespace Solitude2.Views.System
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Logotype.LoadGame();
-            Frame.NewNoNr(new List<string>
+            DrawMenu.DisplayMenuNoNumbers(new List<string>
             {
                 "Load a previous game from the list below.",
                 "To go back press \"B\" and press \"Enter\"."

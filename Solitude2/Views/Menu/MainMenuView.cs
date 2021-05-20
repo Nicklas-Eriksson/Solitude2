@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Solitude2.Prints;
+using Solitude2.Views.SetCursorPosition;
 
 namespace Solitude2.Views.MenuView
 {
@@ -19,7 +20,7 @@ namespace Solitude2.Views.MenuView
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Logotype.MainMenu();
-            Frame.New(new List<string> { "Explore.", "Inventory.", "Store.", "Save Game.", "Exit Game." });
+            DrawMenu.DisplayMenu(new List<string> { "Explore.", "Inventory.", "Store.", "Save Game.", "Exit Game." });
         }
     }
 }

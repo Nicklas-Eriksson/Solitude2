@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Solitude2.Interfaces;
 using Solitude2.Prints;
 using Solitude2.Views.Player;
+using Solitude2.Views.SetCursorPosition;
 
 namespace Solitude2.Views.Shop
 {
@@ -14,7 +15,7 @@ namespace Solitude2.Views.Shop
         internal static void Buy()
         {
             Logotype.Potions();
-            Frame.New(new List<string> { "Potion.", "Main Menu." });
+            DrawMenu.DisplayMenu(new List<string> { "Potion", "Main Menu" });
             DrawStatsView.PlayerStats();
         }
 

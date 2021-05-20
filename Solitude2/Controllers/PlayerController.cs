@@ -5,6 +5,7 @@ using Solitude2.Controllers.Menu;
 using Solitude2.Controllers.System;
 using Solitude2.Models;
 using Solitude2.Views.Player;
+using Solitude2.Views.SetCursorPosition;
 
 namespace Solitude2.Controllers
 {
