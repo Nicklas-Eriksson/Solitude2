@@ -22,7 +22,7 @@ namespace Solitude2.Controllers.System
                 return null;
             }
 
-            var starterWeapon = new Item("Wooden Sword", 20, 50, "Made from splintered oak.", true, false, false);
+            var starterWeapon = new Item("Wooden Sword", 20, 50, 0, "Made from splintered oak.", true, false, false);
             var newPlayer = new Player 
             { 
                 Name = characterName,

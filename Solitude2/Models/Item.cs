@@ -7,11 +7,12 @@ namespace Solitude2.Models
         public int ID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public float Value { get; set; }
+        public float Bonus { get; set; }
+        public int ILvl { get; set; }
         public bool IsWeapon { get; set; }
         public bool IsPotion { get; set; }
         public bool IsTrash { get; set; }
-        public float Value { get; set; }
-        public float Bonus { get; set; }
 
         /// <summary>
         /// Empty constructor.
@@ -24,14 +25,16 @@ namespace Solitude2.Models
         /// <param name="name">Item name.</param>
         /// <param name="bonus">Item bonus.</param>
         /// <param name="goldValue">Gold value.</param>
-        /// /// <param name="isWeapon">If item is weapon > true. Else false.</param>
+        /// <param name="iLvl">Item level. 0-indexed.</param>
+        /// <param name="isWeapon">If item is weapon > true. Else false.</param>
         /// <param name="isPotion">If item is potion > true. Else false.</param>
         /// <param name="isTrash">If item is trash > true. Else false.</param>
-        public Item(string name, float bonus, float goldValue, bool isWeapon, bool isPotion, bool isTrash)
+        public Item(string name, float bonus, float goldValue, int iLvl, bool isWeapon, bool isPotion, bool isTrash)
         {
             this.Name = name;
             this.Bonus = bonus;
             this.Value = goldValue;
+            this.ILvl = iLvl;
             this.IsWeapon = isWeapon;
             this.IsPotion = isPotion;
             this.IsTrash = isTrash;
@@ -43,15 +46,17 @@ namespace Solitude2.Models
         /// <param name="name">Weapon name.</param>
         /// <param name="bonus">Bonus damage.</param>
         /// <param name="goldValue">Gold value.</param>
+        /// <param name="iLvl">Item level. 0-indexed.</param>
         /// <param name="description">Short description of the item.</param>
         /// <param name="isWeapon">If item is weapon > true. Else false.</param>
         /// <param name="isPotion">If item is potion > true. Else false.</param>
         /// <param name="isTrash">If item is trash > true. Else false.</param>
-        public Item(string name, float bonus, float goldValue, string description, bool isWeapon, bool isPotion, bool isTrash)
+        public Item(string name, float bonus, float goldValue, int iLvl, string description, bool isWeapon, bool isPotion, bool isTrash)
         {
             this.Name = name;
             this.Bonus = bonus;
             this.Value = goldValue;
+            this.ILvl = iLvl;
             this.Description = description;
             this.IsWeapon = isWeapon;
             this.IsPotion = isPotion;

@@ -1,9 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using Solitude2.Controllers.Menu;
+﻿using Solitude2.Controllers.Menu;
 using Solitude2.Models;
+using Solitude2.Utility;
 using Solitude2.Views.EncounterView;
 using Solitude2.Views.Player;
+using System;
+using System.Collections.Generic;
 using static Solitude2.Controllers.System.StartGameController;
 
 namespace Solitude2.Controllers.Encounter
@@ -12,10 +13,29 @@ namespace Solitude2.Controllers.Encounter
     {
         private static readonly Random Rnd = new();
 
+        private static void FightOptions(Monster monster)
+        {
+            //attack
+            //pot
+            //flee
+
+            var userInput = Helper.GetUserInput(3);
+            switch (userInput)
+            {
+                case 1:
+                    FightingSequence(monster);
+                    break;
+                case 2:
+                    PlayerController.DrinkPotion();
+                    break;
+                case 3:
+                    break;
+            }
+        }
+
         internal static void NewFight()
         {
-            var monster = NewMonster();
-            FightingSequence(monster);
+            FightOptions(NewMonster());
             MainMenuController.Options();
         }
 

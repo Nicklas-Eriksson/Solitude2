@@ -10,5 +10,6 @@
         public bool IsTrash { get; set; }
         public float Value { get; set; }
         public float Bonus { get; set; }
+        public int ILvl { get; set; }
     }
 }

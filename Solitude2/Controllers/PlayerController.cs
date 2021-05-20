@@ -3,12 +3,15 @@ using Solitude2.Utility;
 using System;
 using Solitude2.Controllers.Menu;
 using Solitude2.Controllers.System;
+using Solitude2.Models;
 using Solitude2.Views.Player;
 
 namespace Solitude2.Controllers
 {
     internal static class PlayerController
     {
+        internal static Player Player= StartGameController.CurrentPlayer;
+
         internal static void CheckIfPlayerIsAlive()
         {
             if (!StartGameController.CurrentPlayer.Alive)
@@ -20,7 +23,7 @@ namespace Solitude2.Controllers
         internal static void Inventory()
         {
             Console.Clear();
-            if (StartGameController.CurrentPlayer.Inventory == null)
+            if (Player.Inventory == null)
             {
                 InventoryView.EmptyInventory();
             }
@@ -40,13 +43,28 @@ namespace Solitude2.Controllers
             ExitController.Exit();
         }
 
-        public static void CheckPlayerLevel()
+        internal static void CheckPlayerLevel()
         {
-            var player = StartGameController.CurrentPlayer;
-            if (player.CurrentLvl >= player.MaxLvl || !(player.CurrentExp >= player.ExpReqForLvl)) return;
-            player.CurrentExp -= player.ExpReqForLvl;
-            player.CurrentLvl++;
-            PlayerView.LevelUp(player.CurrentLvl);
+            if (Player.CurrentLvl >= Player.MaxLvl || !(Player.CurrentExp >= Player.ExpReqForLvl)) return;
+            Player.CurrentExp -= Player.ExpReqForLvl;
+            Player.CurrentLvl++;
+            PlayerView.LevelUp(Player.CurrentLvl);
+        }
+
+        internal static void DrinkPotion()
+        {
+            var typeOfPotion = SelectTypeOfPotion();
+
+            if (Player.Potions.Contains(typeOfPotion) && Player.CurrentHP >= Player.MaxHP) return;
+            Player.CurrentHP += typeOfPotion.Bonus;
+            if (Player.CurrentHP > Player.MaxHP) { Player.CurrentHP = Player.MaxHP; }
+            PlayerView.DrinkPotion(typeOfPotion);
+        }
+
+        private static Item SelectTypeOfPotion()
+        {
+            var input = Helper.GetUserInput(4);
+            return Player.Potions[input - 1];
         }
     }
 }
