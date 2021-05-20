@@ -12,7 +12,7 @@ namespace Solitude2.Controllers.SystemController
         {
             NewGameView.New();
             NewGameView.NewCharacter();
-            var characterName = CharacterName();
+            var characterName = GetCharacterName();
             using var db = new MyDbContext();
             var player = db.Players.FirstOrDefault(p => p.Name == characterName);
             if (player != null)
@@ -22,15 +22,20 @@ namespace Solitude2.Controllers.SystemController
                 return null;
             }
 
-            var starterWeapon = new Weapon("Wooden Sword", 20, 50, "Made from splintered oak.");
-            var newPlayer = new Player { Name = characterName, EquippedWeapon = starterWeapon};
+            var starterWeapon = new Item("Wooden Sword", 20, 50, "Made from splintered oak.", true, false, false);
+            var newPlayer = new Player 
+            { 
+                Name = characterName,
+                EquippedWeapon = starterWeapon
+            };
+            newPlayer.Inventory.Add(starterWeapon);
             db.Update(newPlayer);
             db.SaveChanges();
-            NewGameView.WelcomeCharacter();
+            NewGameView.WelcomeCharacter(newPlayer);
             return newPlayer;
         }
 
-        private static string CharacterName()
+        private static string GetCharacterName()
         {
             return Console.ReadLine()?.Trim();
         }

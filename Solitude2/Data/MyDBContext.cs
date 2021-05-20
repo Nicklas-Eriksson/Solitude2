@@ -11,9 +11,7 @@ namespace Solitude2.Data
         private const string DatabaseName = "Solitude2";
         public DbSet<Player> Players { get; set; }
         public DbSet<Monster> Monsters { get; set; }
-        public DbSet<Weapon> Weapons { get; set; }
         public DbSet<Item> Items { get; set; }
-        public DbSet<Potion> Potions { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

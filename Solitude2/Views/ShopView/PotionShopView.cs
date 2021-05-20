@@ -13,7 +13,6 @@ namespace Solitude2.Views.ShopView
         /// </summary>
         internal static void Buy()
         {
-            Console.Clear();
             Logotype.Potions();
             Frame.New(new List<string> { "Potion.", "Main Menu." });
             DrawStatsView.PlayerStats();

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Solitude2.Controllers.MenuController;
 using Solitude2.Controllers.SystemController;
@@ -14,6 +15,7 @@ namespace Solitude2.Controllers.ShopController
     {
         internal static void Buy()
         {
+            Console.Clear();
             PotionShopView.Buy();
             DrawStatsView.PlayerStats();
             var potions = Facade.DbCommunication.GetPotions().ToList();
@@ -25,11 +27,11 @@ namespace Solitude2.Controllers.ShopController
         private static void GrantUserItem(int potionIndex, List<IItem> potions)
         {
             var player = StartGameController.CurrentPlayer;
-            var potion = (Potion) potions[potionIndex];
+            var potion = potions[potionIndex];
             if (player.Gold >= potion.Value)
             {
-                player.Potions.Add(potion);
-                StartGameController.CurrentPlayer.Inventory.Add(potion);
+                player.Potions.Add((Item)potion);
+                StartGameController.CurrentPlayer.Inventory.Add((Item)potion);
             }
             else
             {

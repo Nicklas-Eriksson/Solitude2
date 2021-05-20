@@ -32,32 +32,32 @@ namespace Solitude2.Views.PlayerView
 
         private static void DrawPlayerFrame()
         {
-            Console.SetCursorPosition(76, 7);
-            Console.WriteLine("╔════════════════════╗");
-            Console.SetCursorPosition(76, 8);
-            Console.WriteLine("║                    ║");
-            Console.SetCursorPosition(76, 9);
-            Console.WriteLine("╠════════════════════╣");
-            Console.SetCursorPosition(76, 10);
-            Console.WriteLine("║                    ║");
-            Console.SetCursorPosition(76, 11);
-            Console.WriteLine("║                    ║");
-            Console.SetCursorPosition(76, 12);
-            Console.WriteLine("║                    ║");
-            Console.SetCursorPosition(76, 13);
-            Console.WriteLine("║                    ║");
-            Console.SetCursorPosition(76, 14);
-            Console.WriteLine("╠════════════════════╣");
-            Console.SetCursorPosition(76, 15);
-            Console.WriteLine("║     Inventory      ║");
-            Console.SetCursorPosition(76, 16);
-            Console.WriteLine("╠════════════════════╣");
-            Console.SetCursorPosition(76, 17);
-            Console.WriteLine("║                    ║");
-            Console.SetCursorPosition(76, 18);
-            Console.WriteLine("║                    ║");
-            Console.SetCursorPosition(76, 19);
-            Console.WriteLine("╚════════════════════╝");
+            Console.SetCursorPosition(73, 7);
+            Console.WriteLine("╔═══════════════════════╗");
+            Console.SetCursorPosition(73, 8);
+            Console.WriteLine("║                       ║");
+            Console.SetCursorPosition(73, 9);
+            Console.WriteLine("╠═══════════════════════╣");
+            Console.SetCursorPosition(73, 10);
+            Console.WriteLine("║                       ║");
+            Console.SetCursorPosition(73, 11);
+            Console.WriteLine("║                       ║");
+            Console.SetCursorPosition(73, 12);
+            Console.WriteLine("║                       ║");
+            Console.SetCursorPosition(73, 13);
+            Console.WriteLine("║                       ║");
+            Console.SetCursorPosition(73, 14);
+            Console.WriteLine("╠═══════════════════════╣");
+            Console.SetCursorPosition(73, 15);
+            Console.WriteLine("║     Inventory         ║");
+            Console.SetCursorPosition(73, 16);
+            Console.WriteLine("╠═══════════════════════╣");
+            Console.SetCursorPosition(73, 17);
+            Console.WriteLine("║                       ║");
+            Console.SetCursorPosition(73, 18);
+            Console.WriteLine("║                       ║");
+            Console.SetCursorPosition(73, 19);
+            Console.WriteLine("╚═══════════════════════╝");
         }
 
         private static void MonsterStats(Monster m)
@@ -93,19 +93,19 @@ namespace Solitude2.Views.PlayerView
                   pGold= p.Gold;
             var pLvl = p.CurrentLvl;
 
-            Console.SetCursorPosition(78, 8);
+            Console.SetCursorPosition(75, 8);
             Console.WriteLine($"{pName}");
-            Console.SetCursorPosition(78, 10);
+            Console.SetCursorPosition(75, 10);
             Console.WriteLine($"Level: {pLvl}");
-            Console.SetCursorPosition(78, 11);
+            Console.SetCursorPosition(75, 11);
             Console.WriteLine($"Health: {pCurrentHp} / {pMaxHp}");
-            Console.SetCursorPosition(78, 12);
+            Console.SetCursorPosition(75, 12);
             Console.WriteLine($"Attack power: {pDmg} ");
-            Console.SetCursorPosition(78, 13);
+            Console.SetCursorPosition(75, 13);
             Console.WriteLine($"Exp: {pCurrentExp} / {pMaxExp}");
-            Console.SetCursorPosition(78, 17);
+            Console.SetCursorPosition(75, 17);
             Console.WriteLine($"Weapon: {pWepName}");
-            Console.SetCursorPosition(78, 18);
+            Console.SetCursorPosition(75, 18);
             Console.WriteLine($"Gold: {pGold}");
         }
     }

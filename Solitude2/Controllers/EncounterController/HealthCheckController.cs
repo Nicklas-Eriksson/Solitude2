@@ -1,5 +1,4 @@
-﻿using Solitude2.Controllers.PlayerController;
-using Solitude2.Controllers.SystemController;
+﻿using Solitude2.Controllers.SystemController;
 using Solitude2.Views.EncounterView;
 
 namespace Solitude2.Controllers.EncounterController
@@ -11,7 +10,7 @@ namespace Solitude2.Controllers.EncounterController
             if (hp > 0) { return true; }
             if (name == StartGameController.CurrentPlayer.Name)
             {
-                GameOverController.GameOver();
+                PlayerController.GameOver();
             }
             HealthCheckView.HealthCheck(name);
             return false;

@@ -18,6 +18,7 @@ namespace Solitude2.Controllers.SystemController
                 return null;
             }
             var option = Helper.GetUserInput(savedGames.Count);
+            if (option == 999) { StartGameController.CurrentGame(); }
             return savedGames[option - 1];
         }
     }

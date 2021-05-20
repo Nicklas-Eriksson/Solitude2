@@ -18,6 +18,7 @@ namespace Solitude2.Models
         public float Gold { get; set; } = default;
         public int CurrentLvl { get; set; } = 1;
         public int MaxLvl { get; set; } = 60;
+        public int TalentPoints { get; set; } = 60;
         public float CurrentExp { get; set; } = 0;
         public float ExpReqForLvl { get => expForLvl; set => expForLvl = CurrentLvl * 100; }
         public float CurrentHP { get; set; } = default;
@@ -25,9 +26,9 @@ namespace Solitude2.Models
         public float AttackPower { get => attackPower; set => attackPower = CurrentLvl * 20; }
         public float CritBonus { get => critBonus; set => critBonus = AttackPower * 0.4F; }
         public float CritPercent { get; set; } = 5F; //1 in 5, used in Random.Next(1,5)
-        public List<Potion> Potions { get; set; }
-        public List<Weapon> Weapons { get; set; }
+        public List<Item> Potions { get; set; }
+        public List<Item> Weapons { get; set; }
         public List<Item> Inventory { get; set; }
-        public Weapon EquippedWeapon { get; set; } = null;
+        public Item EquippedWeapon { get; init; }
     }
 }

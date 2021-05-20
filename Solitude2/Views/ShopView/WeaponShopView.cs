@@ -14,7 +14,6 @@ namespace Solitude2.Views.ShopView
         /// </summary>
         internal static void DisplayOptions(IEnumerable<IItem> inventory)
         {
-            Console.Clear();
             Logotype.Weapons();
             DisplayInventory(inventory);
             DrawStatsView.PlayerStats();
@@ -22,13 +21,12 @@ namespace Solitude2.Views.ShopView
 
         private static void DisplayInventory(IEnumerable<IItem> inventory)
         {
-            float equippedWepDmg;
-            if (StartGameController.CurrentPlayer.EquippedWeapon != null)
-            {
-                equippedWepDmg = MathF.Round(StartGameController.CurrentPlayer.EquippedWeapon.Bonus);
-            }
-            else { equippedWepDmg = 0; }
+            var equippedWepDmg = NullCheckPlayerEquippedWeapon();
+            PrintWeapons(inventory, equippedWepDmg);
+        }
 
+        private static void PrintWeapons(IEnumerable<IItem> inventory, float equippedWepDmg)
+        {
             var index = 1;
             foreach (var item in inventory)
             {
@@ -49,10 +47,25 @@ namespace Solitude2.Views.ShopView
                     Console.ForegroundColor = ConsoleColor.DarkGreen;
                     Console.WriteLine($"+{item.Bonus}");
                 }
-                Console.ResetColor();
 
+                Console.ResetColor();
                 index++;
             }
+        }
+
+        private static float NullCheckPlayerEquippedWeapon()
+        {
+            float equippedWepDmg;
+            if (StartGameController.CurrentPlayer.EquippedWeapon != null)
+            {
+                equippedWepDmg = MathF.Round(StartGameController.CurrentPlayer.EquippedWeapon.Bonus);
+            }
+            else
+            {
+                equippedWepDmg = 0;
+            }
+
+            return equippedWepDmg;
         }
     }
 }

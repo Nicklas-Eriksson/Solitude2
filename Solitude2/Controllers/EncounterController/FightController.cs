@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Solitude2.Controllers.MenuController;
-using Solitude2.Controllers.PlayerController;
 using Solitude2.Models;
 using Solitude2.Views.EncounterView;
 using Solitude2.Views.PlayerView;
@@ -48,14 +47,16 @@ namespace Solitude2.Controllers.EncounterController
                     player.CurrentHP -= monster.Dmg;
                     FightView.DmgDealt(monster.Dmg);
                     HealthCheckController.HealthCheck(player.CurrentHP, player.Name);
-                    CheckPlayerStatus.Alive();
+                    PlayerController.CheckIfPlayerIsAlive();
                     round++;
                 }
             }
 
             player.Gold += monster.GoldDrop;
             player.Inventory.Add(monster.Drop);
+            player.CurrentExp += monster.ExpDrop;
             EnemyDropView.EnemyDrop(monster.GoldDrop, monster.Drop);
+            PlayerController.CheckPlayerLevel();
 
         }
 

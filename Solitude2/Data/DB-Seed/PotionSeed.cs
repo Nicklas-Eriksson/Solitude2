@@ -7,25 +7,20 @@ namespace Solitude2.Data
     {
         private static readonly MyDbContext Db = new();
 
-        internal static bool PotionForge()
+        internal static void PotionForge()
         {
             try
             {
-                Db.Potions.AddRange
+                Db.Items.AddRange
                 (
-                    new Potion { Name = "Minor Healing Potion", Bonus = 100, Value = 100},
-                    new Potion { Name = "Major Healing Potion", Bonus = 200, Value = 200 },
-                    new Potion { Name = "Super Healing Potion", Bonus = 300, Value = 300 },
-                    new Potion { Name = "Ultra Healing Potion", Bonus = 400, Value = 400 }
+                    new Item { Name = "Minor Healing Potion", Bonus = 100, Value = 100, IsWeapon = false, IsPotion = true, IsTrash = false},
+                    new Item { Name = "Major Healing Potion", Bonus = 200, Value = 200, IsWeapon = false, IsPotion = true, IsTrash = false },
+                    new Item { Name = "Super Healing Potion", Bonus = 300, Value = 300, IsWeapon = false, IsPotion = true, IsTrash = false },
+                    new Item { Name = "Ultra Healing Potion", Bonus = 400, Value = 400, IsWeapon = false, IsPotion = true, IsTrash = false }
                 );
                 Db.SaveChanges();
-                return true;
             }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                return false;
-            }
+            catch (Exception e) { Console.WriteLine(e); }
         }
     }
 }

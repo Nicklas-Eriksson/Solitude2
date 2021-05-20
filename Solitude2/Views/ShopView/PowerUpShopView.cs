@@ -12,7 +12,6 @@ namespace Solitude2.Views.ShopView
         /// </summary>
         internal static void Buy()
         {
-            Console.Clear();
             Logotype.PowerUps();
             Frame.New(new List<string> { "Bonus Health.", "Bonus Damage.", "Main Menu." });
             DrawStatsView.PlayerStats();

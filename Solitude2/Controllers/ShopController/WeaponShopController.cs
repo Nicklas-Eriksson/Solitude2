@@ -5,6 +5,8 @@ using Solitude2.Models;
 using Solitude2.Utility;
 using Solitude2.Views.ShopView;
 using System.Linq;
+using Solitude2.Controllers.MenuController;
+using Solitude2.Interfaces;
 using Solitude2.Views.PlayerView;
 
 namespace Solitude2.Controllers.ShopController
@@ -13,15 +15,16 @@ namespace Solitude2.Controllers.ShopController
     {
         internal static void Buy()
         {
+            Console.Clear();
             var weapons = Facade.DbCommunication.GetWeapons().ToList();
             WeaponShopView.DisplayOptions(weapons);
             DrawStatsView.PlayerStats();
             var weaponIndex = Helper.GetUserInput(weapons.Count) - 1;
-            var chosenWeapon = (Weapon) weapons[weaponIndex];
+            var chosenWeapon = weapons[weaponIndex];
             GrantUserItem(chosenWeapon);
         }
 
-        private static void GrantUserItem(Weapon weapon)
+        private static void GrantUserItem(IItem weapon)
         {
             if (weapon == null) throw new ArgumentNullException(nameof(weapon));
             var db = new MyDbContext();
@@ -30,12 +33,12 @@ namespace Solitude2.Controllers.ShopController
 
             if (success)
             {
-                player.Inventory.Add(weapon);
+                player.Inventory.Add((Item)weapon);
                 db.Update(player);
             }
             else
             {
-                //Back to shop + error
+                StoreMenuController.Options();
             }
         }
     }

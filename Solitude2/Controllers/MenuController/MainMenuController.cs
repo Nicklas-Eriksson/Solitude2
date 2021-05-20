@@ -1,5 +1,5 @@
 ﻿using Solitude2.Controllers.EncounterController;
-using Solitude2.Controllers.PlayerController;
+using Solitude2.Controllers;
 using Solitude2.Controllers.SystemController;
 using Solitude2.Utility;
 using Solitude2.Views.MenuView;
@@ -22,7 +22,7 @@ namespace Solitude2.Controllers.MenuController
                     FightController.NewFight();
                     break;
                 case 2:
-                    InventoryController.Inventory();
+                    PlayerController.Inventory();
                     break;
                 case 3:
                     StoreMenuController.Options();

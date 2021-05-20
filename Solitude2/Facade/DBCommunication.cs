@@ -40,8 +40,8 @@ namespace Solitude2.Facade
         {
             try
             {
-                var weapons = Db.Weapons.ToList();
-                if (weapons.Count > 0)
+                var items = Db.Items.ToList();
+                if (items.Count > 0)
                 {
                     return true;
                 }
@@ -52,7 +52,7 @@ namespace Solitude2.Facade
 
         internal static IEnumerable<IItem> GetWeapons()
         {
-            try { return Db.Weapons.ToList(); }
+            try { return Db.Items.ToList(); }
             catch (Exception e) { Console.WriteLine(e); }
             return null;
         }
@@ -61,7 +61,7 @@ namespace Solitude2.Facade
         {
             try
             {
-                var weapon = Db.Weapons.FirstOrDefault(w => w.ID == id);
+                var weapon = Db.Items.Where(i=>i.IsWeapon == true).FirstOrDefault(w => w.ID == id);
                 return weapon ?? null;
             }
             catch (Exception e) { Console.WriteLine(e); }
@@ -70,14 +70,20 @@ namespace Solitude2.Facade
 
         internal static IEnumerable<IItem> GetPotions()
         {
-            try { return Db.Potions.ToList(); }
+            try { return Db.Items.Where(i=>i.IsPotion == true).ToList(); }
             catch (Exception e) { Console.WriteLine(e); }
             return null;
         }
 
-        internal static IEnumerable<IItem> GetItems()
+        internal static IEnumerable<IItem> GetAllItems()
         {
             try { return Db.Items.ToList(); }
+            catch (Exception e) { Console.WriteLine(e); }
+            return null;
+        }
+        internal static IEnumerable<IItem> GetTrashItems()
+        {
+            try { return Db.Items.Where(i=>i.IsTrash == true).ToList(); }
             catch (Exception e) { Console.WriteLine(e); }
             return null;
         }

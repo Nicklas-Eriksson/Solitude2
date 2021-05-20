@@ -16,7 +16,11 @@ namespace Solitude2.Utility
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write("Option: ");
             Console.ResetColor();
-            Input = Console.ReadLine()?.Trim();
+            Input = Console.ReadLine()?.Trim().ToLower();
+            if (Input == "b")
+            {
+                return 999;
+            }
             Success = TryParse(Input, out Number);
             if (!Success || Number > maxOptions || Number <= 0)
             {
@@ -40,7 +44,9 @@ namespace Solitude2.Utility
             using var db = new MyDbContext();
             try
             {
-                db.Weapons.Clear();
+                db.Items.Clear();
+                db.Players.Clear();
+                db.Monsters.Clear();
                 db.SaveChanges();
 
                 Console.WriteLine("Successfully deleted table contents.");
@@ -48,11 +54,15 @@ namespace Solitude2.Utility
             catch (Exception e) { Console.WriteLine(e); }
         }
 
-        public static bool PressAnyKeyToContinue()
+        public static void PressAnyKeyToContinue()
         {
-            Console.ForegroundColor = ConsoleColor.DarkMagenta;
-            Console.WriteLine("Press any key to continue..");
-            return Console.ReadLine() != null;
+            var time = DateTime.Now;
+            while (time < time.AddMinutes(5))
+            {
+                Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                Console.WriteLine("Press any key to continue..");
+                Console.ReadLine();
+            }
         }
     }
 }

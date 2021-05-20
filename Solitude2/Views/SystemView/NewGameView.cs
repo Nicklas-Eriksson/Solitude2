@@ -1,4 +1,4 @@
-﻿using Solitude2.Controllers.SystemController;
+﻿using Solitude2.Models;
 using Solitude2.Prints;
 using System;
 using System.Collections.Generic;
@@ -21,12 +21,13 @@ namespace Solitude2.Views.SystemView
 
         public static void NewCharacter()
         {
-            Console.Write("Character Name:");
+            Console.Write("Character Name: ");
+            Console.ResetColor();
         }
 
-        internal static void WelcomeCharacter()
+        internal static void WelcomeCharacter(Player player)
         {
-            Console.WriteLine($"Welcome {StartGameController.CurrentPlayer.Name}");
+            Console.WriteLine($"Welcome {player.Name}");
             Sleep(1500);
         }
 

@@ -1,6 +1,8 @@
 ﻿using Solitude2.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Threading;
+using Solitude2.Prints;
 
 namespace Solitude2.Views.PlayerView
 {
@@ -8,6 +10,7 @@ namespace Solitude2.Views.PlayerView
     {
         internal static void DisplayInventory(IEnumerable<IItem> inventory)
         {
+            Logotype.Inventory();
             var index = 1;
             foreach (var item in inventory)
             {
@@ -17,6 +20,14 @@ namespace Solitude2.Views.PlayerView
                 Console.ResetColor();
                 index++;
             }
+        }
+
+        internal static void EmptyInventory()
+        {
+            Logotype.Inventory();
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("Inventory is empty!");
+            Thread.Sleep(1400);
         }
     }
 }

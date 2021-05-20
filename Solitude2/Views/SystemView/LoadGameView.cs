@@ -16,7 +16,11 @@ namespace Solitude2.Views.SystemView
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Logotype.LoadGame();
-            Frame.NewNoNr(new List<string> { "Load a previous game from the list below." });
+            Frame.NewNoNr(new List<string>
+            {
+                "Load a previous game from the list below.",
+                "To go back press \"B\" and press \"Enter\"."
+            });
         }
 
         internal static void NoSavedGames()
@@ -34,7 +38,7 @@ namespace Solitude2.Views.SystemView
             var index = 1;
             foreach (var player in players)
             {
-                Console.WriteLine($"{index}: {player.Name} Level:{player.CurrentLvl} Gold: {player.Gold}");
+                Console.WriteLine($"{index}: {player.Name} Level: {player.CurrentLvl} Gold: {player.Gold}");
                 index++;
             }
         }
