@@ -94,7 +94,7 @@ namespace Solitude2.Views.Player
         internal static void PlayerStats()
         {
             DrawPlayerFrame();
-            var p = StartGameController.CurrentPlayer;
+            var p = PlayerController.CurrentPlayer;
             string pName = p.Name,
                 pWepName = p.EquippedWeapon.Name;
             float pCurrentHp = p.CurrentHP,
@@ -130,7 +130,7 @@ namespace Solitude2.Views.Player
             //Potions
             for (var i = 0; i < potions.Count; i++)
             {
-                var playerPotions = PlayerController.Player.Potions.Where(p => p.ILvl == i);
+                var playerPotions = PlayerController.CurrentPlayer.Potions.Where(p => p.ILvl == i);
                 Console.WriteLine($"{potions[i].Name}: +{potions[i].Bonus}HP. {playerPotions.Count()}pcs");
                 Console.SetCursorPosition(Left, Top);
                 Top++;

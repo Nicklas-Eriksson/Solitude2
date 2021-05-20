@@ -28,7 +28,7 @@ namespace Solitude2.Controllers.Shop
         {
             if (weapon == null) throw new ArgumentNullException(nameof(weapon));
             var db = new MyDbContext();
-            var player = StartGameController.CurrentPlayer;
+            var player = PlayerController.CurrentPlayer;
             var success = WithdrawGoldController.WithdrawGold(weapon.Value);
 
             if (success)

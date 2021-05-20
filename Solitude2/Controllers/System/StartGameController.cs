@@ -8,14 +8,12 @@ namespace Solitude2.Controllers.System
 {
     public static class StartGameController
     {
-        internal static Player CurrentPlayer = new();
-
-        public static void CurrentGame()
+      public static void CurrentGame()
         {
             var tableIsFull = DbCommunication.CheckForEmptySeedTables();
             if (!tableIsFull) { Data.RunAllSeeds.CreateItems(); }
             StartView.Game();
-            CurrentPlayer = UserOptions(Helper.GetUserInput(3));
+            PlayerController.CurrentPlayer = UserOptions(Helper.GetUserInput(3));
             MainMenuController.Options();
         }
 

@@ -12,7 +12,7 @@ namespace Solitude2.Controllers.System
             try
             {
                 var db = new MyDbContext();
-                db.Update(StartGameController.CurrentPlayer);
+                db.Update(PlayerController.CurrentPlayer);
                 db.SaveChanges();
                 return true;
             }

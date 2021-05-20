@@ -11,6 +11,7 @@ namespace Solitude2.Data
                 WeaponSeed.WeaponForge();
                 ItemSeed.ItemForge();
                 PotionSeed.PotionForge();
+                MonsterSeed.MonsterForge();
                 return true;
             }
             catch (Exception e)

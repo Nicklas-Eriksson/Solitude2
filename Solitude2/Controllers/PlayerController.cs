@@ -10,11 +10,11 @@ namespace Solitude2.Controllers
 {
     internal static class PlayerController
     {
-        internal static Player Player= StartGameController.CurrentPlayer;
+        internal static Player CurrentPlayer;
 
         internal static void CheckIfPlayerIsAlive()
         {
-            if (!StartGameController.CurrentPlayer.Alive)
+            if (!CurrentPlayer.Alive)
             {
                 PlayerView.GameOver();
             }
@@ -23,7 +23,7 @@ namespace Solitude2.Controllers
         internal static void Inventory()
         {
             Console.Clear();
-            if (Player.Inventory == null)
+            if (CurrentPlayer.Inventory == null)
             {
                 InventoryView.EmptyInventory();
             }
@@ -45,26 +45,26 @@ namespace Solitude2.Controllers
 
         internal static void CheckPlayerLevel()
         {
-            if (Player.CurrentLvl >= Player.MaxLvl || !(Player.CurrentExp >= Player.ExpReqForLvl)) return;
-            Player.CurrentExp -= Player.ExpReqForLvl;
-            Player.CurrentLvl++;
-            PlayerView.LevelUp(Player.CurrentLvl);
+            if (CurrentPlayer.CurrentLvl >= CurrentPlayer.MaxLvl || !(CurrentPlayer.CurrentExp >= CurrentPlayer.ExpReqForLvl)) return;
+            CurrentPlayer.CurrentExp -= CurrentPlayer.ExpReqForLvl;
+            CurrentPlayer.CurrentLvl++;
+            PlayerView.LevelUp(CurrentPlayer.CurrentLvl);
         }
 
         internal static void DrinkPotion()
         {
             var typeOfPotion = SelectTypeOfPotion();
 
-            if (Player.Potions.Contains(typeOfPotion) && Player.CurrentHP >= Player.MaxHP) return;
-            Player.CurrentHP += typeOfPotion.Bonus;
-            if (Player.CurrentHP > Player.MaxHP) { Player.CurrentHP = Player.MaxHP; }
+            if (CurrentPlayer.Potions.Contains(typeOfPotion) && CurrentPlayer.CurrentHP >= CurrentPlayer.MaxHP) return;
+            CurrentPlayer.CurrentHP += typeOfPotion.Bonus;
+            if (CurrentPlayer.CurrentHP > CurrentPlayer.MaxHP) { CurrentPlayer.CurrentHP = CurrentPlayer.MaxHP; }
             PlayerView.DrinkPotion(typeOfPotion);
         }
 
         private static Item SelectTypeOfPotion()
         {
             var input = Helper.GetUserInput(4);
-            return Player.Potions[input - 1];
+            return CurrentPlayer.Potions[input - 1];
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Solitude2.Controllers;
 using Solitude2.Controllers.System;
 using Solitude2.Interfaces;
 using Solitude2.Prints;
@@ -56,9 +57,9 @@ namespace Solitude2.Views.Shop
         private static float NullCheckPlayerEquippedWeapon()
         {
             float equippedWepDmg;
-            if (StartGameController.CurrentPlayer.EquippedWeapon != null)
+            if (PlayerController.CurrentPlayer.EquippedWeapon != null)
             {
-                equippedWepDmg = MathF.Round(StartGameController.CurrentPlayer.EquippedWeapon.Bonus);
+                equippedWepDmg = MathF.Round(PlayerController.CurrentPlayer.EquippedWeapon.Bonus);
             }
             else
             {

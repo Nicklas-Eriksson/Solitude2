@@ -1,4 +1,5 @@
 ﻿using System;
+using Solitude2.Controllers;
 using Solitude2.Controllers.System;
 using Solitude2.Models;
 
@@ -37,7 +38,7 @@ namespace Solitude2.Data
 
         private static Monster NewMonster(string name)
         {
-            var playerLvl = StartGameController.CurrentPlayer.CurrentLvl;
+            var playerLvl = PlayerController.CurrentPlayer.CurrentLvl;
             Random rnd = new();
             var lvlMod = rnd.Next(-1, 1);
             var monsterLvl = playerLvl + lvlMod;

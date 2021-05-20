@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Solitude2.Controllers.Menu;
-using Solitude2.Controllers.System;
+﻿using Solitude2.Controllers.Menu;
 using Solitude2.Interfaces;
 using Solitude2.Models;
 using Solitude2.Utility;
 using Solitude2.Views.Player;
 using Solitude2.Views.Shop;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Solitude2.Controllers.Shop
 {
@@ -26,12 +25,12 @@ namespace Solitude2.Controllers.Shop
 
         private static void GrantUserItem(int potionIndex, List<IItem> potions)
         {
-            var player = StartGameController.CurrentPlayer;
+            var player = PlayerController.CurrentPlayer;
             var potion = potions[potionIndex];
             if (player.Gold >= potion.Value)
             {
                 player.Potions.Add((Item)potion);
-                StartGameController.CurrentPlayer.Inventory.Add((Item)potion);
+                PlayerController.CurrentPlayer.Inventory.Add((Item)potion);
             }
             else
             {

@@ -5,7 +5,7 @@ using Solitude2.Views.EncounterView;
 using Solitude2.Views.Player;
 using System;
 using System.Collections.Generic;
-using static Solitude2.Controllers.System.StartGameController;
+using static Solitude2.Controllers.PlayerController;
 
 namespace Solitude2.Controllers.Encounter
 {
@@ -48,8 +48,7 @@ namespace Solitude2.Controllers.Encounter
 
         private static void FightingSequence(Monster monster)
         {
-            var player = CurrentPlayer;
-            var playerDmg = CalculatePlayerDmg(player);
+            var playerDmg = CalculatePlayerDmg(CurrentPlayer);
             var round = 0;
             DrawStatsView.DisplayCombatInformation(monster);
 
@@ -64,17 +63,17 @@ namespace Solitude2.Controllers.Encounter
                 }
                 else//Monster turn
                 {
-                    player.CurrentHP -= monster.Dmg;
+                    CurrentPlayer.CurrentHP -= monster.Dmg;
                     FightView.DmgDealt(monster.Dmg);
-                    HealthCheckController.HealthCheck(player.CurrentHP, player.Name);
+                    HealthCheckController.HealthCheck(CurrentPlayer.CurrentHP, CurrentPlayer.Name);
                     PlayerController.CheckIfPlayerIsAlive();
                     round++;
                 }
             }
 
-            player.Gold += monster.GoldDrop;
-            player.Inventory.Add(monster.Drop);
-            player.CurrentExp += monster.ExpDrop;
+            CurrentPlayer.Gold += monster.GoldDrop;
+            CurrentPlayer.Inventory.Add(monster.Drop);
+            CurrentPlayer.CurrentExp += monster.ExpDrop;
             EnemyDropView.EnemyDrop(monster.GoldDrop, monster.Drop);
             PlayerController.CheckPlayerLevel();
 

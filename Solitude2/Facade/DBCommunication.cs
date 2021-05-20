@@ -5,6 +5,7 @@ using Solitude2.Interfaces;
 using Solitude2.Models;
 using System.Collections.Generic;
 using System.Linq;
+using Solitude2.Controllers;
 using Solitude2.Controllers.System;
 
 namespace Solitude2.Facade
@@ -25,7 +26,7 @@ namespace Solitude2.Facade
 
         internal static IEnumerable<IItem> GetPlayerInventory()
         {
-            var playerId = StartGameController.CurrentPlayer.ID;
+            var playerId = PlayerController.CurrentPlayer.ID;
 
             try
             {
