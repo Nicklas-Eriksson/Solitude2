@@ -24,14 +24,14 @@ namespace Solitude2.Views.SetCursorPosition
             Left = 2;
             Top = 7;
             Console.SetCursorPosition(Left, Top);
-            Console.WriteLine("╔══════════════════════════╗");
-            for (var i = 1; i < options.Count; i++)
+            Console.WriteLine("╔═════════════════════════════╗");
+            for (var i = 0; i < options.Count; i++)
             {
-                Console.SetCursorPosition(Left, Top + i);
-                Console.WriteLine("║                          ║");
+                Console.SetCursorPosition(Left, Top + i+1);
+                Console.WriteLine("║                             ║");
             }
             Console.SetCursorPosition(Left, Top + options.Count+1);
-            Console.WriteLine("╚══════════════════════════╝");
+            Console.WriteLine("╚═════════════════════════════╝");
         }
 
         private static void DrawMenuOptions(List<string> options)
@@ -44,6 +44,8 @@ namespace Solitude2.Views.SetCursorPosition
                 Console.WriteLine($"{index}: {option}");
                 index++;
             }
+            index++;
+            Console.SetCursorPosition(Left + 2, Top + index);
         }
 
         private static void DrawMenuOptionsNoNumbers(IEnumerable<string> options)
@@ -55,6 +57,8 @@ namespace Solitude2.Views.SetCursorPosition
                 Console.WriteLine($"{option}");
                 index++;
             }
+            index++;
+            Console.SetCursorPosition(Left + 2, Top + index);
         }
     }
 }

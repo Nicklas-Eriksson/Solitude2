@@ -39,7 +39,7 @@ namespace Solitude2.Controllers.System
             SystemView.Load();
             var savedGames = DbCommunication.SavedGames();
             SystemView.ChooseACharacter(savedGames);
-            if (savedGames.Count == 0)
+            if (savedGames == null)
             {
                 SystemView.NoSavedGames();
                 return null;

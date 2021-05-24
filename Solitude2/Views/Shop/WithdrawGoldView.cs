@@ -9,7 +9,7 @@ namespace Solitude2.Views.Shop
         internal static void WithdrawGold(float goldWithdrawn)
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine($"{goldWithdrawn} gold has been drawn from your pouch.");
+            Console.WriteLine($"{goldWithdrawn} gold has been drawn from your pouch");
             Thread.Sleep(1300);
             Console.ResetColor();
         }

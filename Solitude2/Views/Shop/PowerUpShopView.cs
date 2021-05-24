@@ -13,7 +13,7 @@ namespace Solitude2.Views.Shop
         internal static void Buy()
         {
             Logotype.PowerUps();
-            DrawMenu.DisplayMenu(new List<string> { "Bonus Health.", "Bonus Damage.", "Main Menu." });
+            DrawMenu.DisplayMenu(new List<string> { "Bonus Health", "Bonus Damage", "Main Menu" });
             DrawStatsView.PlayerStats();
         }
     }

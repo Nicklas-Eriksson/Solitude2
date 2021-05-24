@@ -2,6 +2,7 @@
 using Solitude2.Views.SetCursorPosition;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using static System.Threading.Thread;
 
 namespace Solitude2.Views.System
@@ -22,7 +23,7 @@ namespace Solitude2.Views.System
             Sleep(1300);
             Console.Clear();
             Logotype.Solitude();
-            DrawMenu.DisplayMenu(new List<string> { "New Game.", "Load Game.", "Exit Game." });
+            DrawMenu.DisplayMenu(new List<string> { "New Game", "Load Game", "Exit Game" });
         }
 
         internal static void Save()
@@ -36,7 +37,7 @@ namespace Solitude2.Views.System
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Logotype.Exit();
-            Console.WriteLine("Exiting application.");
+            Console.WriteLine("Exiting application");
             Sleep(2000);
         }
 
@@ -50,8 +51,10 @@ namespace Solitude2.Views.System
             Logotype.LoadGame();
             DrawMenu.DisplayMenuNoNumbers(new List<string>
             {
-                "Load a previous game from the list below.",
-                "To go back press \"B\" and press \"Enter\"."
+                "Load a previous game",
+                "from the list below",
+                "To go back press \"B\"",
+                "and press \"Enter\""
             });
         }
 
@@ -60,7 +63,7 @@ namespace Solitude2.Views.System
             Console.WriteLine("There are no previous games to load..");
             Sleep(1000);
             Console.WriteLine("Try creating a new character!");
-            Sleep(1000);
+            Sleep(1300);
         }
 
 
@@ -68,6 +71,7 @@ namespace Solitude2.Views.System
         {
             Console.WriteLine("Here are all the saved games:\n");
             var index = 1;
+            if (players == null) { return; }
             foreach (var player in players)
             {
                 Console.WriteLine($"{index}: {player.Name} Level: {player.CurrentLvl} Gold: {player.Gold}");
@@ -83,7 +87,7 @@ namespace Solitude2.Views.System
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Logotype.NewGame();
-            DrawMenu.DisplayMenuNoNumbers(new List<string> { "Welcome Wanderer.", "Lets create a new character." });
+            DrawMenu.DisplayMenuNoNumbers(new List<string> { "Welcome Wanderer!", "Lets create a new character" });
         }
 
         internal static void NewCharacter()
@@ -100,9 +104,14 @@ namespace Solitude2.Views.System
 
         internal static void NameIsTaken(string characterName)
         {
-            Console.WriteLine($"The name \"{characterName}\" is taken.");
-            Console.WriteLine("Try another name.");
+            Console.WriteLine($"The name \"{characterName}\" is taken");
+            Console.WriteLine("Try another name");
             Sleep(1500);
+        }
+
+        internal static void NameIsWrongLength()
+        {
+            Console.WriteLine("Character name needs to be between\n4 and 8 characters long");
         }
     }
 }

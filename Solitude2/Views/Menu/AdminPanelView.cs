@@ -60,12 +60,12 @@ namespace Solitude2.Views.Menu
 
         internal static void GetWeaponById()
         {
-            Console.WriteLine("Enter the Id of the weapon you want to find.");
+            Console.WriteLine("Enter the Id of the weapon you want to find");
         }
 
         internal static void NoWeaponsInDatabase()
         {
-            Console.WriteLine("There are no weapons available.");
+            Console.WriteLine("There are no weapons available");
         }
     }
 }

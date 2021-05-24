@@ -12,7 +12,7 @@ namespace Solitude2.Views.Menu
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Logotype.IronSkillet();
-            DrawMenu.DisplayMenu(new List<string> { "Weapons.", "Power Ups.", "Potions.", "Main Menu."});
+            DrawMenu.DisplayMenu(new List<string> { "Weapons", "Power Ups", "Potions", "Main Menu"});
         }
     }
 }

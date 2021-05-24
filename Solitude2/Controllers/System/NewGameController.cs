@@ -3,6 +3,7 @@ using Solitude2.Models;
 using Solitude2.Views.System;
 using System;
 using System.Linq;
+using System.Threading;
 
 namespace Solitude2.Controllers.System
 {
@@ -56,6 +57,20 @@ namespace Solitude2.Controllers.System
             return true;
         }
 
-        private static string GetCharacterName() => Console.ReadLine()?.Trim();
+        private static string GetCharacterName()
+        {
+            var input = Console.ReadLine()?.Trim().ToLower();
+            if (input is { Length: < 3 or > 8 })
+            {
+                SystemView.NameIsWrongLength();
+                Thread.Sleep(2000);
+                NewGame();
+            }
+
+            var substring = input.Remove(0, 1);
+            var firstLetter = char.ToUpper(input[0]);
+            var name = firstLetter + substring;
+            return name;
+        }
     }
 }

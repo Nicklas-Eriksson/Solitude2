@@ -19,7 +19,7 @@ namespace Solitude2.Facade
             {
                 return Db.Players.Include(p => p.Weapons).Include(p => p.Potions).Include(p => p.Inventory).ToList();
             }
-            catch (Exception e) { Console.WriteLine(e); }
+            catch { Console.WriteLine("Saved games = 0"); }
             return null;
         }
 
@@ -32,7 +32,7 @@ namespace Solitude2.Facade
                 var player = Db.Players.FirstOrDefault(p => p.ID == playerId);
                 if (player != null) return player.Inventory;
             }
-            catch (Exception e) { Console.WriteLine(e); }
+            catch { Console.WriteLine("Player inventory = 0"); }
             return null;
         }
 
@@ -53,7 +53,7 @@ namespace Solitude2.Facade
         internal static IEnumerable<IItem> GetWeapons()
         {
             try { return Db.Items.ToList(); }
-            catch (Exception e) { Console.WriteLine(e); }
+            catch { Console.WriteLine("Weapons = 0"); }
             return null;
         }
 
@@ -71,35 +71,35 @@ namespace Solitude2.Facade
         internal static IEnumerable<IItem> GetPotions()
         {
             try { return Db.Items.Where(i => i.IsPotion == true).ToList(); }
-            catch (Exception e) { Console.WriteLine(e); }
+            catch { Console.WriteLine("Potions = 0"); }
             return null;
         }
 
         internal static IEnumerable<IItem> GetAllItems()
         {
             try { return Db.Items.ToList(); }
-            catch (Exception e) { Console.WriteLine(e); }
+            catch { Console.WriteLine("Items = 0"); }
             return null;
         }
 
         internal static IEnumerable<IItem> GetTrashItems()
         {
             try { return Db.Items.Where(i => i.IsTrash == true).ToList(); }
-            catch (Exception e) { Console.WriteLine(e); }
+            catch { Console.WriteLine("Items = 0"); }
             return null;
         }
 
         internal static IEnumerable<IEnemy> GetMonsters()
         {
             try { return Db.Monsters.ToList(); }
-            catch (Exception e) { Console.WriteLine(e); }
+            catch { Console.WriteLine("Monsters = 0"); }
             return null;
         }
 
         internal static IEnumerable<Player> GetPlayers()
         {
             try { return Db.Players.ToList(); }
-            catch (Exception e) { Console.WriteLine(e); }
+            catch { Console.WriteLine("Players = 0"); }
             return null;
         }
     }
