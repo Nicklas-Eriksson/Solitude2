@@ -1,17 +1,17 @@
-﻿using Solitude2.Facade;
-using Solitude2.Utility;
-using System;
-using Solitude2.Controllers.Menu;
+﻿using Solitude2.Controllers.Menu;
 using Solitude2.Controllers.System;
+using Solitude2.Facade;
 using Solitude2.Models;
+using Solitude2.Utility;
 using Solitude2.Views.Player;
 using Solitude2.Views.SetCursorPosition;
+using System;
 
-namespace Solitude2.Controllers
+namespace Solitude2.Controllers.Character
 {
     internal static class PlayerController
     {
-        internal static Player CurrentPlayer;
+        internal static Models.Player CurrentPlayer;
 
         internal static void CheckIfPlayerIsAlive()
         {
@@ -26,11 +26,11 @@ namespace Solitude2.Controllers
             Console.Clear();
             if (CurrentPlayer.Inventory == null)
             {
-                InventoryView.EmptyInventory();
+                PlayerView.PlayerInventoryIsEmpty();
             }
             else
             {
-                InventoryView.DisplayInventory(DbCommunication.GetPlayerInventory());
+                PlayerView.DisplayPlayerInventory(DbCommunication.GetPlayerInventory());
             }
             DrawStatsView.PlayerStats();
             Helper.PressAnyKeyToContinue();
@@ -41,7 +41,7 @@ namespace Solitude2.Controllers
         {
             Console.Clear();
             PlayerView.GameOver();
-            ExitController.Exit();
+            SystemControllers.Exit();
         }
 
         internal static void CheckPlayerLevel()

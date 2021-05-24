@@ -32,14 +32,28 @@ namespace Solitude2.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("ILvl")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsPotion")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsTrash")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsWeapon")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("PlayerID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("PlayerID1")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("PlayerID2")
                         .HasColumnType("int");
 
                     b.Property<float>("Value")
@@ -49,9 +63,11 @@ namespace Solitude2.Migrations
 
                     b.HasIndex("PlayerID");
 
-                    b.ToTable("Items");
+                    b.HasIndex("PlayerID1");
 
-                    b.HasDiscriminator<string>("Discriminator").HasValue("Item");
+                    b.HasIndex("PlayerID2");
+
+                    b.ToTable("Items");
                 });
 
             modelBuilder.Entity("Solitude2.Models.Monster", b =>
@@ -67,7 +83,7 @@ namespace Solitude2.Migrations
                     b.Property<string>("AttackName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<float>("CurrentHP")
+                    b.Property<float>("CurrentHp")
                         .HasColumnType("real");
 
                     b.Property<string>("Description")
@@ -88,7 +104,7 @@ namespace Solitude2.Migrations
                     b.Property<int>("Level")
                         .HasColumnType("int");
 
-                    b.Property<float>("MaxHP")
+                    b.Property<float>("MaxHp")
                         .HasColumnType("real");
 
                     b.Property<string>("Name")
@@ -150,6 +166,9 @@ namespace Solitude2.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("TalentPoints")
+                        .HasColumnType("int");
+
                     b.HasKey("ID");
 
                     b.HasIndex("EquippedWeaponID");
@@ -157,36 +176,19 @@ namespace Solitude2.Migrations
                     b.ToTable("Players");
                 });
 
-            modelBuilder.Entity("Solitude2.Models.Potion", b =>
-                {
-                    b.HasBaseType("Solitude2.Models.Item");
-
-                    b.Property<int?>("PlayerID1")
-                        .HasColumnType("int");
-
-                    b.HasIndex("PlayerID1");
-
-                    b.HasDiscriminator().HasValue("Potion");
-                });
-
-            modelBuilder.Entity("Solitude2.Models.Weapon", b =>
-                {
-                    b.HasBaseType("Solitude2.Models.Item");
-
-                    b.Property<int?>("PlayerID1")
-                        .HasColumnType("int")
-                        .HasColumnName("Weapon_PlayerID1");
-
-                    b.HasIndex("PlayerID1");
-
-                    b.HasDiscriminator().HasValue("Weapon");
-                });
-
             modelBuilder.Entity("Solitude2.Models.Item", b =>
                 {
                     b.HasOne("Solitude2.Models.Player", null)
                         .WithMany("Inventory")
                         .HasForeignKey("PlayerID");
+
+                    b.HasOne("Solitude2.Models.Player", null)
+                        .WithMany("Potions")
+                        .HasForeignKey("PlayerID1");
+
+                    b.HasOne("Solitude2.Models.Player", null)
+                        .WithMany("Weapons")
+                        .HasForeignKey("PlayerID2");
                 });
 
             modelBuilder.Entity("Solitude2.Models.Monster", b =>
@@ -200,25 +202,11 @@ namespace Solitude2.Migrations
 
             modelBuilder.Entity("Solitude2.Models.Player", b =>
                 {
-                    b.HasOne("Solitude2.Models.Weapon", "EquippedWeapon")
+                    b.HasOne("Solitude2.Models.Item", "EquippedWeapon")
                         .WithMany()
                         .HasForeignKey("EquippedWeaponID");
 
                     b.Navigation("EquippedWeapon");
-                });
-
-            modelBuilder.Entity("Solitude2.Models.Potion", b =>
-                {
-                    b.HasOne("Solitude2.Models.Player", null)
-                        .WithMany("Potions")
-                        .HasForeignKey("PlayerID1");
-                });
-
-            modelBuilder.Entity("Solitude2.Models.Weapon", b =>
-                {
-                    b.HasOne("Solitude2.Models.Player", null)
-                        .WithMany("Weapons")
-                        .HasForeignKey("PlayerID1");
                 });
 
             modelBuilder.Entity("Solitude2.Models.Player", b =>

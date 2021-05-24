@@ -1,7 +1,6 @@
-﻿using System;
-using Solitude2.Controllers;
-using Solitude2.Controllers.System;
+﻿using Solitude2.Controllers.Character;
 using Solitude2.Models;
+using System;
 
 namespace Solitude2.Data
 {

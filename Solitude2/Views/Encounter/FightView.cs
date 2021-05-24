@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Solitude2.Views.EncounterView
+namespace Solitude2.Views.Encounter
 {
     internal static class FightView
     {

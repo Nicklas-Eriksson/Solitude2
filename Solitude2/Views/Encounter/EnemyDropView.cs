@@ -1,7 +1,7 @@
-﻿using Solitude2.Interfaces;
-using System;
+﻿using System;
+using Solitude2.Interfaces;
 
-namespace Solitude2.Views.EncounterView
+namespace Solitude2.Views.Encounter
 {
     internal static class EnemyDropView
     {

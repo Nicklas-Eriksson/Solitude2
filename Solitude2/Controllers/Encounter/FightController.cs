@@ -1,12 +1,12 @@
-﻿using Solitude2.Controllers.Menu;
+﻿using Solitude2.Controllers.Character;
+using Solitude2.Controllers.Menu;
 using Solitude2.Models;
 using Solitude2.Utility;
-using Solitude2.Views.EncounterView;
-using Solitude2.Views.Player;
+using Solitude2.Views.SetCursorPosition;
 using System;
 using System.Collections.Generic;
-using Solitude2.Views.SetCursorPosition;
-using static Solitude2.Controllers.PlayerController;
+using Solitude2.Views.Encounter;
+using static Solitude2.Controllers.Character.PlayerController;
 
 namespace Solitude2.Controllers.Encounter
 {
@@ -59,14 +59,14 @@ namespace Solitude2.Controllers.Encounter
                 {
                     monster.CurrentHp -= playerDmg;
                     FightView.DmgDealt(playerDmg);
-                    HealthCheckController.HealthCheck(monster.CurrentHp, monster.Name);
+                    HealthCheck(monster.CurrentHp, monster.Name);
                     round++;
                 }
                 else//Monster turn
                 {
                     CurrentPlayer.CurrentHP -= monster.Dmg;
                     FightView.DmgDealt(monster.Dmg);
-                    HealthCheckController.HealthCheck(CurrentPlayer.CurrentHP, CurrentPlayer.Name);
+                    HealthCheck(CurrentPlayer.CurrentHP, CurrentPlayer.Name);
                     PlayerController.CheckIfPlayerIsAlive();
                     round++;
                 }
@@ -99,6 +99,17 @@ namespace Solitude2.Controllers.Encounter
             }
 
             return playerDmg;
+        }
+
+        private static bool HealthCheck(float hp, string name)
+        {
+            if (hp > 0) { return true; }
+            if (name == PlayerController.CurrentPlayer.Name)
+            {
+                PlayerController.GameOver();
+            }
+            HealthCheckView.HealthCheck(name);
+            return false;
         }
     }
 }

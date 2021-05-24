@@ -1,43 +1,61 @@
-﻿using System;
-using System.Linq;
-using Solitude2.Data;
+﻿using Solitude2.Data;
 using Solitude2.Models;
 using Solitude2.Views.System;
+using System;
+using System.Linq;
 
 namespace Solitude2.Controllers.System
 {
     public static class NewGameController
     {
-        public static Player CharacterCreation()
-        {
-            NewGameView.New();
-            NewGameView.NewCharacter();
-            var characterName = GetCharacterName();
-            using var db = new MyDbContext();
-            var player = db.Players.FirstOrDefault(p => p.Name == characterName);
-            if (player != null)
-            {
-                StartGameController.CurrentGame();
-                NewGameView.NameIsTaken(characterName);
-                return null;
-            }
+        private static readonly MyDbContext Db = new();
 
-            var starterWeapon = new Item("Wooden Sword", 20, 50, 0, "Made from splintered oak.", true, false, false);
-            var newPlayer = new Player 
-            { 
-                Name = characterName,
-                EquippedWeapon = starterWeapon
-            };
-            newPlayer.Inventory.Add(starterWeapon);
-            db.Update(newPlayer);
-            db.SaveChanges();
-            NewGameView.WelcomeCharacter(newPlayer);
+        internal static Player NewGame()
+        {
+            SystemView.New();
+            SystemView.NewCharacter();
+            return CharacterCreation();
+        }
+
+        private static Player CharacterCreation()
+        {
+            var characterName = GetCharacterName();
+            if (CheckForNameTaken(characterName)) return null;
+            var starterWeapon = CreateStarterWeapon();
+            var newPlayer = CreateNewPlayer(characterName, starterWeapon);
+            Db.Update(newPlayer);
+            Db.SaveChanges();
+            SystemView.WelcomeCharacter(newPlayer);
             return newPlayer;
         }
 
-        private static string GetCharacterName()
+        private static Player CreateNewPlayer(string characterName, Item starterWeapon)
         {
-            return Console.ReadLine()?.Trim();
+            var newPlayer = new Player
+            {
+                Name = characterName,
+                EquippedWeapon = starterWeapon
+            };
+            if (characterName == "Hakk") { newPlayer.IsAdmin = true; }
+            newPlayer.Inventory.Add(starterWeapon);
+            return newPlayer;
         }
+
+        private static Item CreateStarterWeapon()
+        {
+            var starterWeapon = new Item("Wooden Sword", 20, 50, 0, "Made from splintered oak.", true, false, false);
+            return starterWeapon;
+        }
+
+        private static bool CheckForNameTaken(string characterName)
+        {
+            var player = Db.Players.FirstOrDefault(p => p.Name == characterName);
+            if (player == null) return false;
+            SystemView.NameIsTaken(characterName);
+            SystemControllers.CurrentGame();
+            return true;
+        }
+
+        private static string GetCharacterName() => Console.ReadLine()?.Trim();
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using static System.Threading.Thread;
 
-namespace Solitude2.Views.EncounterView
+namespace Solitude2.Views.Encounter
 {
     internal static class HealthCheckView
     {

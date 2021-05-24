@@ -7,33 +7,27 @@ namespace Solitude2.Data
     {
         private static readonly MyDbContext Db = new();
 
-        internal static bool ItemForge()
+        internal static void ItemForge()
         {
             try
             {
                 Db.Items.AddRange
                 (
-                    NewItem("Cloth", 100, "Non"),
-                    NewItem("Egg", 50, "Some kind of pattern is painted on it."),
-                    NewItem("Rabid Squirrel", 200, "Frothy but cute."),
-                    NewItem("Chain", 100, "Non"),
-                    NewItem("Mushroom", 30, "Red with pretty white dots."),
-                    NewItem("Tea Pot", 100, "Non."),
-                    NewItem("Rat Tooth", 20, "So small but so sharp."),
-                    NewItem("Skillet", 200, "Non sticky.")
+                    new Item { Name = "Skillet", Value = 200, Description = "Non sticky.", IsTrash = true },
+                    new Item { Name = "Cloth", Value = 100, Description = "Rugged linen cloth.", IsTrash = true },
+                    new Item { Name = "Egg", Value = 50, Description = "Some kind of pattern is painted on it.", IsTrash = true },
+                    new Item { Name = "Rabid Squirrel", Value = 200, Description = "Frothy but cute.", IsTrash = true },
+                    new Item { Name = "Tea Pot", Value = 100, Description = "Dusty but in fine condition.", IsTrash = true },
+                    new Item { Name = "Mushroom", Value = 200, Description = "Red with pretty white dots.", IsTrash = true },
+                    new Item { Name = "Chain", Value = 150, Description = "Gleaming like gold.", IsTrash = true },
+                    new Item { Name = "Rat Tooth", Value = 20, Description = "So small but so sharp.", IsTrash = true }
                 );
-                return true;
+                Db.SaveChanges();
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                return false;
             }
-        }
-
-        private static Item NewItem(string name, int value, string description )
-        {
-            return new Item { Name = name, Value = value, Description = description };
         }
     }
 }

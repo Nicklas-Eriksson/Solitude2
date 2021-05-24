@@ -1,12 +1,11 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Solitude2.Controllers.Character;
 using Solitude2.Data;
 using Solitude2.Interfaces;
 using Solitude2.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Solitude2.Controllers;
-using Solitude2.Controllers.System;
 
 namespace Solitude2.Facade
 {
@@ -62,7 +61,7 @@ namespace Solitude2.Facade
         {
             try
             {
-                var weapon = Db.Items.Where(i=>i.IsWeapon == true).FirstOrDefault(w => w.ID == id);
+                var weapon = Db.Items.Where(i => i.IsWeapon == true).FirstOrDefault(w => w.ID == id);
                 return weapon ?? null;
             }
             catch (Exception e) { Console.WriteLine(e); }
@@ -71,7 +70,7 @@ namespace Solitude2.Facade
 
         internal static IEnumerable<IItem> GetPotions()
         {
-            try { return Db.Items.Where(i=>i.IsPotion == true).ToList(); }
+            try { return Db.Items.Where(i => i.IsPotion == true).ToList(); }
             catch (Exception e) { Console.WriteLine(e); }
             return null;
         }
@@ -82,9 +81,10 @@ namespace Solitude2.Facade
             catch (Exception e) { Console.WriteLine(e); }
             return null;
         }
+
         internal static IEnumerable<IItem> GetTrashItems()
         {
-            try { return Db.Items.Where(i=>i.IsTrash == true).ToList(); }
+            try { return Db.Items.Where(i => i.IsTrash == true).ToList(); }
             catch (Exception e) { Console.WriteLine(e); }
             return null;
         }

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Solitude2.Models
 {
-    public class Player : IId, INameable, ILevelable, IStatable
+    public class Player : IId, INameable, ILevelable, IStats
     {
         private float expForLvl { get; set; }
         private float maxHp { get; set; }
@@ -14,6 +14,7 @@ namespace Solitude2.Models
         [Key]
         public int ID { get; set; }
         public string Name { get; set; } = "Unknown";
+        public bool IsAdmin { get; set; } = false;
         public bool Alive { get; set; } = true;
         public float Gold { get; set; } = default;
         public int CurrentLvl { get; set; } = 1;

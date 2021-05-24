@@ -1,5 +1,4 @@
-﻿using Solitude2.Data;
-using System;
+﻿using System;
 using static System.Int32;
 using static System.Threading.Thread;
 
@@ -39,21 +38,6 @@ namespace Solitude2.Utility
             Console.ResetColor();
         }
 
-        public static void EmptyAllTables()
-        {
-            using var db = new MyDbContext();
-            try
-            {
-                db.Items.Clear();
-                db.Players.Clear();
-                db.Monsters.Clear();
-                db.SaveChanges();
-
-                Console.WriteLine("Successfully deleted table contents.");
-            }
-            catch (Exception e) { Console.WriteLine(e); }
-        }
-
         public static void PressAnyKeyToContinue()
         {
             var time = DateTime.Now;
@@ -63,6 +47,18 @@ namespace Solitude2.Utility
                 Console.WriteLine("Press any key to continue..");
                 Console.ReadLine();
             }
+        }
+
+        public static int SpecificCommand()
+        {
+            var input = Console.ReadLine()?.ToLower().Trim();
+
+            return input switch
+            {
+                "empty all tables" => 1,
+                "back" => 2,
+                _ => 3
+            };
         }
     }
 }

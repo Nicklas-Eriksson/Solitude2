@@ -1,6 +1,6 @@
 ﻿using Solitude2.Controllers.Shop;
 using Solitude2.Utility;
-using Solitude2.Views.MenuView;
+using Solitude2.Views.Menu;
 
 namespace Solitude2.Controllers.Menu
 {

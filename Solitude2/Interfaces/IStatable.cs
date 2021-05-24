@@ -1,6 +1,6 @@
 ﻿namespace Solitude2.Interfaces
 {
-    public interface IStatable
+    public interface IStats
     {
         float CurrentHP { get; set; }
         float MaxHP { get; set; }

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Solitude2.Views.MenuView
+namespace Solitude2.Views.Menu
 {
     public class TalentTreeMenuView
     {

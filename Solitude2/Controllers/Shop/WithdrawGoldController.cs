@@ -1,4 +1,5 @@
-﻿using Solitude2.Controllers.Menu;
+﻿using Solitude2.Controllers.Character;
+using Solitude2.Controllers.Menu;
 using Solitude2.Views.Shop;
 
 namespace Solitude2.Controllers.Shop

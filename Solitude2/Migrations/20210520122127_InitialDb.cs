@@ -2,7 +2,7 @@
 
 namespace Solitude2.Migrations
 {
-    public partial class InitDB : Migration
+    public partial class InitialDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -21,8 +21,8 @@ namespace Solitude2.Migrations
                     DropID = table.Column<int>(type: "int", nullable: true),
                     TalentDrop = table.Column<int>(type: "int", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    MaxHP = table.Column<float>(type: "real", nullable: false),
-                    CurrentHP = table.Column<float>(type: "real", nullable: false),
+                    MaxHp = table.Column<float>(type: "real", nullable: false),
+                    CurrentHp = table.Column<float>(type: "real", nullable: false),
                     Dmg = table.Column<float>(type: "real", nullable: false)
                 },
                 constraints: table =>
@@ -41,6 +41,7 @@ namespace Solitude2.Migrations
                     Gold = table.Column<float>(type: "real", nullable: false),
                     CurrentLvl = table.Column<int>(type: "int", nullable: false),
                     MaxLvl = table.Column<int>(type: "int", nullable: false),
+                    TalentPoints = table.Column<int>(type: "int", nullable: false),
                     CurrentExp = table.Column<float>(type: "real", nullable: false),
                     ExpReqForLvl = table.Column<float>(type: "real", nullable: false),
                     CurrentHP = table.Column<float>(type: "real", nullable: false),
@@ -65,10 +66,13 @@ namespace Solitude2.Migrations
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Value = table.Column<float>(type: "real", nullable: false),
                     Bonus = table.Column<float>(type: "real", nullable: false),
-                    Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ILvl = table.Column<int>(type: "int", nullable: false),
+                    IsWeapon = table.Column<bool>(type: "bit", nullable: false),
+                    IsPotion = table.Column<bool>(type: "bit", nullable: false),
+                    IsTrash = table.Column<bool>(type: "bit", nullable: false),
                     PlayerID = table.Column<int>(type: "int", nullable: true),
                     PlayerID1 = table.Column<int>(type: "int", nullable: true),
-                    Weapon_PlayerID1 = table.Column<int>(type: "int", nullable: true)
+                    PlayerID2 = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -86,8 +90,8 @@ namespace Solitude2.Migrations
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Items_Players_Weapon_PlayerID1",
-                        column: x => x.Weapon_PlayerID1,
+                        name: "FK_Items_Players_PlayerID2",
+                        column: x => x.PlayerID2,
                         principalTable: "Players",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
@@ -104,9 +108,9 @@ namespace Solitude2.Migrations
                 column: "PlayerID1");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Items_Weapon_PlayerID1",
+                name: "IX_Items_PlayerID2",
                 table: "Items",
-                column: "Weapon_PlayerID1");
+                column: "PlayerID2");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Monsters_DropID",
@@ -146,7 +150,7 @@ namespace Solitude2.Migrations
                 table: "Items");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_Items_Players_Weapon_PlayerID1",
+                name: "FK_Items_Players_PlayerID2",
                 table: "Items");
 
             migrationBuilder.DropTable(

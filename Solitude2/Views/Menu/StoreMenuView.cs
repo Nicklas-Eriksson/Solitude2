@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Solitude2.Prints;
 using Solitude2.Views.SetCursorPosition;
 
-namespace Solitude2.Views.MenuView
+namespace Solitude2.Views.Menu
 {
     public static class StoreMenuView
     {

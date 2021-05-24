@@ -8,9 +8,9 @@ namespace Solitude2.Prints
     /// Character width: Default
     /// Character height: Default
     /// </summary>
-    internal class Logotype
+    internal static class Logotype
     {
-        internal static void Nicklas()
+        internal static void MadeByNicklas()
         {
             Console.WriteLine($@"______         _   _ _      _    _             _____     _ _                        
 | ___ \       | \ | (_)    | |  | |           |  ___|   (_) |                       
@@ -182,7 +182,7 @@ namespace Solitude2.Prints
                                               ");
         }
 
-        public static void Inventory()
+        internal static void Inventory()
         {
             Console.WriteLine($@" _____                     _                   
 |_   _|                   | |                  
@@ -194,7 +194,7 @@ namespace Solitude2.Prints
                                          |___/ ");
         }
 
-        public static void GameOver()
+        internal static void GameOver()
         {
             Console.WriteLine($@" _____                        _____                
 |  __ \                      |  _  |               
@@ -204,6 +204,18 @@ namespace Solitude2.Prints
  \____/\__,_|_| |_| |_|\___|  \___/  \_/ \___|_|   
                                                    
                                                    ");
+        }
+
+        internal static void AdminPanel()
+        {
+            Console.WriteLine($@"  ___      _           _        ______                _ 
+ / _ \    | |         (_)       | ___ \              | |
+/ /_\ \ __| |_ __ ___  _ _ __   | |_/ /_ _ _ __   ___| |
+|  _  |/ _` | '_ ` _ \| | '_ \  |  __/ _` | '_ \ / _ \ |
+| | | | (_| | | | | | | | | | | | | | (_| | | | |  __/ |
+\_| |_/\__,_|_| |_| |_|_|_| |_| \_|  \__,_|_| |_|\___|_|
+                                                        
+                                                        ");
         }
     }
 }

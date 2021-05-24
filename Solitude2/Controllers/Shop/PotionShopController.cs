@@ -1,13 +1,13 @@
-﻿using Solitude2.Controllers.Menu;
+﻿using Solitude2.Controllers.Character;
+using Solitude2.Controllers.Menu;
 using Solitude2.Interfaces;
 using Solitude2.Models;
 using Solitude2.Utility;
-using Solitude2.Views.Player;
+using Solitude2.Views.SetCursorPosition;
 using Solitude2.Views.Shop;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Solitude2.Views.SetCursorPosition;
 
 namespace Solitude2.Controllers.Shop
 {

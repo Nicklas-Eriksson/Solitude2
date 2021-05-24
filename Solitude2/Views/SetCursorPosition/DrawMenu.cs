@@ -7,32 +7,36 @@ namespace Solitude2.Views.SetCursorPosition
     {
         private static int Left, Top;
 
-        internal static void DisplayMenu(IEnumerable<string> options)
+        internal static void DisplayMenu(List<string> options)
         {
-            DrawMenuFrame();
+            DrawMenuFrame(options);
             DrawMenuOptions(options);
         }
 
-        internal static void DisplayMenuNoNumbers(IEnumerable<string> options)
+        internal static void DisplayMenuNoNumbers(List<string> options)
         {
-            DrawMenuFrame();
+            DrawMenuFrame(options);
             DrawMenuOptionsNoNumbers(options);
         }
 
-        private static void DrawMenuFrame()
+        private static void DrawMenuFrame(IReadOnlyCollection<string> options)
         {
             Left = 2;
             Top = 7;
-            Console.SetCursorPosition(73, Top);
+            Console.SetCursorPosition(Left, Top);
             Console.WriteLine("╔══════════════════════════╗");
-            Console.SetCursorPosition(Left, Top + 1);
-            Console.WriteLine("║                          ║");
-            Console.SetCursorPosition(Left, Top + 2);
+            for (var i = 1; i < options.Count; i++)
+            {
+                Console.SetCursorPosition(Left, Top + i);
+                Console.WriteLine("║                          ║");
+            }
+            Console.SetCursorPosition(Left, Top + options.Count+1);
             Console.WriteLine("╚══════════════════════════╝");
         }
 
-        private static void DrawMenuOptions(IEnumerable<string> options)
+        private static void DrawMenuOptions(List<string> options)
         {
+            if (options == null) throw new ArgumentNullException(nameof(options));
             var index = 1;
             foreach (var option in options)
             {

@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using Solitude2.Interfaces;
+﻿using Solitude2.Interfaces;
 using Solitude2.Prints;
-using Solitude2.Views.Player;
 using Solitude2.Views.SetCursorPosition;
+using System;
+using System.Collections.Generic;
 
 namespace Solitude2.Views.Shop
 {

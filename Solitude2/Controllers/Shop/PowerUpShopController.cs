@@ -1,7 +1,6 @@
-﻿using System;
-using Solitude2.Views.Player;
-using Solitude2.Views.SetCursorPosition;
+﻿using Solitude2.Views.SetCursorPosition;
 using Solitude2.Views.Shop;
+using System;
 
 namespace Solitude2.Controllers.Shop
 {

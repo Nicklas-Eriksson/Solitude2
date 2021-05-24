@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Solitude2.Controllers;
+using Solitude2.Controllers.Character;
 using Solitude2.Controllers.System;
 using Solitude2.Interfaces;
 using Solitude2.Prints;
