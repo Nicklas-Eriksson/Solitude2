@@ -45,13 +45,17 @@ namespace Solitude2.Controllers.System
         private static Item CreateStarterWeapon()
         {
             var starterWeapon = new Item("Wooden Sword", 20, 50, 0, "Made from splintered oak.", true, false, false);
-            return starterWeapon;
+            var weaponInDatabase = Db.Items.FirstOrDefault(i => i.Name == starterWeapon.Name);
+            if (weaponInDatabase != null) { return starterWeapon;}
+            Db.Update(starterWeapon);
+            Db.SaveChanges();
+            return weaponInDatabase;
         }
 
         private static bool CheckForNameTaken(string characterName)
         {
             var player = Db.Players.FirstOrDefault(p => p.Name == characterName);
-            if (player == null) return false;
+            if (player == null) { return false; }
             SystemView.NameIsTaken(characterName);
             SystemControllers.CurrentGame();
             return true;

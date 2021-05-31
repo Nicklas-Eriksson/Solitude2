@@ -17,9 +17,11 @@ namespace Solitude2.Views.Shop
         /// </summary>
         internal static void DisplayOptions(IEnumerable<IItem> inventory)
         {
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             Logotype.Weapons();
             DisplayInventory(inventory);
             DrawStatsView.PlayerStats();
+            Console.ResetColor();
         }
 
         private static void DisplayInventory(IEnumerable<IItem> inventory)
@@ -30,6 +32,7 @@ namespace Solitude2.Views.Shop
 
         private static void PrintWeapons(IEnumerable<IItem> inventory, float equippedWepDmg)
         {
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             var index = 1;
             foreach (var item in inventory)
             {

@@ -4,25 +4,32 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Solitude2.Models
 {
-    public class Player : IId, INameable, ILevelable, IStats
+    public class Player : IPlayer
     {
-        private float expForLvl { get; set; }
-        private float maxHp { get; set; }
-        private float attackPower { get; set; }
-        private float critBonus { get; set; }
+        public Player()
+        {
+            Potions = new List<Item>();
+            Weapons = new List<Item>();
+            Inventory = new List<Item>();
+            EquippedWeapon = new Item();
+        }
 
-        [Key]
-        public int ID { get; set; }
-        public string Name { get; set; } = "Unknown";
-        public bool IsAdmin { get; set; } = false;
+        private float expReqForLvl;
+        private float maxHp;
+        private float attackPower;
+        private float critBonus;
+
+        [field: Key] public int ID { get; }
+        public string Name { get; set; }
+        public bool IsAdmin { get; set; }
         public bool Alive { get; set; } = true;
-        public float Gold { get; set; } = default;
+        public float Gold { get; set; }
         public int CurrentLvl { get; set; } = 1;
         public int MaxLvl { get; set; } = 60;
         public int TalentPoints { get; set; } = 60;
-        public float CurrentExp { get; set; } = 0;
-        public float ExpReqForLvl { get => expForLvl; set => expForLvl = CurrentLvl * 100; }
-        public float CurrentHP { get; set; } = default;
+        public float CurrentExp { get; set; }
+        public float ExpReqForLvl { get => expReqForLvl; set => expReqForLvl = CurrentLvl * 100; }
+        public float CurrentHP { get; set; }
         public float MaxHP { get => maxHp; set => maxHp = CurrentLvl * 100; }
         public float AttackPower { get => attackPower; set => attackPower = CurrentLvl * 20; }
         public float CritBonus { get => critBonus; set => critBonus = AttackPower * 0.4F; }

@@ -13,8 +13,10 @@ namespace Solitude2.Views.SetCursorPosition
 
         internal static void DisplayCombatInformation(Monster m)
         {
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             MonsterStats(m);
             PlayerStats();
+            Console.ResetColor();
         }
 
         private static void DrawMonsterFrame()
@@ -93,6 +95,7 @@ namespace Solitude2.Views.SetCursorPosition
 
         internal static void PlayerStats()
         {
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             DrawPlayerFrame();
             var p = PlayerController.CurrentPlayer;
             string pName = p.Name,
@@ -135,6 +138,7 @@ namespace Solitude2.Views.SetCursorPosition
                 Console.SetCursorPosition(Left, Top);
                 Top++;
             }
+            Console.ResetColor();
         }
     }
 }

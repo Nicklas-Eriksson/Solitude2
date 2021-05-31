@@ -18,6 +18,7 @@ namespace Solitude2.Views.Player
 
         internal static void GameOver()
         {
+            Console.ForegroundColor = ConsoleColor.DarkRed;
             Logotype.GameOver();
             Thread.Sleep(1300);
         }
@@ -31,6 +32,7 @@ namespace Solitude2.Views.Player
 
         internal static void DisplayPlayerInventory(IEnumerable<IItem> inventory)
         {
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             Logotype.Inventory();
             var index = 1;
             foreach (var item in inventory)
@@ -45,16 +47,18 @@ namespace Solitude2.Views.Player
 
         internal static void PlayerInventoryIsEmpty()
         {
-            Logotype.Inventory();
             Console.ForegroundColor = ConsoleColor.DarkRed;
+            Logotype.Inventory();
             Console.WriteLine("Inventory is empty!");
             Thread.Sleep(1400);
         }
 
         public static void AdminPanel()
         {
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine("All your tables have now been cleared");
             Thread.Sleep(1400);
+            Console.ResetColor();
         }
     }
 }

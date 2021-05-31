@@ -2,10 +2,10 @@
 using Solitude2.Controllers.Menu;
 using Solitude2.Models;
 using Solitude2.Utility;
+using Solitude2.Views.Encounter;
 using Solitude2.Views.SetCursorPosition;
 using System;
 using System.Collections.Generic;
-using Solitude2.Views.Encounter;
 using static Solitude2.Controllers.Character.PlayerController;
 
 namespace Solitude2.Controllers.Encounter
@@ -59,7 +59,8 @@ namespace Solitude2.Controllers.Encounter
                 {
                     monster.CurrentHp -= playerDmg;
                     FightView.DmgDealt(playerDmg);
-                    HealthCheck(monster.CurrentHp, monster.Name);
+                    var result = HealthCheck(monster.CurrentHp, monster.Name);
+                    if (!result) { monster.Alive = false;}
                     round++;
                 }
                 else//Monster turn
@@ -75,7 +76,7 @@ namespace Solitude2.Controllers.Encounter
             CurrentPlayer.Gold += monster.GoldDrop;
             CurrentPlayer.Inventory.Add(monster.Drop);
             CurrentPlayer.CurrentExp += monster.ExpDrop;
-            EnemyDropView.EnemyDrop(monster.GoldDrop, monster.Drop);
+            FightView.EnemyDrop(monster.GoldDrop, monster.Drop);
             PlayerController.CheckPlayerLevel();
 
         }
@@ -108,8 +109,7 @@ namespace Solitude2.Controllers.Encounter
             {
                 PlayerController.GameOver();
             }
-            HealthCheckView.HealthCheck(name);
-            return false;
-        }
+            FightView.HealthCheck(name);
+            return false; }
     }
 }
