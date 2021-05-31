@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using Solitude2.Controllers;
-using Solitude2.Controllers.Character;
-using Solitude2.Controllers.System;
+﻿using Solitude2.Controllers.Character;
 using Solitude2.Interfaces;
-using Solitude2.Prints;
-using Solitude2.Views.Player;
 using Solitude2.Views.SetCursorPosition;
+using System;
+using System.Collections.Generic;
 
 namespace Solitude2.Views.Shop
 {
@@ -18,9 +14,7 @@ namespace Solitude2.Views.Shop
         internal static void DisplayOptions(IEnumerable<IItem> inventory)
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Logotype.Weapons();
             DisplayInventory(inventory);
-            DrawStatsView.PlayerStats();
             Console.ResetColor();
         }
 

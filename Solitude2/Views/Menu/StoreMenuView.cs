@@ -1,7 +1,6 @@
-﻿using System;
+﻿using Solitude2.Views.SetCursorPosition;
+using System;
 using System.Collections.Generic;
-using Solitude2.Prints;
-using Solitude2.Views.SetCursorPosition;
 
 namespace Solitude2.Views.Menu
 {
@@ -11,8 +10,7 @@ namespace Solitude2.Views.Menu
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Logotype.IronSkillet();
-            DrawMenu.DisplayMenu(new List<string> { "Weapons", "Power Ups", "Potions", "Main Menu"});
+            DrawMenu.DisplayMenu(new List<string> { "Weapons", "Potions", "Power Ups", "Main Menu" });
         }
     }
 }

@@ -1,8 +1,9 @@
 ﻿using Solitude2.Controllers.System;
 using Solitude2.Facade;
+using Solitude2.Prints;
 using Solitude2.Utility;
 using Solitude2.Views.Menu;
-using Solitude2.Views.Player;
+using System;
 using System.Linq;
 using System.Threading;
 
@@ -12,9 +13,15 @@ namespace Solitude2.Controllers.Menu
     {
         internal static void AdminPanel()
         {
+            Console.Clear();
             Prints.Logotype.AdminPanel();
-            PlayerView.AdminPanel();
+            AdminPanelView.DisplayAdminOptions();
             var input = Helper.GetUserInput(3);
+            Options(input);
+        }
+
+        private static void Options(int input)
+        {
             switch (input)
             {
                 case 1:
@@ -43,6 +50,8 @@ namespace Solitude2.Controllers.Menu
 
         private static void EmptyTables()
         {
+            Console.Clear();
+            Logotype.AdminPanel();
             AdminPanelView.EmptyTables1();
             var success = Helper.SpecificCommand();
             switch (success)
@@ -62,25 +71,32 @@ namespace Solitude2.Controllers.Menu
 
         private static void DisplayAllPlayers()
         {
+            Console.Clear();
+            Logotype.AdminPanel(); 
             AdminPanelView.DisplayAllPlayers(DbCommunication.GetPlayers());
             Helper.PressAnyKeyToContinue();
         }
 
         private static void DisplayAllItems()
         {
+            Console.Clear();
+            Logotype.AdminPanel();
             AdminPanelView.DisplayAllItems(DbCommunication.GetAllItems());
             Helper.PressAnyKeyToContinue();
         }
 
         private static void GetAllMonsters()
         {
+            Console.Clear();
+            Logotype.AdminPanel(); 
             AdminPanelView.DisplayAllMonsters(DbCommunication.GetMonsters());
-            
             Helper.PressAnyKeyToContinue();
         }
 
         private static void GetWeaponById()
         {
+            Console.Clear();
+            Logotype.AdminPanel();
             AdminPanelView.GetWeaponById();
             var maxInput = DbCommunication.GetWeapons().Count();
             if (maxInput == 0)
@@ -89,7 +105,8 @@ namespace Solitude2.Controllers.Menu
                 Thread.Sleep(1300);
                 AdminPanel();
             }
-            DbCommunication.GetWeaponsById(Helper.GetUserInput(maxInput));
+            var weapon = DbCommunication.GetWeaponsById(Helper.GetUserInput(maxInput));
+            AdminPanelView.DisplayWeaponFromId(weapon);
             Helper.PressAnyKeyToContinue();
         }
 

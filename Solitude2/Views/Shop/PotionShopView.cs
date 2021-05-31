@@ -11,17 +11,17 @@ namespace Solitude2.Views.Shop
         /// <summary>
         /// 2 options.
         /// </summary>
-        internal static void Buy()
+        internal static void DisplayPotionMenu()
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Logotype.Potions();
             DrawMenu.DisplayMenu(new List<string> { "Potion", "Main Menu" });
             DrawStatsView.PlayerStats();
             Console.ResetColor();
         }
 
-        internal static void DisplayInventory(IEnumerable<IItem> potions)
+        internal static void DisplayOptions(IReadOnlyList<IItem> potions)
         {
+            if (potions == null) return;
             var index = 1;
             foreach (var potion in potions)
             {

@@ -8,6 +8,7 @@ using Solitude2.Views.Shop;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Solitude2.Prints;
 
 namespace Solitude2.Controllers.Shop
 {
@@ -16,15 +17,16 @@ namespace Solitude2.Controllers.Shop
         internal static void Buy()
         {
             Console.Clear();
-            PotionShopView.Buy();
-            DrawStatsView.PlayerStats();
+            Logotype.Potions();
             var potions = Facade.DbCommunication.GetPotions().ToList();
-            PotionShopView.DisplayInventory(potions);
+            DrawStatsView.PlayerStats();
+            PotionShopView.DisplayPotionMenu();
+            PotionShopView.DisplayOptions(potions);
             var userInput = Helper.GetUserInput(potions.Count)-1;
             GrantUserItem(userInput, potions);
         }
 
-        private static void GrantUserItem(int potionIndex, List<IItem> potions)
+        private static void GrantUserItem(int potionIndex, IReadOnlyList<IItem> potions)
         {
             var player = PlayerController.CurrentPlayer;
             var potion = potions[potionIndex];

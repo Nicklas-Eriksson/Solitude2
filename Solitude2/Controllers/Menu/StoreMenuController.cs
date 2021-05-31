@@ -1,4 +1,5 @@
 ﻿using Solitude2.Controllers.Shop;
+using Solitude2.Prints;
 using Solitude2.Utility;
 using Solitude2.Views.Menu;
 
@@ -8,6 +9,7 @@ namespace Solitude2.Controllers.Menu
     {
         internal static void Options()
         {
+            Logotype.IronSkillet();
             StoreMenuView.IronSkillet();
             UserOptions(Helper.GetUserInput(4));
         }

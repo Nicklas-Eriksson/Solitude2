@@ -8,6 +8,7 @@ using Solitude2.Views.SetCursorPosition;
 using Solitude2.Views.Shop;
 using System;
 using System.Linq;
+using Solitude2.Prints;
 
 namespace Solitude2.Controllers.Shop
 {
@@ -16,9 +17,10 @@ namespace Solitude2.Controllers.Shop
         internal static void Buy()
         {
             Console.Clear();
+            Logotype.Weapons();
             var weapons = Facade.DbCommunication.GetWeapons().ToList();
-            WeaponShopView.DisplayOptions(weapons);
             DrawStatsView.PlayerStats();
+            WeaponShopView.DisplayOptions(weapons);
             var weaponIndex = Helper.GetUserInput(weapons.Count) - 1;
             var chosenWeapon = weapons[weaponIndex];
             GrantUserItem(chosenWeapon);
@@ -26,7 +28,7 @@ namespace Solitude2.Controllers.Shop
 
         private static void GrantUserItem(IItem weapon)
         {
-            if (weapon == null) throw new ArgumentNullException(nameof(weapon));
+            if (weapon == null) { return; }
             var db = new MyDbContext();
             var player = PlayerController.CurrentPlayer;
             var success = WithdrawGoldController.WithdrawGold(weapon.Value);
@@ -36,10 +38,7 @@ namespace Solitude2.Controllers.Shop
                 player.Inventory.Add((Item)weapon);
                 db.Update(player);
             }
-            else
-            {
-                StoreMenuController.Options();
-            }
+            StoreMenuController.Options();
         }
     }
 }

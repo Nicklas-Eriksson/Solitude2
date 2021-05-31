@@ -46,9 +46,13 @@ namespace Solitude2.Controllers.System
         {
             var starterWeapon = new Item("Wooden Sword", 20, 50, 0, "Made from splintered oak.", true, false, false);
             var weaponInDatabase = Db.Items.FirstOrDefault(i => i.Name == starterWeapon.Name);
-            if (weaponInDatabase != null) { return starterWeapon;}
-            Db.Update(starterWeapon);
-            Db.SaveChanges();
+            if (weaponInDatabase == null)
+            {
+                Db.Update(starterWeapon);
+                Db.SaveChanges();
+                return starterWeapon;
+            }
+
             return weaponInDatabase;
         }
 

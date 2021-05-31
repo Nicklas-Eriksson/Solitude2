@@ -10,9 +10,9 @@ namespace Solitude2.Controllers.Menu
     {
         internal static void Options()
         {
-            MainMenuView.HomeAdmin();
             if (PlayerController.CurrentPlayer.IsAdmin)
             {
+                MainMenuView.HomeAdmin();
                 UserOptionsAdmin(Helper.GetUserInput(6));
             }
             MainMenuView.Home();
@@ -31,7 +31,7 @@ namespace Solitude2.Controllers.Menu
                     PlayerController.Inventory();
                     break;
                 case 3:
-                    StoreMenuController.Options();
+                    StoreMenuController.Options(); //OK
                     break;
                 case 4:
                     SystemControllers.SaveGame();
@@ -40,7 +40,7 @@ namespace Solitude2.Controllers.Menu
                     SystemControllers.Exit();
                     break;
                 case 6:
-                    AdminPanelController.AdminPanel();
+                    AdminPanelController.AdminPanel(); //OK
                     break;
             }
         }

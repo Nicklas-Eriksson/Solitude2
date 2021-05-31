@@ -19,7 +19,8 @@ namespace Solitude2.Models
         private float attackPower;
         private float critBonus;
 
-        [field: Key] public int ID { get; }
+        [Key] 
+        public int ID { get; set; }
         public string Name { get; set; }
         public bool IsAdmin { get; set; }
         public bool Alive { get; set; } = true;

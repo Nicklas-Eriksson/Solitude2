@@ -1,6 +1,9 @@
 ﻿using Solitude2.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Reflection.Metadata.Ecma335;
+using System.Threading;
+using Solitude2.Views.SetCursorPosition;
 
 namespace Solitude2.Views.Menu
 {
@@ -38,6 +41,12 @@ namespace Solitude2.Views.Menu
         internal static void DisplayAllItems(IEnumerable<IItem> allItems)
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
+            if (allItems == null)
+            {
+                Console.WriteLine("There are no items in the database at the moment");
+                Thread.Sleep(1300);
+                return;
+            }
             foreach (var item in allItems)
             {
                 Console.WriteLine($"ID# {item.ID}: {item.Name} Value: {item.Value}");
@@ -57,6 +66,12 @@ namespace Solitude2.Views.Menu
         internal static void DisplayAllMonsters(IEnumerable<IEnemy> monsters)
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
+            if (monsters == null)
+            {
+                Console.WriteLine("There are no enemies in the database at the moment");
+                Thread.Sleep(1300);
+                return;
+            }
             foreach (var enemy in monsters)
             {
                 Console.WriteLine($"ID# {enemy.ID}: {enemy.Name}");
@@ -71,7 +86,7 @@ namespace Solitude2.Views.Menu
         internal static void GetWeaponById()
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine("Enter the Id of the weapon you want to find");
+            Console.WriteLine("Enter the #ID of the weapon you want to find");
             Console.ResetColor();
         }
 
@@ -79,6 +94,23 @@ namespace Solitude2.Views.Menu
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("There are no weapons available");
+            Console.ResetColor();
+        }
+
+        internal static void DisplayAdminOptions()
+        {
+            DrawMenu.DisplayMenu(new List<string> { "Empty Tables", "Display All Players", "Display All Items", "Display All Enemies", "Get Weapons by #ID", "Back To Main Menu", "Exit Game" });
+        }
+
+        public static void DisplayWeaponFromId(IItem weapon)
+        {
+            if (weapon == null) { return; }
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine($"#ID: {weapon.ID}");
+            Console.WriteLine($"{weapon.Name} +{weapon.Bonus} damage");
+            Console.WriteLine($"{weapon.Description}");
+            Console.WriteLine($"Item Level: {weapon.ILvl}");
+            Console.WriteLine($"Gold Value: {weapon.Value}");
             Console.ResetColor();
         }
     }

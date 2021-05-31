@@ -6,6 +6,8 @@ using Solitude2.Utility;
 using Solitude2.Views.Player;
 using Solitude2.Views.SetCursorPosition;
 using System;
+using System.Linq;
+using Solitude2.Prints;
 
 namespace Solitude2.Controllers.Character
 {
@@ -24,13 +26,14 @@ namespace Solitude2.Controllers.Character
         internal static void Inventory()
         {
             Console.Clear();
+            Logotype.Inventory();
             if (CurrentPlayer.Inventory == null)
             {
                 PlayerView.PlayerInventoryIsEmpty();
             }
             else
             {
-                PlayerView.DisplayPlayerInventory(DbCommunication.GetPlayerInventory());
+                PlayerView.DisplayPlayerInventory(DbCommunication.GetPlayerInventory().ToList());
             }
             DrawStatsView.PlayerStats();
             Helper.PressAnyKeyToContinue();
