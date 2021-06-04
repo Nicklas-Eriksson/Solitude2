@@ -13,13 +13,16 @@ namespace Solitude2.Controllers.Encounter
     internal static class FightController
     {
         private static readonly Random Rnd = new();
+        private static readonly float PlayerDmg = CalculatePlayerDmg(CurrentPlayer);
+
+        internal static void NewFight()
+        {
+            FightOptions(NewMonster());
+            MainMenuController.Options();
+        }
 
         private static void FightOptions(Monster monster)
         {
-            //attack
-            //pot
-            //flee
-
             var userInput = Helper.GetUserInput(3);
             switch (userInput)
             {
@@ -28,16 +31,12 @@ namespace Solitude2.Controllers.Encounter
                     break;
                 case 2:
                     PlayerController.DrinkPotion();
+                    FightOptions(monster);
                     break;
                 case 3:
+                    FightView.Flee();
                     break;
             }
-        }
-
-        internal static void NewFight()
-        {
-            FightOptions(NewMonster());
-            MainMenuController.Options();
         }
 
         private static Monster NewMonster()
@@ -49,7 +48,6 @@ namespace Solitude2.Controllers.Encounter
 
         private static void FightingSequence(Monster monster)
         {
-            var playerDmg = CalculatePlayerDmg(CurrentPlayer);
             var round = 0;
             DrawStatsView.DisplayCombatInformation(monster);
 
@@ -57,8 +55,8 @@ namespace Solitude2.Controllers.Encounter
             {
                 if (round % 2 == 0)//Player turn
                 {
-                    monster.CurrentHp -= playerDmg;
-                    FightView.DmgDealt(playerDmg);
+                    monster.CurrentHp -= PlayerDmg;
+                    FightView.DmgDealt(PlayerDmg);
                     var result = HealthCheck(monster.CurrentHp, monster.Name);
                     if (!result) { monster.Alive = false;}
                     round++;
@@ -71,6 +69,7 @@ namespace Solitude2.Controllers.Encounter
                     PlayerController.CheckIfPlayerIsAlive();
                     round++;
                 }
+                FightOptions(monster);
             }
 
             CurrentPlayer.Gold += monster.GoldDrop;

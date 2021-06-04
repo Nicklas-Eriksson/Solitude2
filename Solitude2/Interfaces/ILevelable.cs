@@ -6,6 +6,5 @@
         int MaxLvl { get; set; }
         float CurrentExp { get; set; }
         float ExpReqForLvl { get; set; }
-        int TalentPoints { get; set; }
     }
 }

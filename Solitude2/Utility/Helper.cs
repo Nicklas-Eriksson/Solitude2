@@ -38,14 +38,16 @@ namespace Solitude2.Utility
             Console.ResetColor();
         }
 
-        public static void PressAnyKeyToContinue()
+        public static void PressEnterToContinue()
         {
             var time = DateTime.Now;
+
             while (time < time.AddMinutes(5))
             {
                 Console.ForegroundColor = ConsoleColor.DarkMagenta;
-                Console.WriteLine("Press any key to continue..");
-                Console.ReadLine();
+                Console.WriteLine("Press \"Enter\" to continue..");
+                var readKey = Console.ReadKey(true);
+                if (readKey.Key == ConsoleKey.Enter) break;
             }
         }
 

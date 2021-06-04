@@ -2,5 +2,5 @@
 
 namespace Solitude2
 {
-    internal class Program { static void Main() => SystemControllers.CurrentGame(); }
+    internal static class Program { private static void Main() => SystemControllers.CurrentGame(); }
 }

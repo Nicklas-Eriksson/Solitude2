@@ -10,7 +10,7 @@ using Solitude2.Data;
 namespace Solitude2.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20210531080756_InitialDb")]
+    [Migration("20210603084113_InitialDb")]
     partial class InitialDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

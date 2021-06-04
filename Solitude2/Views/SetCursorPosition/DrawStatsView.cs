@@ -21,7 +21,7 @@ namespace Solitude2.Views.SetCursorPosition
 
         private static void DrawMonsterFrame()
         {
-            Left = 97;
+            Left = 83;
             Top = 7;
             Console.SetCursorPosition(Left, Top);
             Console.WriteLine("╦════════════════════╗");
@@ -36,14 +36,14 @@ namespace Solitude2.Views.SetCursorPosition
             Console.SetCursorPosition(Left, Top + 5);
             Console.WriteLine("║                    ║");
             Console.SetCursorPosition(Left, Top + 6);
-            Console.WriteLine("╠════════════════════╝");
+            Console.WriteLine("╠════════════════════╣");
         }
 
         private static void DrawPlayerFrame()
         {
-            Left = 73;
+            Left = 59;
             Top = 7;
-            Console.SetCursorPosition(73, Top);
+            Console.SetCursorPosition(Left, Top);
             Console.WriteLine("╔═══════════════════════╗");
             Console.SetCursorPosition(Left, Top + 1);
             Console.WriteLine("║                       ║");
@@ -58,19 +58,21 @@ namespace Solitude2.Views.SetCursorPosition
             Console.SetCursorPosition(Left, Top + 6);
             Console.WriteLine("║                       ║");
             Console.SetCursorPosition(Left, Top + 7);
-            Console.WriteLine("╠═══════════════════════════════════════════════╣");
+            Console.WriteLine("╠═══════════════════════╬════════════════════════════════╗");
             Console.SetCursorPosition(Left, Top + 8);
-            Console.WriteLine("║      Inventory        ║        Potions        ║");
+            Console.WriteLine("║       Rucksack        ║            Potions             ║");
             Console.SetCursorPosition(Left, Top + 9);
-            Console.WriteLine("╠═══════════════════════╬═══════════════════════╣");
+            Console.WriteLine("╠═══════════════════════╬════════════════════════════════╣");
             Console.SetCursorPosition(Left, Top + 10);
-            Console.WriteLine("║                       ║                       ║");
+            Console.WriteLine("║                       ║                                ║");
             Console.SetCursorPosition(Left, Top + 11);
-            Console.WriteLine("║                       ║                       ║");
+            Console.WriteLine("║                       ║                                ║");
             Console.SetCursorPosition(Left, Top + 12);
-            Console.WriteLine("║                       ║                       ║");
+            Console.WriteLine("║                       ║                                ║");
             Console.SetCursorPosition(Left, Top + 13);
-            Console.WriteLine("╚═══════════════════════════════════════════════╝");
+            Console.WriteLine("║                       ║                                ║");
+            Console.SetCursorPosition(Left, Top + 14);
+            Console.WriteLine("╚═══════════════════════╩════════════════════════════════╝");
         }
 
         private static void MonsterStats(Monster m)
@@ -81,15 +83,15 @@ namespace Solitude2.Views.SetCursorPosition
                  mMaxHp = m.MaxHp,
                  mDmg = m.Dmg;
             var mLvl = m.Level;
-            Left = 99;
+            Left = 85;
             Top = 8;
             Console.SetCursorPosition(Left, Top);
             Console.WriteLine($"{mName}");
-            Console.SetCursorPosition(Left, Top+2);
+            Console.SetCursorPosition(Left, Top + 2);
             Console.WriteLine($"Level: {mLvl}");
-            Console.SetCursorPosition(Left, Top+3);
+            Console.SetCursorPosition(Left, Top + 3);
             Console.WriteLine($"Health: {mCurrentHp} / {mMaxHp}");
-            Console.SetCursorPosition(Left, Top+4);
+            Console.SetCursorPosition(Left, Top + 4);
             Console.WriteLine($"Attack power: {mDmg}");
         }
 
@@ -107,13 +109,13 @@ namespace Solitude2.Views.SetCursorPosition
                   pMaxExp = p.ExpReqForLvl,
                   pGold = p.Gold;
             var pLvl = p.CurrentLvl;
-            var potions = (List<Item>)DbCommunication.GetPotions();
-            Left = 75;
+            var potions = p.Inventory.Where(i => i.IsPotion).ToList();
+            Left = 61;
             Top = 8;
             //Stats
             Console.SetCursorPosition(Left, Top);
             Console.WriteLine($"{pName}");
-            Console.SetCursorPosition(Left, Top+2);
+            Console.SetCursorPosition(Left, Top + 2);
             Console.WriteLine($"Level: {pLvl}");
             Console.SetCursorPosition(Left, Top + 3);
             Console.WriteLine($"Health: {pCurrentHp} / {pMaxHp}");
@@ -121,23 +123,24 @@ namespace Solitude2.Views.SetCursorPosition
             Console.WriteLine($"Attack power: {pDmg} ");
             Console.SetCursorPosition(Left, Top + 5);
             Console.WriteLine($"Exp: {pCurrentExp} / {pMaxExp}");
-            Console.SetCursorPosition(Left, Top + 8);
 
-            //Inventory
-            Console.WriteLine($"Weapon: {pWepName}");
+            //Rucksack
             Console.SetCursorPosition(Left, Top + 9);
+            Console.WriteLine($"Weapon: {pWepName}");
+            Console.SetCursorPosition(Left, Top + 10);
             Console.WriteLine($"Gold: {pGold}");
 
-            Left = 97;
+            Left = 85;
             Top = 17;
             //Potions
             for (var i = 0; i < potions.Count; i++)
             {
-                var playerPotions = PlayerController.CurrentPlayer.Potions.Where(p => p.ILvl == i);
-                Console.WriteLine($"{potions[i].Name}: +{potions[i].Bonus}HP. {playerPotions.Count()}pcs");
                 Console.SetCursorPosition(Left, Top);
+                var playerPotions = PlayerController.CurrentPlayer.Potions.Where(p => p.ILvl == i);
+                Console.WriteLine($"{playerPotions.Count()}x {potions[i].Name}: +{potions[i].Bonus}HP");
                 Top++;
             }
+            Console.WriteLine();
             Console.ResetColor();
         }
     }

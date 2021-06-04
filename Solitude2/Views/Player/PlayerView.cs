@@ -29,6 +29,7 @@ namespace Solitude2.Views.Player
         {
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine($"You cork up your red glowing bottle and take a big swig..\n {typeOfPotion.Name} grants you +{typeOfPotion.Bonus} health!");
+            Thread.Sleep(1500);
             Console.ResetColor();
         }
 
@@ -53,6 +54,8 @@ namespace Solitude2.Views.Player
                 Console.ResetColor();
                 index++;
             }
+
+            Console.WriteLine();
         }
 
         private static void DisplayWeapons(List<IItem> inventory)
@@ -69,6 +72,7 @@ namespace Solitude2.Views.Player
                 Console.ResetColor();
                 index++;
             }
+            Console.WriteLine();
         }
 
         private static void DisplayPotions(List<IItem> inventory)
@@ -83,6 +87,8 @@ namespace Solitude2.Views.Player
                 Console.ResetColor();
                 index++;
             }
+
+            Console.WriteLine();
         }
 
         private static void CompareWeaponDamage(Item playerWeapon, IItem weapon, int index)
@@ -111,14 +117,6 @@ namespace Solitude2.Views.Player
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine("Inventory is empty!");
             Thread.Sleep(1400);
-        }
-
-        internal static void TablesAreCleared()
-        {
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.WriteLine("All your tables have now been cleared");
-            Thread.Sleep(1400);
-            Console.ResetColor();
         }
     }
 }

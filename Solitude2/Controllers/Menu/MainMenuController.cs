@@ -28,7 +28,7 @@ namespace Solitude2.Controllers.Menu
                     FightController.NewFight();
                     break;
                 case 2:
-                    PlayerController.Inventory();
+                    PlayerController.Inventory(); //Fixa så man kan byta vapen
                     break;
                 case 3:
                     StoreMenuController.Options(); //OK

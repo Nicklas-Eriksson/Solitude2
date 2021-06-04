@@ -6,6 +6,7 @@ using Solitude2.Utility;
 using Solitude2.Views.Player;
 using Solitude2.Views.SetCursorPosition;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Solitude2.Prints;
 
@@ -13,7 +14,7 @@ namespace Solitude2.Controllers.Character
 {
     internal static class PlayerController
     {
-        internal static Models.Player CurrentPlayer;
+        internal static Player CurrentPlayer;
 
         internal static void CheckIfPlayerIsAlive()
         {
@@ -36,7 +37,7 @@ namespace Solitude2.Controllers.Character
                 PlayerView.DisplayPlayerInventory(DbCommunication.GetPlayerInventory().ToList());
             }
             DrawStatsView.PlayerStats();
-            Helper.PressAnyKeyToContinue();
+            Helper.PressEnterToContinue();
             MainMenuController.Options();
         }
 
@@ -57,18 +58,34 @@ namespace Solitude2.Controllers.Character
 
         internal static void DrinkPotion()
         {
-            var typeOfPotion = SelectTypeOfPotion();
+            var player = CurrentPlayer;
+            var typeOfPotion = SelectTypeOfPotion(player);
 
-            if (CurrentPlayer.Potions.Contains(typeOfPotion) && CurrentPlayer.CurrentHP >= CurrentPlayer.MaxHP) return;
-            CurrentPlayer.CurrentHP += typeOfPotion.Bonus;
-            if (CurrentPlayer.CurrentHP > CurrentPlayer.MaxHP) { CurrentPlayer.CurrentHP = CurrentPlayer.MaxHP; }
+            if (typeOfPotion == null || player.CurrentHP >= player.MaxHP ) return;
+            player.CurrentHP += typeOfPotion.Bonus;
+            if (player.CurrentHP > player.MaxHP) { player.CurrentHP = player.MaxHP; }
             PlayerView.DrinkPotion(typeOfPotion);
         }
 
-        private static Item SelectTypeOfPotion()
+        //REFACTOR TO VIEW
+        private static Item SelectTypeOfPotion(Player player)
         {
+            if (player.Potions == null) return null;
+            var potionListFromDatabase = DbCommunication.GetPotions().ToList();
+            Console.WriteLine("Drink potion:");
+            foreach (var potion in player.Potions)
+            {
+                foreach (var dBPot in potionListFromDatabase)
+                {
+                    if (dBPot.Name == potion.Name)
+                    {
+                        Console.WriteLine($"{potion.Name} {player.Potions.Where(p=>p.Name == potion.Name).Count()} ");
+                    };
+                }
+            }
+
             var input = Helper.GetUserInput(4);
-            return CurrentPlayer.Potions[input - 1];
+            return CurrentPlayer.Inventory[input - 1];
         }
     }
 }

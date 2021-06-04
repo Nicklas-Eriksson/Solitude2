@@ -74,7 +74,7 @@ namespace Solitude2.Controllers.Menu
             Console.Clear();
             Logotype.AdminPanel(); 
             AdminPanelView.DisplayAllPlayers(DbCommunication.GetPlayers());
-            Helper.PressAnyKeyToContinue();
+            Helper.PressEnterToContinue();
         }
 
         private static void DisplayAllItems()
@@ -82,7 +82,7 @@ namespace Solitude2.Controllers.Menu
             Console.Clear();
             Logotype.AdminPanel();
             AdminPanelView.DisplayAllItems(DbCommunication.GetAllItems());
-            Helper.PressAnyKeyToContinue();
+            Helper.PressEnterToContinue();
         }
 
         private static void GetAllMonsters()
@@ -90,7 +90,7 @@ namespace Solitude2.Controllers.Menu
             Console.Clear();
             Logotype.AdminPanel(); 
             AdminPanelView.DisplayAllMonsters(DbCommunication.GetMonsters());
-            Helper.PressAnyKeyToContinue();
+            Helper.PressEnterToContinue();
         }
 
         private static void GetWeaponById()
@@ -107,7 +107,7 @@ namespace Solitude2.Controllers.Menu
             }
             var weapon = DbCommunication.GetWeaponsById(Helper.GetUserInput(maxInput));
             AdminPanelView.DisplayWeaponFromId(weapon);
-            Helper.PressAnyKeyToContinue();
+            Helper.PressEnterToContinue();
         }
 
         private static void BackToMainMenu()

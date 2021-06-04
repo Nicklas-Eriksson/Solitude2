@@ -28,5 +28,13 @@ namespace Solitude2.Views.Encounter
             Thread.Sleep(1300);
             Console.ResetColor();
         }
+
+        internal static void Flee()
+        {
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("You quickly turn around and run away.");
+            Thread.Sleep(1400);
+            Console.ResetColor();
+        }
     }
 }

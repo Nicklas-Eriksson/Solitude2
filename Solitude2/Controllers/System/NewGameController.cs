@@ -35,10 +35,13 @@ namespace Solitude2.Controllers.System
             var newPlayer = new Player
             {
                 Name = characterName,
-                EquippedWeapon = starterWeapon
+                CurrentHP = 100,
+                MaxHP = 100,
+                Gold = 10,
+                EquippedWeapon = starterWeapon,
+                Inventory = { starterWeapon }
             };
             if (characterName == "Hakk") { newPlayer.IsAdmin = true; }
-            newPlayer.Inventory.Add(starterWeapon);
             return newPlayer;
         }
 

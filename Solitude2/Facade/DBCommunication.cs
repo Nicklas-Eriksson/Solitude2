@@ -17,7 +17,7 @@ namespace Solitude2.Facade
         {
             try
             {
-                return Db.Players.Include(p => p.Weapons).Include(p => p.Potions).Include(p => p.Inventory).ToList();
+                return Db.Players.Include(p => p.Inventory).ToList();
             }
             catch { Console.WriteLine("Saved games = 0"); }
             return null;
@@ -25,11 +25,9 @@ namespace Solitude2.Facade
 
         internal static IEnumerable<IItem> GetPlayerInventory()
         {
-            var playerId = PlayerController.CurrentPlayer.ID;
-
             try
             {
-                var player = Db.Players.FirstOrDefault(p => p.ID == playerId);
+                var player = Db.Players.FirstOrDefault(p => p.ID == PlayerController.CurrentPlayer.ID);
                 if (player != null) return player.Inventory;
             }
             catch { Console.WriteLine("Player inventory = 0"); }
