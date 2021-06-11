@@ -10,8 +10,8 @@ using Solitude2.Data;
 namespace Solitude2.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20210603084113_InitialDb")]
-    partial class InitialDb
+    [Migration("20210604133245_InitDb")]
+    partial class InitDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,24 @@ namespace Solitude2.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.5")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("Solitude2.Models.Inventory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ItemId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PlayerId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Inventories");
+                });
 
             modelBuilder.Entity("Solitude2.Models.Item", b =>
                 {
@@ -55,9 +73,6 @@ namespace Solitude2.Migrations
                     b.Property<int?>("PlayerID1")
                         .HasColumnType("int");
 
-                    b.Property<int?>("PlayerID2")
-                        .HasColumnType("int");
-
                     b.Property<float>("Value")
                         .HasColumnType("real");
 
@@ -66,8 +81,6 @@ namespace Solitude2.Migrations
                     b.HasIndex("PlayerID");
 
                     b.HasIndex("PlayerID1");
-
-                    b.HasIndex("PlayerID2");
 
                     b.ToTable("Items");
                 });
@@ -171,9 +184,6 @@ namespace Solitude2.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("TalentPoints")
-                        .HasColumnType("int");
-
                     b.HasKey("ID");
 
                     b.HasIndex("EquippedWeaponID");
@@ -190,10 +200,6 @@ namespace Solitude2.Migrations
                     b.HasOne("Solitude2.Models.Player", null)
                         .WithMany("Potions")
                         .HasForeignKey("PlayerID1");
-
-                    b.HasOne("Solitude2.Models.Player", null)
-                        .WithMany("Weapons")
-                        .HasForeignKey("PlayerID2");
                 });
 
             modelBuilder.Entity("Solitude2.Models.Monster", b =>
@@ -219,8 +225,6 @@ namespace Solitude2.Migrations
                     b.Navigation("Inventory");
 
                     b.Navigation("Potions");
-
-                    b.Navigation("Weapons");
                 });
 #pragma warning restore 612, 618
         }

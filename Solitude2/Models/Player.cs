@@ -1,6 +1,7 @@
 ﻿using Solitude2.Interfaces;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Solitude2.Models
 {
@@ -36,5 +37,7 @@ namespace Solitude2.Models
         public List<Item> Inventory { get; set; }
         public List<Item> Potions { get; set; }
         public Item EquippedWeapon { get; init; }
+        [ForeignKey("Inventories")]
+        public int InventoryId { get; set; }
     }
 }

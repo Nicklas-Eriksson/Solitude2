@@ -4,6 +4,8 @@ using Solitude2.Views.System;
 using System;
 using System.Linq;
 using System.Threading;
+using Solitude2.Controllers.Character;
+using Solitude2.Facade;
 
 namespace Solitude2.Controllers.System
 {
@@ -26,11 +28,15 @@ namespace Solitude2.Controllers.System
             var newPlayer = CreateNewPlayer(characterName, starterWeapon);
             Db.Update(newPlayer);
             Db.SaveChanges();
+            var inventory = new Inventory {ItemId = starterWeapon.ID, PlayerId = newPlayer.ID};
+            Db.Update(inventory);
+            Db.SaveChanges();
             SystemView.WelcomeCharacter(newPlayer);
+            PlayerController.CurrentPlayer = newPlayer;
             return newPlayer;
         }
 
-        private static Player CreateNewPlayer(string characterName, Item starterWeapon)
+       private static Player CreateNewPlayer(string characterName, Item starterWeapon)
         {
             var newPlayer = new Player
             {
@@ -42,9 +48,10 @@ namespace Solitude2.Controllers.System
                 Inventory = { starterWeapon }
             };
             if (characterName == "Hakk") { newPlayer.IsAdmin = true; }
+
             return newPlayer;
         }
-
+        
         private static Item CreateStarterWeapon()
         {
             var starterWeapon = new Item("Wooden Sword", 20, 50, 0, "Made from splintered oak.", true, false, false);

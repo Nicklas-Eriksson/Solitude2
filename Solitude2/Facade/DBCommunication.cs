@@ -13,6 +13,24 @@ namespace Solitude2.Facade
     {
         private static readonly MyDbContext Db = new();
 
+        internal static IEnumerable<IItem> GetPlayerInventory()
+        {
+            try
+            {
+                var inventoryIds = Db.Inventories.Where(p => p.PlayerId == PlayerController.CurrentPlayer.ID).ToList();
+
+                List<IItem> items = new();
+                foreach (var item in inventoryIds)
+                {
+                    items.AddRange(Db.Items.Where(i => i.ID == item.ItemId));
+                }
+
+                if (items.Count != 0) return items;
+            }
+            catch (Exception e) { Console.WriteLine(e); }
+            return null;
+        }
+
         internal static List<Player> SavedGames()
         {
             try
@@ -20,17 +38,6 @@ namespace Solitude2.Facade
                 return Db.Players.Include(p => p.Inventory).ToList();
             }
             catch { Console.WriteLine("Saved games = 0"); }
-            return null;
-        }
-
-        internal static IEnumerable<IItem> GetPlayerInventory()
-        {
-            try
-            {
-                var player = Db.Players.FirstOrDefault(p => p.ID == PlayerController.CurrentPlayer.ID);
-                if (player != null) return player.Inventory;
-            }
-            catch { Console.WriteLine("Player inventory = 0"); }
             return null;
         }
 
@@ -98,6 +105,13 @@ namespace Solitude2.Facade
         {
             try { return Db.Players.ToList(); }
             catch { Console.WriteLine("Players = 0"); }
+            return null;
+        }
+
+        internal static Player GetPlayerByName(string name)
+        {
+            try { return Db.Players.FirstOrDefault(p=>p.Name == name); }
+            catch { Console.WriteLine("Player not fount"); }
             return null;
         }
     }

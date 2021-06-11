@@ -12,6 +12,7 @@ namespace Solitude2.Data
         public DbSet<Player> Players { get; set; }
         public DbSet<Monster> Monsters { get; set; }
         public DbSet<Item> Items { get; set; }
+        public DbSet<Inventory> Inventories { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

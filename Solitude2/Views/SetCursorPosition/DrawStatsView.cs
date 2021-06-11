@@ -128,11 +128,18 @@ namespace Solitude2.Views.SetCursorPosition
             Console.SetCursorPosition(Left, Top + 9);
             Console.WriteLine($"Weapon: {pWepName}");
             Console.SetCursorPosition(Left, Top + 10);
+            Console.WriteLine($"Weapon damage: {p.EquippedWeapon.Bonus}");
+            Console.SetCursorPosition(Left, Top + 11);
             Console.WriteLine($"Gold: {pGold}");
 
             Left = 85;
             Top = 17;
             //Potions
+            if (potions.Count == 0)
+            {
+                Console.SetCursorPosition(Left, Top);
+                Console.WriteLine("No potions in inventory");
+            }
             for (var i = 0; i < potions.Count; i++)
             {
                 Console.SetCursorPosition(Left, Top);

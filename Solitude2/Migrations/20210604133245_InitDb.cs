@@ -2,10 +2,24 @@
 
 namespace Solitude2.Migrations
 {
-    public partial class InitialDb : Migration
+    public partial class InitDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Inventories",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ItemId = table.Column<int>(type: "int", nullable: false),
+                    PlayerId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Inventories", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Monsters",
                 columns: table => new
@@ -42,7 +56,6 @@ namespace Solitude2.Migrations
                     Gold = table.Column<float>(type: "real", nullable: false),
                     CurrentLvl = table.Column<int>(type: "int", nullable: false),
                     MaxLvl = table.Column<int>(type: "int", nullable: false),
-                    TalentPoints = table.Column<int>(type: "int", nullable: false),
                     CurrentExp = table.Column<float>(type: "real", nullable: false),
                     ExpReqForLvl = table.Column<float>(type: "real", nullable: false),
                     CurrentHP = table.Column<float>(type: "real", nullable: false),
@@ -72,8 +85,7 @@ namespace Solitude2.Migrations
                     IsPotion = table.Column<bool>(type: "bit", nullable: false),
                     IsTrash = table.Column<bool>(type: "bit", nullable: false),
                     PlayerID = table.Column<int>(type: "int", nullable: true),
-                    PlayerID1 = table.Column<int>(type: "int", nullable: true),
-                    PlayerID2 = table.Column<int>(type: "int", nullable: true)
+                    PlayerID1 = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -90,12 +102,6 @@ namespace Solitude2.Migrations
                         principalTable: "Players",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Items_Players_PlayerID2",
-                        column: x => x.PlayerID2,
-                        principalTable: "Players",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -107,11 +113,6 @@ namespace Solitude2.Migrations
                 name: "IX_Items_PlayerID1",
                 table: "Items",
                 column: "PlayerID1");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Items_PlayerID2",
-                table: "Items",
-                column: "PlayerID2");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Monsters_DropID",
@@ -150,9 +151,8 @@ namespace Solitude2.Migrations
                 name: "FK_Items_Players_PlayerID1",
                 table: "Items");
 
-            migrationBuilder.DropForeignKey(
-                name: "FK_Items_Players_PlayerID2",
-                table: "Items");
+            migrationBuilder.DropTable(
+                name: "Inventories");
 
             migrationBuilder.DropTable(
                 name: "Monsters");

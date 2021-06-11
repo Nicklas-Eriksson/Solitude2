@@ -13,7 +13,7 @@ namespace Solitude2.Utility
         internal static int GetUserInput(int maxOptions)
         {
             Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.Write("Option: ");
+            Console.Write(" Option: ");
             Console.ResetColor();
             Input = Console.ReadLine()?.Trim().ToLower();
             if (Input == "b")
@@ -33,7 +33,7 @@ namespace Solitude2.Utility
         private static void Error()
         {
             Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.WriteLine("Error, something went wrong. Try again.");
+            Console.WriteLine(" Error, something went wrong. Try again.");
             Sleep(1300);
             Console.ResetColor();
         }
@@ -45,7 +45,7 @@ namespace Solitude2.Utility
             while (time < time.AddMinutes(5))
             {
                 Console.ForegroundColor = ConsoleColor.DarkMagenta;
-                Console.WriteLine("Press \"Enter\" to continue..");
+                Console.WriteLine(" Press \"Enter\" to continue..");
                 var readKey = Console.ReadKey(true);
                 if (readKey.Key == ConsoleKey.Enter) break;
             }

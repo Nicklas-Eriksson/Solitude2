@@ -1,18 +1,21 @@
-﻿using Solitude2.Interfaces;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using Solitude2.Interfaces;
 
 namespace Solitude2.Models
 {
     public class Item : IItem
     {
+        [Key]
         public int ID { get; set; }
         public string Name { get; set; } = "Unknown";
         public string Description { get; set; } = "Non.";
-        public float Value { get; set; } = default;
-        public float Bonus { get; set; } = default;
-        public int ILvl { get; set; } = default;
-        public bool IsWeapon { get; set; } = false;
-        public bool IsPotion { get; set; } = false;
-        public bool IsTrash { get; set; } = false;
+        public float Value { get; set; }
+        public float Bonus { get; set; }
+        public int ILvl { get; set; }
+        public bool IsWeapon { get; set; }
+        public bool IsPotion { get; set; }
+        public bool IsTrash { get; set; }
 
         /// <summary>
         /// Empty constructor.
