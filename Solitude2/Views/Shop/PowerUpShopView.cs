@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Solitude2.Prints;
-using Solitude2.Views.Player;
 using Solitude2.Views.SetCursorPosition;
 
 namespace Solitude2.Views.Shop
@@ -13,10 +12,14 @@ namespace Solitude2.Views.Shop
         /// </summary>
         internal static void Buy()
         {
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
             Logotype.PowerUps();
-            DrawMenu.DisplayMenu(new List<string> { "Bonus Health", "Bonus Damage", "Main Menu" });
-            DrawStatsView.PlayerStats();
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            DrawMenu.DisplayMenu(new List<string>
+            {
+                "Bonus Health",
+                "Bonus Damage",
+                "Main Menu"
+            });
             Console.ResetColor();
         }
     }

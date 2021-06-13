@@ -1,8 +1,6 @@
 ﻿using Solitude2.Controllers.Character;
-using Solitude2.Facade;
 using Solitude2.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Solitude2.Views.SetCursorPosition

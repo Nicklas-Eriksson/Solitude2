@@ -3,6 +3,7 @@ using Solitude2.Interfaces;
 using Solitude2.Views.SetCursorPosition;
 using System;
 using System.Collections.Generic;
+using Solitude2.Prints;
 
 namespace Solitude2.Views.Shop
 {
@@ -13,6 +14,7 @@ namespace Solitude2.Views.Shop
         /// </summary>
         internal static void DisplayOptions(IEnumerable<IItem> inventory)
         {
+            Logotype.Weapons();
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             DisplayInventory(inventory);
             Console.ResetColor();
@@ -30,7 +32,7 @@ namespace Solitude2.Views.Shop
             var index = 1;
             foreach (var item in inventory)
             {
-                Console.Write($"{index}: {item.Name} ");
+                Console.Write($" {index}: {item.Name} ");
 
                 if (equippedWepDmg > MathF.Round(item.Bonus))
                 {
@@ -48,6 +50,7 @@ namespace Solitude2.Views.Shop
                     Console.WriteLine($"+{item.Bonus}");
                 }
 
+                Console.WriteLine();
                 Console.ResetColor();
                 index++;
             }

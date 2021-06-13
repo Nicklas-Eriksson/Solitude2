@@ -1,4 +1,5 @@
 ﻿using System;
+using Solitude2.Controllers.Character;
 using static System.Int32;
 using static System.Threading.Thread;
 
@@ -12,22 +13,25 @@ namespace Solitude2.Utility
 
         internal static int GetUserInput(int maxOptions)
         {
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.Write(" Option: ");
-            Console.ResetColor();
-            Input = Console.ReadLine()?.Trim().ToLower();
-            if (Input == "b")
+            while (true)
             {
-                return 999;
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.Write(" Option: ");
+                Console.ResetColor();
+                Input = Console.ReadLine()?.Trim().ToLower();
+                if (Input is "b" or "back")
+                {
+                    return 999;
+                }
+                Success = TryParse(Input, out Number);
+                if (!Success || Number > maxOptions || Number <= 0)
+                {
+                    Error();
+                    continue;
+                }
+                Console.ResetColor();
+                return Number;
             }
-            Success = TryParse(Input, out Number);
-            if (!Success || Number > maxOptions || Number <= 0)
-            {
-                Error();
-                GetUserInput(maxOptions);
-            }
-            Console.ResetColor();
-            return Number;
         }
 
         private static void Error()

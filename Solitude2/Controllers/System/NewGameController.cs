@@ -1,11 +1,10 @@
-﻿using Solitude2.Data;
+﻿using Solitude2.Controllers.Character;
+using Solitude2.Data;
 using Solitude2.Models;
 using Solitude2.Views.System;
 using System;
 using System.Linq;
 using System.Threading;
-using Solitude2.Controllers.Character;
-using Solitude2.Facade;
 
 namespace Solitude2.Controllers.System
 {
@@ -47,7 +46,11 @@ namespace Solitude2.Controllers.System
                 EquippedWeapon = starterWeapon,
                 Inventory = { starterWeapon }
             };
-            if (characterName == "Hakk") { newPlayer.IsAdmin = true; }
+            if (characterName == "Hakk")
+            {
+                newPlayer.IsAdmin = true;
+                newPlayer.Gold = 10000;
+            }
 
             return newPlayer;
         }

@@ -37,10 +37,10 @@ namespace Solitude2.Controllers.Menu
                     SystemControllers.SaveGame();
                     break;
                 case 5:
-                    SystemControllers.Exit();
+                    AdminPanelController.AdminPanel(); //OK
                     break;
                 case 6:
-                    AdminPanelController.AdminPanel(); //OK
+                    SystemControllers.Exit();
                     break;
             }
         }

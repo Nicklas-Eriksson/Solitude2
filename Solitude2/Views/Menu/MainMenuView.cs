@@ -20,7 +20,14 @@ namespace Solitude2.Views.Menu
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Logotype.MainMenu();
-            DrawMenu.DisplayMenu(new List<string> { "Explore", "Inventory", "Store", "Save Game", "Exit Game" });
+            DrawMenu.DisplayMenu(new List<string>
+            {
+                "Explore",
+                "Inventory",
+                "Store",
+                "Save Game",
+                "Exit Game"
+            });
         }
 
         public static void HomeAdmin()
@@ -28,7 +35,15 @@ namespace Solitude2.Views.Menu
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Logotype.MainMenu();
-            DrawMenu.DisplayMenu(new List<string> { "Explore", "Inventory", "Store", "Save Game", "Exit Game", "Admin Panel" });
+            DrawMenu.DisplayMenu(new List<string>
+            {
+                "Explore",
+                "Inventory",
+                "Store",
+                "Save Game",
+                "Admin Panel",
+                "Exit Game"
+            });
         }
     }
 }

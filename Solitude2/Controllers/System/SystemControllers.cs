@@ -5,7 +5,10 @@ using Solitude2.Models;
 using Solitude2.Utility;
 using Solitude2.Views.System;
 using System;
+using System.Threading;
 using Solitude2.Controllers.Menu;
+using Solitude2.Prints;
+using Solitude2.Views.Menu;
 
 namespace Solitude2.Controllers.System
 {
@@ -45,6 +48,8 @@ namespace Solitude2.Controllers.System
                 return null;
             }
             var option = Helper.GetUserInput(savedGames.Count);
+            Console.Clear();
+            Logotype.LoadingGame();
             if (option == 999) { CurrentGame(); }
             return savedGames[option - 1];
         }
@@ -53,14 +58,18 @@ namespace Solitude2.Controllers.System
         {
             using MyDbContext db = new();
             db.Items.Clear();
+            db.Inventories.Clear();
             db.Monsters.Clear();
             db.Players.Clear();
+            AdminPanelView.EmptyAllTablesSucceeded();
         }
 
         internal static void CurrentGame()
         {
+            Logotype.MadeByNicklas();
+            Thread.Sleep(1300);
             var tableIsFull = DbCommunication.CheckForEmptySeedTables();
-            if (!tableIsFull) { Data.RunAllSeeds.CreateItems(); }
+            if (!tableIsFull) { RunAllSeeds.CreateItems(); }
             SystemView.StartGame();
             PlayerController.CurrentPlayer = UserOptions(Helper.GetUserInput(3));
             MainMenuController.Options();

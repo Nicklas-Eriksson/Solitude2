@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Solitude2.Views.SetCursorPosition
 {
@@ -27,10 +28,10 @@ namespace Solitude2.Views.SetCursorPosition
             Console.WriteLine("╔═════════════════════════════╗");
             for (var i = 0; i < options.Count; i++)
             {
-                Console.SetCursorPosition(Left, Top + i+1);
+                Console.SetCursorPosition(Left, Top + i + 1);
                 Console.WriteLine("║                             ║");
             }
-            Console.SetCursorPosition(Left, Top + options.Count+1);
+            Console.SetCursorPosition(Left, Top + options.Count + 1);
             Console.WriteLine("╚═════════════════════════════╝");
         }
 
@@ -44,21 +45,21 @@ namespace Solitude2.Views.SetCursorPosition
                 Console.WriteLine($"{index}: {option}");
                 index++;
             }
-            index++;
-            Console.SetCursorPosition(Left + 2, Top + index);
+            Console.SetCursorPosition(Left-2, Top + options.Count + 2);
         }
 
         private static void DrawMenuOptionsNoNumbers(IEnumerable<string> options)
         {
             var index = 1;
-            foreach (var option in options)
+            var enumerable = options as string[] ?? options.ToArray();
+            foreach (var option in enumerable)
             {
                 Console.SetCursorPosition(Left + 2, Top + index);
                 Console.WriteLine($"{option}");
                 index++;
             }
-            index++;
-            Console.SetCursorPosition(Left + 2, Top + index);
+
+            Console.SetCursorPosition(Left-2, Top + enumerable.Count() + 2);
         }
     }
 }

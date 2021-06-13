@@ -13,9 +13,13 @@ namespace Solitude2.Views.Shop
         /// </summary>
         internal static void DisplayPotionMenu()
         {
+            Logotype.Potions();
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            DrawMenu.DisplayMenu(new List<string> { "Potion", "Main Menu" });
-            DrawStatsView.PlayerStats();
+            DrawMenu.DisplayMenu(new List<string>
+            {
+                "Potion",
+                "Main Menu"
+            });
             Console.ResetColor();
         }
 
@@ -26,8 +30,9 @@ namespace Solitude2.Views.Shop
             foreach (var potion in potions)
             {
                 Console.ResetColor();
-                Console.Write($"{index}: {potion.Name} Healing: {potion.Bonus}");
-                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.Write($" {index}: {potion.Name} ");
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.Write($"+{potion.Bonus}");
                 Console.WriteLine($" Cost:{potion.Value}");
                 index++;
             }

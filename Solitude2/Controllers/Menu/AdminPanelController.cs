@@ -13,11 +13,14 @@ namespace Solitude2.Controllers.Menu
     {
         internal static void AdminPanel()
         {
-            Console.Clear();
-            Prints.Logotype.AdminPanel();
-            AdminPanelView.DisplayAdminOptions();
-            var input = Helper.GetUserInput(3);
-            Options(input);
+            while (true)
+            {
+                Console.Clear();
+                Logotype.AdminPanel();
+                AdminPanelView.DisplayAdminOptions();
+                var input = Helper.GetUserInput(8);
+                Options(input);
+            }
         }
 
         private static void Options(int input)
@@ -31,21 +34,32 @@ namespace Solitude2.Controllers.Menu
                     DisplayAllPlayers();
                     break;
                 case 3:
-                    DisplayAllItems();
+                    GetPlayerByName();
                     break;
                 case 4:
-                    GetAllMonsters();
+                    DisplayAllItems();
                     break;
                 case 5:
-                    GetWeaponById();
+                    GetAllMonsters();
                     break;
                 case 6:
-                    BackToMainMenu();
+                    GetWeaponById();
                     break;
                 case 7:
+                    BackToMainMenu();
+                    break;
+                case 8:
                     ExitGame();
                     break;
             }
+        }
+
+        private static void GetPlayerByName()
+        {
+            Console.Clear();
+            Logotype.AdminPanel();
+            AdminPanelView.DisplayCharacterByName(DbCommunication.GetPlayerByName(Console.ReadLine()?.Trim()));
+            Helper.PressEnterToContinue();
         }
 
         private static void EmptyTables()

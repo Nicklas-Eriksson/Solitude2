@@ -23,19 +23,23 @@ namespace Solitude2.Controllers.Encounter
 
         private static void FightOptions(Monster monster)
         {
-            var userInput = Helper.GetUserInput(3);
-            switch (userInput)
+            while (true)
             {
-                case 1:
-                    FightingSequence(monster);
-                    break;
-                case 2:
-                    PlayerController.DrinkPotion();
-                    FightOptions(monster);
-                    break;
-                case 3:
-                    FightView.Flee();
-                    break;
+                var userInput = Helper.GetUserInput(3);
+                switch (userInput)
+                {
+                    case 1:
+                        FightingSequence(monster);
+                        break;
+                    case 2:
+                        PlayerController.DrinkPotion();
+                        continue;
+                    case 3:
+                        FightView.Flee();
+                        break;
+                }
+
+                break;
             }
         }
 

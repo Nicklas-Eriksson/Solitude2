@@ -103,7 +103,7 @@ namespace Solitude2.Facade
 
         internal static IEnumerable<Player> GetPlayers()
         {
-            try { return Db.Players.ToList(); }
+            try { return Db.Players.Include(w=>w.EquippedWeapon).ToList(); }
             catch { Console.WriteLine("Players = 0"); }
             return null;
         }

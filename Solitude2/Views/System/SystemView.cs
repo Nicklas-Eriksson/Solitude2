@@ -48,8 +48,8 @@ namespace Solitude2.Views.System
         internal static void Load()
         {
             Console.Clear();
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
             Logotype.LoadGame();
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             DrawMenu.DisplayMenuNoNumbers(new List<string>
             {
                 "Load a previous game",
@@ -57,14 +57,15 @@ namespace Solitude2.Views.System
                 "To go back press \"B\"",
                 "and press \"Enter\""
             });
+            Console.ResetColor();
         }
 
         internal static void NoSavedGames()
         {
             Console.ForegroundColor = ConsoleColor.DarkRed;
-            Console.WriteLine("There are no previous games to load..");
+            Console.WriteLine(" There are no previous games to load..");
             Sleep(1000);
-            Console.WriteLine("Try creating a new character!");
+            Console.WriteLine(" Try creating a new character!");
             Sleep(1300);
             Console.ResetColor();
         }
@@ -72,7 +73,7 @@ namespace Solitude2.Views.System
         internal static void ChooseACharacter(IEnumerable<Models.Player> players)
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine("Here are all the saved games:\n");
+            Console.WriteLine(" Here are all the saved games:\n");
             var index = 1;
             if (players == null) { return; }
             foreach (var player in players)

@@ -4,11 +4,10 @@ using Solitude2.Data;
 using Solitude2.Interfaces;
 using Solitude2.Models;
 using Solitude2.Utility;
-using Solitude2.Views.SetCursorPosition;
 using Solitude2.Views.Shop;
 using System;
 using System.Linq;
-using Solitude2.Prints;
+using Solitude2.Views.SetCursorPosition;
 
 namespace Solitude2.Controllers.Shop
 {
@@ -17,12 +16,12 @@ namespace Solitude2.Controllers.Shop
         internal static void Buy()
         {
             Console.Clear();
-            Logotype.Weapons();
             var weapons = Facade.DbCommunication.GetWeapons().ToList();
-            DrawStatsView.PlayerStats();
             WeaponShopView.DisplayOptions(weapons);
-            var weaponIndex = Helper.GetUserInput(weapons.Count) - 1;
-            var chosenWeapon = weapons[weaponIndex];
+            DrawStatsView.PlayerStats();
+            var weaponIndex = Helper.GetUserInput(weapons.Count);
+            if (weaponIndex == 999) { StoreMenuController.Options(); }
+            var chosenWeapon = weapons[weaponIndex-1];
             GrantUserItem(chosenWeapon);
         }
 
