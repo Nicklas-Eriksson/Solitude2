@@ -10,8 +10,8 @@ using Solitude2.Data;
 namespace Solitude2.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20210604133245_InitDb")]
-    partial class InitDb
+    [Migration("20210615091303_InitialDb")]
+    partial class InitialDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -171,6 +171,9 @@ namespace Solitude2.Migrations
 
                     b.Property<float>("Gold")
                         .HasColumnType("real");
+
+                    b.Property<int>("InventoryId")
+                        .HasColumnType("int");
 
                     b.Property<bool>("IsAdmin")
                         .HasColumnType("bit");

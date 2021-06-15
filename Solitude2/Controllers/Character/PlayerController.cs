@@ -2,13 +2,12 @@
 using Solitude2.Controllers.System;
 using Solitude2.Facade;
 using Solitude2.Models;
+using Solitude2.Prints;
 using Solitude2.Utility;
 using Solitude2.Views.Player;
 using Solitude2.Views.SetCursorPosition;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using Solitude2.Prints;
 
 namespace Solitude2.Controllers.Character
 {

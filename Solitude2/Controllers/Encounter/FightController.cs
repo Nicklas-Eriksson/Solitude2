@@ -14,32 +14,34 @@ namespace Solitude2.Controllers.Encounter
     {
         private static readonly Random Rnd = new();
         private static readonly float PlayerDmg = CalculatePlayerDmg(CurrentPlayer);
+        private static Monster Enemy { get; set; }
+        private static int _round = default;
 
         internal static void NewFight()
         {
-            FightOptions(NewMonster());
+            FightView.Options();
+            Enemy = NewMonster();
+            while (Enemy.Alive)
+            {
+                FightOptions();
+            }
             MainMenuController.Options();
         }
 
-        private static void FightOptions(Monster monster)
+        private static void FightOptions()
         {
-            while (true)
+            var userInput = Helper.GetUserInput(3);
+            switch (userInput)
             {
-                var userInput = Helper.GetUserInput(3);
-                switch (userInput)
-                {
-                    case 1:
-                        FightingSequence(monster);
-                        break;
-                    case 2:
-                        PlayerController.DrinkPotion();
-                        continue;
-                    case 3:
-                        FightView.Flee();
-                        break;
-                }
-
-                break;
+                case 1:
+                    Attack();
+                    break;
+                case 2:
+                    PlayerController.DrinkPotion();
+                    break;
+                case 3:
+                    FightView.Flee();
+                    break;
             }
         }
 
@@ -50,38 +52,36 @@ namespace Solitude2.Controllers.Encounter
             return monsterList[rndNr];
         }
 
-        private static void FightingSequence(Monster monster)
+        private static void Attack()
         {
-            var round = 0;
-            DrawStatsView.DisplayCombatInformation(monster);
+            DrawStatsView.DisplayCombatInformation(Enemy);
 
-            while (monster.Alive)
+            if (Enemy.Alive)
             {
-                if (round % 2 == 0)//Player turn
+                if (_round % 2 == 0)//Player turn
                 {
-                    monster.CurrentHp -= PlayerDmg;
+                    Enemy.CurrentHp -= PlayerDmg;
                     FightView.DmgDealt(PlayerDmg);
-                    var result = HealthCheck(monster.CurrentHp, monster.Name);
-                    if (!result) { monster.Alive = false;}
-                    round++;
+                    var result = HealthCheck(Enemy.CurrentHp, Enemy.Name);
+                    if (!result) { Enemy.Alive = false; }
+                    _round++;
                 }
                 else//Monster turn
                 {
-                    CurrentPlayer.CurrentHP -= monster.Dmg;
-                    FightView.DmgDealt(monster.Dmg);
+                    CurrentPlayer.CurrentHP -= Enemy.Dmg;
+                    FightView.DmgDealt(Enemy.Dmg);
                     HealthCheck(CurrentPlayer.CurrentHP, CurrentPlayer.Name);
                     PlayerController.CheckIfPlayerIsAlive();
-                    round++;
+                    _round++;
                 }
-                FightOptions(monster);
             }
 
-            CurrentPlayer.Gold += monster.GoldDrop;
-            CurrentPlayer.Inventory.Add(monster.Drop);
-            CurrentPlayer.CurrentExp += monster.ExpDrop;
-            FightView.EnemyDrop(monster.GoldDrop, monster.Drop);
+            if (Enemy.Alive) return;
+            CurrentPlayer.Gold += Enemy.GoldDrop;
+            CurrentPlayer.Inventory.Add(Enemy.Drop);
+            CurrentPlayer.CurrentExp += Enemy.ExpDrop;
+            FightView.EnemyDrop(Enemy.GoldDrop, Enemy.Drop);
             PlayerController.CheckPlayerLevel();
-
         }
 
         private static float CalculatePlayerDmg(Player player)
@@ -113,6 +113,7 @@ namespace Solitude2.Controllers.Encounter
                 PlayerController.GameOver();
             }
             FightView.HealthCheck(name);
-            return false; }
+            return false;
+        }
     }
 }

@@ -13,14 +13,11 @@ namespace Solitude2.Controllers.Menu
     {
         internal static void AdminPanel()
         {
-            while (true)
-            {
-                Console.Clear();
-                Logotype.AdminPanel();
-                AdminPanelView.DisplayAdminOptions();
-                var input = Helper.GetUserInput(8);
-                Options(input);
-            }
+            Console.Clear();
+            Logotype.AdminPanel();
+            AdminPanelView.DisplayAdminOptions();
+            var input = Helper.GetUserInput(8);
+            Options(input);
         }
 
         private static void Options(int input)
@@ -86,7 +83,7 @@ namespace Solitude2.Controllers.Menu
         private static void DisplayAllPlayers()
         {
             Console.Clear();
-            Logotype.AdminPanel(); 
+            Logotype.AdminPanel();
             AdminPanelView.DisplayAllPlayers(DbCommunication.GetPlayers());
             Helper.PressEnterToContinue();
         }
@@ -102,7 +99,7 @@ namespace Solitude2.Controllers.Menu
         private static void GetAllMonsters()
         {
             Console.Clear();
-            Logotype.AdminPanel(); 
+            Logotype.AdminPanel();
             AdminPanelView.DisplayAllMonsters(DbCommunication.GetMonsters());
             Helper.PressEnterToContinue();
         }

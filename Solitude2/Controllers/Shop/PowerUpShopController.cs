@@ -1,7 +1,6 @@
 ﻿using Solitude2.Views.SetCursorPosition;
 using Solitude2.Views.Shop;
 using System;
-using Solitude2.Controllers.Menu;
 
 namespace Solitude2.Controllers.Shop
 {

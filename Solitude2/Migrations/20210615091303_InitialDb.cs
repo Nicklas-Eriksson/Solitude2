@@ -2,7 +2,7 @@
 
 namespace Solitude2.Migrations
 {
-    public partial class InitDb : Migration
+    public partial class InitialDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -63,7 +63,8 @@ namespace Solitude2.Migrations
                     AttackPower = table.Column<float>(type: "real", nullable: false),
                     CritBonus = table.Column<float>(type: "real", nullable: false),
                     CritPercent = table.Column<float>(type: "real", nullable: false),
-                    EquippedWeaponID = table.Column<int>(type: "int", nullable: true)
+                    EquippedWeaponID = table.Column<int>(type: "int", nullable: true),
+                    InventoryId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

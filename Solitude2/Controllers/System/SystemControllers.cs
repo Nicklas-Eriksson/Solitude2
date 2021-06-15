@@ -68,7 +68,7 @@ namespace Solitude2.Controllers.System
         {
             Logotype.MadeByNicklas();
             Thread.Sleep(1300);
-            var tableIsFull = DbCommunication.CheckForEmptySeedTables();
+            var tableIsFull = DbCommunication.CheckDatabaseForItems();
             if (!tableIsFull) { RunAllSeeds.CreateItems(); }
             SystemView.StartGame();
             PlayerController.CurrentPlayer = UserOptions(Helper.GetUserInput(3));

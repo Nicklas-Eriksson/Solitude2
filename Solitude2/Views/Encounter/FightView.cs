@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using Solitude2.Interfaces;
+using Solitude2.Prints;
+using Solitude2.Views.SetCursorPosition;
 
 namespace Solitude2.Views.Encounter
 {
@@ -35,6 +38,17 @@ namespace Solitude2.Views.Encounter
             Console.WriteLine("You quickly turn around and run away.");
             Thread.Sleep(1400);
             Console.ResetColor();
+        }
+
+        public static void Options()
+        {
+            Logotype.Encounter();
+            DrawMenu.DisplayMenu(new List<string>
+           {
+               "Attack",
+               "Drink Potion",
+               "Flee"
+           });
         }
     }
 }

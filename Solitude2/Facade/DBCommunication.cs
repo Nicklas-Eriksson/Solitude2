@@ -41,7 +41,7 @@ namespace Solitude2.Facade
             return null;
         }
 
-        internal static bool CheckForEmptySeedTables()
+        internal static bool CheckDatabaseForItems()
         {
             try
             {
@@ -57,7 +57,7 @@ namespace Solitude2.Facade
 
         internal static IEnumerable<IItem> GetWeapons()
         {
-            try { return Db.Items.ToList(); }
+            try { return Db.Items.Where(i => i.IsWeapon).ToList(); }
             catch { Console.WriteLine("Weapons = 0"); }
             return null;
         }
@@ -103,16 +103,27 @@ namespace Solitude2.Facade
 
         internal static IEnumerable<Player> GetPlayers()
         {
-            try { return Db.Players.Include(w=>w.EquippedWeapon).ToList(); }
+            try { return Db.Players.Include(w => w.EquippedWeapon).ToList(); }
             catch { Console.WriteLine("Players = 0"); }
             return null;
         }
 
         internal static Player GetPlayerByName(string name)
         {
-            try { return Db.Players.FirstOrDefault(p=>p.Name == name); }
+            try { return Db.Players.FirstOrDefault(p => p.Name == name); }
             catch { Console.WriteLine("Player not fount"); }
             return null;
+        }
+
+        public static bool CheckDatabaseForMonsters()
+        {
+            try
+            {
+                var items = Db.Monsters.ToList();
+                if (items.Count > 0) return true;
+            }
+            catch (Exception e) { Console.WriteLine(e); }
+            return false;
         }
     }
 }
