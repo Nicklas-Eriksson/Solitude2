@@ -69,16 +69,17 @@ namespace Solitude2.Controllers.Character
         //REFACTOR TO VIEW
         private static Item SelectTypeOfPotion(Player player)
         {
-            if (player.Potions == null) return null;
+            if (player.Inventory.Where(i=>i.IsPotion).Count() > 0) return null;
             var potionListFromDatabase = DbCommunication.GetPotions().ToList();
             Console.WriteLine("Drink potion:");
-            foreach (var potion in player.Potions)
+            foreach (var potion in player.Inventory.Where(i=>i.IsPotion))
             {
                 foreach (var dBPot in potionListFromDatabase)
                 {
                     if (dBPot.Name == potion.Name)
                     {
-                        Console.WriteLine($"{potion.Name} {player.Potions.Where(p=>p.Name == potion.Name).Count()} ");
+                        Console.WriteLine(
+                            $"{potion.Name} {player.Inventory.Where(i => i.IsPotion).Where(p => p.Name == potion.Name).Count()} ");
                     };
                 }
             }

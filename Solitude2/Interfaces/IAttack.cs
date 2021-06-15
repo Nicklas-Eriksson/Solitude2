@@ -4,6 +4,6 @@
     {
         string AttackName { get; set; }
         string Description { get; set; }
-        float Dmg { get; set; }
+        float Dmg { get; }
     }
 }

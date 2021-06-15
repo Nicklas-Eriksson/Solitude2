@@ -13,7 +13,7 @@ namespace Solitude2.Controllers.Encounter
     internal static class FightController
     {
         private static readonly Random Rnd = new();
-        private static readonly float PlayerDmg = CalculatePlayerDmg(CurrentPlayer);
+        private static float PlayerDmg { get; set; }
         private static Monster Enemy { get; set; }
         private static int _round = default;
 
@@ -49,12 +49,18 @@ namespace Solitude2.Controllers.Encounter
         {
             var monsterList = (List<Monster>)Facade.DbCommunication.GetMonsters();
             var rndNr = Rnd.Next(0, monsterList.Count);
-            return monsterList[rndNr];
+            var selectedEnemy = monsterList[rndNr];
+
+            var rndBonusLevel = Rnd.Next(-1, 1);
+            selectedEnemy.Level = CurrentPlayer.CurrentLvl + rndBonusLevel;
+            selectedEnemy.CurrentHp = selectedEnemy.MaxHp;
+            return selectedEnemy;
         }
 
         private static void Attack()
         {
             DrawStatsView.DisplayCombatInformation(Enemy);
+            PlayerDmg = CalculatePlayerDmg(CurrentPlayer);
 
             if (Enemy.Alive)
             {
@@ -86,14 +92,14 @@ namespace Solitude2.Controllers.Encounter
 
         private static float CalculatePlayerDmg(Player player)
         {
-            var critChance = Rnd.Next(1, (int)CurrentPlayer.CritPercent);
+            var critChance = Rnd.Next(1, (int)CurrentPlayer.CriticalPercent);
             float playerDmg;
             if (critChance == 1) //Critical hit
             {
                 playerDmg =
                     player.AttackPower +
                     player.EquippedWeapon.Bonus +
-                    CurrentPlayer.CritBonus;
+                    CurrentPlayer.CriticalBonus;
             }
             else
             {

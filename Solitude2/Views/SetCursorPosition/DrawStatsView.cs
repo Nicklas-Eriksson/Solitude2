@@ -141,7 +141,7 @@ namespace Solitude2.Views.SetCursorPosition
             for (var i = 0; i < potions.Count; i++)
             {
                 Console.SetCursorPosition(Left, Top);
-                var playerPotions = PlayerController.CurrentPlayer.Potions.Where(p => p.ILvl == i);
+                var playerPotions = PlayerController.CurrentPlayer.Inventory.Where(i=>i.IsPotion).Where(p => p.ILvl == i);
                 Console.WriteLine($"{playerPotions.Count()}x {potions[i].Name}: +{potions[i].Bonus}HP");
                 Top++;
             }

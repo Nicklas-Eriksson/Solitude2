@@ -4,9 +4,8 @@ namespace Solitude2.Interfaces
 {
     public interface IKillable
     {
-        float GoldDrop { get; set; }
-        float ExpDrop { get; set; }
+        float GoldDrop { get; }
+        float ExpDrop { get; }
         Item Drop { get; set; }
-        int TalentDrop { get; set; }
     }
 }

@@ -31,7 +31,7 @@ namespace Solitude2.Controllers.Shop
             var potion = potions[potionIndex];
             if (player.Gold >= potion.Value)
             {
-                player.Potions.Add((Item)potion);
+                player.Inventory.Add((Item)potion);
                 PlayerController.CurrentPlayer.Inventory.Add((Item)potion);
             }
             else

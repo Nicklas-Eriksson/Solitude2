@@ -41,8 +41,7 @@ namespace Solitude2.Data
             Random rnd = new();
             var lvlMod = rnd.Next(-1, 1);
             var monsterLvl = playerLvl + lvlMod;
-
-            return new Monster { AttackName = name, Level = monsterLvl, TalentDrop = 1, GoldDrop = monsterLvl * 100, ExpDrop = monsterLvl * 100, Dmg = monsterLvl * 100, Description = "Its a disgusting spider!" };
+            return new Monster { Name = name, Level = monsterLvl, Description = "Its a disgusting spider!" };
         }
     }
 }
