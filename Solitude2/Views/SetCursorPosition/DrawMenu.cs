@@ -25,14 +25,14 @@ namespace Solitude2.Views.SetCursorPosition
             Left = 2;
             Top = 7;
             Console.SetCursorPosition(Left, Top);
-            Console.WriteLine("╔═════════════════════════════╗");
+            Console.WriteLine("╔════════════════════════════════╗");
             for (var i = 0; i < options.Count; i++)
             {
                 Console.SetCursorPosition(Left, Top + i + 1);
-                Console.WriteLine("║                             ║");
+                Console.WriteLine("║                                ║");
             }
             Console.SetCursorPosition(Left, Top + options.Count + 1);
-            Console.WriteLine("╚═════════════════════════════╝");
+            Console.WriteLine("╚════════════════════════════════╝");
         }
 
         private static void DrawMenuOptions(List<string> options)

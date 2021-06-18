@@ -52,10 +52,25 @@ namespace Solitude2.Controllers.System
                 Inventory = { starterWeapon }
             };
             if (characterName != "Hakk") return newPlayer;
+            IfCharacterIsAdmin(newPlayer);
+            return newPlayer;
+        }
+
+        private static void IfCharacterIsAdmin(Player newPlayer)
+        {
             newPlayer.IsAdmin = true;
             newPlayer.Gold = 10000;
+            var potions = DbCommunication.GetPotions().ToList();
+            CreateAndSaveAdminItem(newPlayer);
+            newPlayer.Inventory.AddRange(potions);
+        }
 
-            return newPlayer;
+        private static void CreateAndSaveAdminItem(Player newPlayer)
+        {
+            var goldenEgg = new Item("Golden Egg", 0, 10000, 3, false, false, true);
+            newPlayer.Inventory.Add(goldenEgg);
+            Db.Update(goldenEgg);
+            Db.SaveChanges();
         }
 
         private static Item CreateStarterWeapon()

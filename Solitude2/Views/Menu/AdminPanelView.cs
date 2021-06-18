@@ -3,6 +3,7 @@ using Solitude2.Views.SetCursorPosition;
 using System;
 using System.Collections.Generic;
 using System.Threading;
+using Solitude2.Utility;
 
 namespace Solitude2.Views.Menu
 {
@@ -15,10 +16,11 @@ namespace Solitude2.Views.Menu
             {
                 "Are you sure you want to empty",
                 "all tables in the database?",
-                "To go back \nwrite \"Back\" and press \"Enter\":",
-                "To empty the tables \nwrite the following and press \"Enter\":",
-                "To empty the tables \nwrite the following and press \"Enter\":",
-                "\"Empty all tables\""
+                "To go back:,",
+                "Write \"Back\" and press \"Enter\"",
+                "To empty the tables:",
+                "Write \"Empty all tables\"",
+                " and press \"Enter\""
             });
             Console.ResetColor();
         }
@@ -49,9 +51,9 @@ namespace Solitude2.Views.Menu
         public static void DisplayCharacterByName(Models.Player player)
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-                DisplayPlayerInfo(player);
+            DisplayPlayerInfo(player);
 
-                Console.ResetColor();
+            Console.ResetColor();
         }
 
         internal static void DisplayAllItems(IEnumerable<IItem> allItems)
@@ -118,13 +120,14 @@ namespace Solitude2.Views.Menu
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             DrawMenu.DisplayMenu(new List<string>
             {
-                "Empty Tables",
-                "Display All Players",
-                "Display All Items",
-                "Display All Enemies",
-                "Get Weapons by #ID",
-                "Back To Main Menu",
-                "Exit Game"
+                "Empty tables",
+                "Display all players",
+                "Get player by name",
+                "Display all items",
+                "Display all enemies",
+                "Get weapons by #ID",
+                "Back to main menu",
+                "Exit game"
             });
             Console.ResetColor();
         }
@@ -147,6 +150,20 @@ namespace Solitude2.Views.Menu
             Console.WriteLine(" All tables has been deleted");
             Console.ResetColor();
             Thread.Sleep(1400);
+        }
+
+        public static void PromptUserForNameInput()
+        {
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            DrawMenu.DisplayMenuNoNumbers(
+                new List<string>()
+                {
+                    "Write the name of the",
+                    "character you wish to",
+                    "search for."
+                });
+            Console.Write(" Character name:");
+            Console.ResetColor();
         }
     }
 }

@@ -33,7 +33,11 @@ namespace Solitude2.Controllers.Character
             }
             else
             {
-                PlayerView.DisplayPlayerInventory(DbCommunication.GetPlayerInventory().ToList());
+                var items = DbCommunication.GetPlayerInventory().ToList();
+                var weapons = items.Where(i => i.IsWeapon).ToList();
+                var potions = items.Where(i => i.IsPotion).ToList();
+                var thrash = items.Where(i => i.IsTrash).ToList();
+                PlayerView.DisplayPlayerInventory(weapons,potions,thrash);
             }
             DrawStatsView.PlayerStats();
             Helper.PressEnterToContinue();
@@ -47,11 +51,13 @@ namespace Solitude2.Controllers.Character
             SystemControllers.Exit();
         }
 
-        internal static void CheckPlayerLevel()
+        internal static void CheckForLevelUp()
         {
             if (CurrentPlayer.CurrentLvl >= CurrentPlayer.MaxLvl || !(CurrentPlayer.CurrentExp >= CurrentPlayer.ExpReqForLvl)) return;
             CurrentPlayer.CurrentExp -= CurrentPlayer.ExpReqForLvl;
             CurrentPlayer.CurrentLvl++;
+            CurrentPlayer.MaxHP += 50;
+            CurrentPlayer.AttackPower += 20;
             PlayerView.LevelUp(CurrentPlayer.CurrentLvl);
         }
 
@@ -74,18 +80,14 @@ namespace Solitude2.Controllers.Character
             Console.WriteLine("Drink potion:");
             foreach (var potion in player.Inventory.Where(i=>i.IsPotion))
             {
-                foreach (var dBPot in potionListFromDatabase)
+                foreach (var dBPot in potionListFromDatabase.Where(dBPot => dBPot.Name == potion.Name))
                 {
-                    if (dBPot.Name == potion.Name)
-                    {
-                        Console.WriteLine(
-                            $"{potion.Name} {player.Inventory.Where(i => i.IsPotion).Where(p => p.Name == potion.Name).Count()} ");
-                    };
+                    Console.WriteLine($"{potion.Name} {player.Inventory.Where(i => i.IsPotion).Where(p => p.Name == potion.Name).Count()}");
                 }
             }
 
             var input = Helper.GetUserInput(4);
-            return CurrentPlayer.Inventory[input - 1];
+            return (Item)CurrentPlayer.Inventory[input - 1];
         }
     }
 }

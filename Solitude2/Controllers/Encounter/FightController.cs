@@ -15,7 +15,7 @@ namespace Solitude2.Controllers.Encounter
         private static readonly Random Rnd = new();
         private static float PlayerDmg { get; set; }
         private static Monster Enemy { get; set; }
-        private static int _round = default;
+        private static int _round;
 
         internal static void NewFight()
         {
@@ -87,14 +87,14 @@ namespace Solitude2.Controllers.Encounter
             CurrentPlayer.Inventory.Add(Enemy.Drop);
             CurrentPlayer.CurrentExp += Enemy.ExpDrop;
             FightView.EnemyDrop(Enemy.GoldDrop, Enemy.Drop);
-            PlayerController.CheckPlayerLevel();
+            PlayerController.CheckForLevelUp();
         }
 
         private static float CalculatePlayerDmg(Player player)
         {
-            var critChance = Rnd.Next(1, (int)CurrentPlayer.CriticalPercent);
+            var criticalHitChance = Rnd.Next(1, (int)CurrentPlayer.CriticalPercent);
             float playerDmg;
-            if (critChance == 1) //Critical hit
+            if (criticalHitChance == 1) //Critical hit
             {
                 playerDmg =
                     player.AttackPower +

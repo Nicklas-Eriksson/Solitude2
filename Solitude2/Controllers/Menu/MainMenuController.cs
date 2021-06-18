@@ -10,14 +10,19 @@ namespace Solitude2.Controllers.Menu
     {
         internal static void Options()
         {
-            if (PlayerController.CurrentPlayer.IsAdmin)
+            while (true)
             {
-                MainMenuView.HomeAdmin();
-                UserOptionsAdmin(Helper.GetUserInput(6));
+                if (PlayerController.CurrentPlayer.IsAdmin)
+                {
+                    MainMenuView.HomeAdmin();
+                    UserOptionsAdmin(Helper.GetUserInput(6));
+                }
+                else
+                {
+                    MainMenuView.Home();
+                    UserOptions(Helper.GetUserInput(5));
+                }
             }
-            MainMenuView.Home();
-            UserOptions(Helper.GetUserInput(5));
-
         }
 
         private static void UserOptionsAdmin(int userInput)

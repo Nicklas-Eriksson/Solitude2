@@ -33,25 +33,25 @@ namespace Solitude2.Views.Player
             Console.ResetColor();
         }
 
-        internal static void DisplayPlayerInventory(List<IItem> inventory)
+        internal static void DisplayPlayerInventory(List<IItem> weapons, List<IItem> potions, List<IItem> thrash)
         {
             Console.ResetColor();
-            DisplayPotions(inventory);
-            DisplayWeapons(inventory);
-            DisplayThrashItems(inventory);
+            DisplayPotions(potions);
+            DisplayWeapons(weapons);
+            DisplayThrashItems(thrash);
         }
 
         private static void DisplayThrashItems(List<IItem> inventory)
         {
             var index = 1;
             Console.WriteLine(" Items:");
-            if (inventory.Where(i => i.IsTrash).Count() == 0)
+            if (inventory.Count() == 0)
             {
                 NoItemsFound();
             }
             else
             {
-                foreach (var item in inventory.Where(i => i.IsTrash))
+                foreach (var item in inventory)
                 {
                     Console.Write($" {index}: {item.Name}");
                     Console.WriteLine($"    Description: {item.Description}");
@@ -69,7 +69,7 @@ namespace Solitude2.Views.Player
             var playerWeapon = PlayerController.CurrentPlayer.EquippedWeapon;
             var index = 1;
             Console.WriteLine(" Weapons:");
-            foreach (var weapon in inventory.Where(i => i.IsWeapon))
+            foreach (var weapon in inventory)
             {
                 CompareWeaponDamage(playerWeapon, weapon, index);
                 Console.WriteLine($"    Description: {weapon.Description}");
@@ -86,13 +86,13 @@ namespace Solitude2.Views.Player
             var index = 1;
             Console.WriteLine(" Potions:");
 
-            if (inventory.Where(i => i.IsPotion).Count() == 0)
+            if (inventory.Count() == 0)
             {
                 NoItemsFound();
             }
             else
             {
-                foreach (var potion in inventory.Where(i => i.IsPotion))
+                foreach (var potion in inventory)
                 {
                     Console.Write($" {index}: {potion.Name} Healing: +{potion.Bonus}");
                     Console.ForegroundColor = ConsoleColor.DarkYellow;

@@ -5,6 +5,7 @@ using Solitude2.Models;
 using Solitude2.Utility;
 using Solitude2.Views.System;
 using System;
+using System.Linq;
 using System.Threading;
 using Solitude2.Controllers.Menu;
 using Solitude2.Prints;
@@ -51,6 +52,10 @@ namespace Solitude2.Controllers.System
             Console.Clear();
             Logotype.LoadingGame();
             if (option == 999) { CurrentGame(); }
+
+            var chosenPlayer = savedGames[option - 1];
+            var playerItems = DbCommunication.GetPlayerInventoryFromId(chosenPlayer.ID).ToList();
+            chosenPlayer.Inventory.AddRange(playerItems);
             return savedGames[option - 1];
         }
 
@@ -61,6 +66,7 @@ namespace Solitude2.Controllers.System
             db.Inventories.Clear();
             db.Monsters.Clear();
             db.Players.Clear();
+            db.SaveChanges();
             AdminPanelView.EmptyAllTablesSucceeded();
         }
 

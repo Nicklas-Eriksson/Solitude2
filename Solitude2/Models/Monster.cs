@@ -9,7 +9,7 @@ namespace Solitude2.Models
     public class Monster : IEnemy
     {
         [Key]
-        public int ID { get; }
+        public int ID { get; set; }
         public string Name { get; set; } = "Entity Unknown";
         public string AttackName { get; set; } = "Unknown";
         public int Level { get; set;  }

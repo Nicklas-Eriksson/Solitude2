@@ -10,8 +10,8 @@ using Solitude2.Data;
 namespace Solitude2.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20210615091303_InitialDb")]
-    partial class InitialDb
+    [Migration("20210618090725_InitDb")]
+    partial class InitDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -67,20 +67,10 @@ namespace Solitude2.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("PlayerID")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("PlayerID1")
-                        .HasColumnType("int");
-
                     b.Property<float>("Value")
                         .HasColumnType("real");
 
                     b.HasKey("ID");
-
-                    b.HasIndex("PlayerID");
-
-                    b.HasIndex("PlayerID1");
 
                     b.ToTable("Items");
                 });
@@ -104,29 +94,14 @@ namespace Solitude2.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<float>("Dmg")
-                        .HasColumnType("real");
-
                     b.Property<int?>("DropID")
                         .HasColumnType("int");
-
-                    b.Property<float>("ExpDrop")
-                        .HasColumnType("real");
-
-                    b.Property<float>("GoldDrop")
-                        .HasColumnType("real");
 
                     b.Property<int>("Level")
                         .HasColumnType("int");
 
-                    b.Property<float>("MaxHp")
-                        .HasColumnType("real");
-
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TalentDrop")
-                        .HasColumnType("int");
 
                     b.HasKey("ID");
 
@@ -148,12 +123,6 @@ namespace Solitude2.Migrations
                     b.Property<float>("AttackPower")
                         .HasColumnType("real");
 
-                    b.Property<float>("CritBonus")
-                        .HasColumnType("real");
-
-                    b.Property<float>("CritPercent")
-                        .HasColumnType("real");
-
                     b.Property<float>("CurrentExp")
                         .HasColumnType("real");
 
@@ -165,9 +134,6 @@ namespace Solitude2.Migrations
 
                     b.Property<int?>("EquippedWeaponID")
                         .HasColumnType("int");
-
-                    b.Property<float>("ExpReqForLvl")
-                        .HasColumnType("real");
 
                     b.Property<float>("Gold")
                         .HasColumnType("real");
@@ -194,17 +160,6 @@ namespace Solitude2.Migrations
                     b.ToTable("Players");
                 });
 
-            modelBuilder.Entity("Solitude2.Models.Item", b =>
-                {
-                    b.HasOne("Solitude2.Models.Player", null)
-                        .WithMany("Inventory")
-                        .HasForeignKey("PlayerID");
-
-                    b.HasOne("Solitude2.Models.Player", null)
-                        .WithMany("Potions")
-                        .HasForeignKey("PlayerID1");
-                });
-
             modelBuilder.Entity("Solitude2.Models.Monster", b =>
                 {
                     b.HasOne("Solitude2.Models.Item", "Drop")
@@ -221,13 +176,6 @@ namespace Solitude2.Migrations
                         .HasForeignKey("EquippedWeaponID");
 
                     b.Navigation("EquippedWeapon");
-                });
-
-            modelBuilder.Entity("Solitude2.Models.Player", b =>
-                {
-                    b.Navigation("Inventory");
-
-                    b.Navigation("Potions");
                 });
 #pragma warning restore 612, 618
         }

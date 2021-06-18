@@ -31,11 +31,29 @@ namespace Solitude2.Facade
             return null;
         }
 
+        internal static IEnumerable<IItem> GetPlayerInventoryFromId(int id)
+        {
+            try
+            {
+                var inventoryIds = Db.Inventories.Where(p => p.Id == id).ToList();
+
+                List<IItem> items = new();
+                foreach (var item in inventoryIds)
+                {
+                    items.AddRange(Db.Items.Where(i => i.ID == item.ItemId));
+                }
+
+                if (items.Count != 0) return items;
+            }
+            catch (Exception e) { Console.WriteLine(e); }
+            return null;
+        }
+
         internal static List<Player> SavedGames()
         {
             try
             {
-                return Db.Players.Include(p => p.Inventory).ToList();
+                return Db.Players.ToList();
             }
             catch { Console.WriteLine("Saved games = 0"); }
             return null;

@@ -55,6 +55,7 @@ namespace Solitude2.Controllers.Menu
         {
             Console.Clear();
             Logotype.AdminPanel();
+            AdminPanelView.PromptUserForNameInput();
             AdminPanelView.DisplayCharacterByName(DbCommunication.GetPlayerByName(Console.ReadLine()?.Trim()));
             Helper.PressEnterToContinue();
         }

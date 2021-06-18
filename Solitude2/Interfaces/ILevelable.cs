@@ -2,9 +2,9 @@
 {
     public interface ILevelable
     {
-        int CurrentLvl { get; set; }
         int MaxLvl { get; set; }
+        static int CurrentLvl { get; set; }
         float CurrentExp { get; set; }
-        float ExpReqForLvl { get; set; }
+        float ExpReqForLvl { get; }
     }
 }
