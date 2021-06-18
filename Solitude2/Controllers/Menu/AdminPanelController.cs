@@ -25,16 +25,16 @@ namespace Solitude2.Controllers.Menu
             switch (input)
             {
                 case 1:
-                    EmptyTables();
+                    EmptyTables(); // OK
                     break;
                 case 2:
-                    DisplayAllPlayers();
+                    DisplayAllPlayers(); // OK
                     break;
                 case 3:
-                    GetPlayerByName();
+                    GetPlayerByName(); // OK
                     break;
                 case 4:
-                    DisplayAllItems();
+                    DisplayAllItems(); // OK
                     break;
                 case 5:
                     GetAllMonsters();
@@ -65,6 +65,7 @@ namespace Solitude2.Controllers.Menu
             Console.Clear();
             Logotype.AdminPanel();
             AdminPanelView.EmptyTables1();
+            Helper.PromptUserForStringInput();
             var success = Helper.SpecificCommand();
             switch (success)
             {

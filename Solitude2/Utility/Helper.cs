@@ -66,5 +66,12 @@ namespace Solitude2.Utility
                 _ => 3
             };
         }
+
+        public static void PromptUserForStringInput()
+        {
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" Input: ");
+            Console.ResetColor();
+        }
     }
 }

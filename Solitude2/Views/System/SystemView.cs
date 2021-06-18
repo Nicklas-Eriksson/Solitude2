@@ -22,7 +22,12 @@ namespace Solitude2.Views.System
             Sleep(1300);
             Console.Clear();
             Logotype.Solitude();
-            DrawMenu.DisplayMenu(new List<string> { "New Game", "Load Game", "Exit Game" });
+            DrawMenu.DisplayMenu(new List<string>
+            {
+                "New Game",
+                "Load Game",
+                "Exit Game"
+            });
         }
 
         internal static void Save()
@@ -38,7 +43,7 @@ namespace Solitude2.Views.System
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Logotype.Exit();
-            Console.WriteLine("Exiting application");
+            Console.WriteLine(" Exiting application");
             Sleep(2000);
         }
 
@@ -75,10 +80,13 @@ namespace Solitude2.Views.System
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine(" Here are all the saved games:\n");
             var index = 1;
-            if (players == null) { return; }
+            if (players == null)
+            {
+                Console.WriteLine("Non");
+            }
             foreach (var player in players)
             {
-                Console.WriteLine($"{index}: {player.Name} Level: {player.CurrentLvl} Gold: {player.Gold}");
+                Console.WriteLine($" {index}: {player.Name} Level: {player.CurrentLvl} Gold: {player.Gold}");
                 index++;
             }
             Console.ResetColor();
@@ -99,14 +107,14 @@ namespace Solitude2.Views.System
         internal static void NewCharacter()
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.Write("Character Name: ");
+            Console.Write(" Character Name: ");
             Console.ResetColor();
         }
 
         internal static void WelcomeCharacter(Models.Player player)
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine($"Welcome {player.Name}");
+            Console.WriteLine($" Welcome {player.Name}");
             Sleep(1500);
             Console.ResetColor();
         }
@@ -114,8 +122,8 @@ namespace Solitude2.Views.System
         internal static void NameIsTaken(string characterName)
         {
             Console.ForegroundColor = ConsoleColor.DarkRed;
-            Console.WriteLine($"The name \"{characterName}\" is taken");
-            Console.WriteLine("Try another name");
+            Console.WriteLine($" The name \"{characterName}\" is taken");
+            Console.WriteLine(" Try another name");
             Sleep(1500);
             Console.ResetColor();
         }
@@ -123,7 +131,7 @@ namespace Solitude2.Views.System
         internal static void NameIsWrongLength()
         {
             Console.ForegroundColor = ConsoleColor.DarkRed;
-            Console.WriteLine("Character name needs to be between\n4 and 8 characters long");
+            Console.WriteLine(" Character name needs to be between\n4 and 8 characters long");
             Console.ResetColor();
         }
     }

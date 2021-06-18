@@ -154,7 +154,6 @@ namespace Solitude2.Views.Menu
 
         public static void PromptUserForNameInput()
         {
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
             DrawMenu.DisplayMenuNoNumbers(
                 new List<string>()
                 {
@@ -162,7 +161,8 @@ namespace Solitude2.Views.Menu
                     "character you wish to",
                     "search for."
                 });
-            Console.Write(" Character name:");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write(" Character name: ");
             Console.ResetColor();
         }
     }
