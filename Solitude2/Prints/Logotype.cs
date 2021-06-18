@@ -105,7 +105,7 @@ namespace Solitude2.Prints
             foreach (var letter in loadingGame)
             {
                 Console.Write(letter);
-                System.Threading.Thread.Sleep(7);
+                System.Threading.Thread.Sleep(6);
             }
             System.Threading.Thread.Sleep(500);
             Console.ResetColor();
@@ -268,6 +268,26 @@ namespace Solitude2.Prints
   \___/|_|\___|\__\___/|_|   \__, |
                               __/ |
                              |___/ ");
+            Console.ResetColor();
+        }
+
+        internal static void LoggingOut()
+        {
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            var loadingGame = (@"  _                       _               _____       _   
+ | |                     (_)             |  _  |     | |  
+ | |     ___   __ _  __ _ _ _ __   __ _  | | | |_   _| |_ 
+ | |    / _ \ / _` |/ _` | | '_ \ / _` | | | | | | | | __|
+ | |___| (_) | (_| | (_| | | | | | (_| | \ \_/ / |_| | |_ 
+ \_____/\___/ \__, |\__, |_|_| |_|\__, |  \___/ \__,_|\__|
+               __/ | __/ |         __/ |                  
+              |___/ |___/         |___/                   ");
+            foreach (var letter in loadingGame)
+            {
+                Console.Write(letter);
+                System.Threading.Thread.Sleep(6);
+            }
+            System.Threading.Thread.Sleep(500);
             Console.ResetColor();
         }
     }

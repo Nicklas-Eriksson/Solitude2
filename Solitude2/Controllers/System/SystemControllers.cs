@@ -54,7 +54,7 @@ namespace Solitude2.Controllers.System
             if (option == 999) { CurrentGame(); }
 
             var chosenPlayer = savedGames[option - 1];
-            var playerItems = DbCommunication.GetPlayerInventoryFromId(chosenPlayer.ID).ToList();
+            var playerItems = DbCommunication.GetPlayerInventory(chosenPlayer).ToList();
             chosenPlayer.Inventory.AddRange(playerItems);
             return savedGames[option - 1];
         }
@@ -72,6 +72,8 @@ namespace Solitude2.Controllers.System
 
         internal static void CurrentGame()
         {
+            Console.ResetColor();
+            Console.Clear();
             Logotype.MadeByNicklas();
             Thread.Sleep(1300);
             var tableIsFull = DbCommunication.CheckDatabaseForItems();
@@ -79,6 +81,13 @@ namespace Solitude2.Controllers.System
             SystemView.StartGame();
             PlayerController.CurrentPlayer = UserOptions(Helper.GetUserInput(3));
             MainMenuController.Options();
+        }
+
+        internal static void LogOut()
+        {
+            Logotype.LoggingOut();
+            var tableIsFull = DbCommunication.CheckDatabaseForItems();
+            SystemControllers.CurrentGame();
         }
 
         /// <summary>

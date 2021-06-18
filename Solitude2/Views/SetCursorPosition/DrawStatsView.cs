@@ -56,21 +56,21 @@ namespace Solitude2.Views.SetCursorPosition
             Console.SetCursorPosition(Left, Top + 6);
             Console.WriteLine("║                       ║");
             Console.SetCursorPosition(Left, Top + 7);
-            Console.WriteLine("╠═══════════════════════╬════════════════════════════════╗");
+            Console.WriteLine("╠═══════════════════════╬═════════════════════════════════╗");
             Console.SetCursorPosition(Left, Top + 8);
-            Console.WriteLine("║       Rucksack        ║            Potions             ║");
+            Console.WriteLine("║       Rucksack        ║             Potions             ║");
             Console.SetCursorPosition(Left, Top + 9);
-            Console.WriteLine("╠═══════════════════════╬════════════════════════════════╣");
+            Console.WriteLine("╠═══════════════════════╬═════════════════════════════════╣");
             Console.SetCursorPosition(Left, Top + 10);
-            Console.WriteLine("║                       ║                                ║");
+            Console.WriteLine("║                       ║                                 ║");
             Console.SetCursorPosition(Left, Top + 11);
-            Console.WriteLine("║                       ║                                ║");
+            Console.WriteLine("║                       ║                                 ║");
             Console.SetCursorPosition(Left, Top + 12);
-            Console.WriteLine("║                       ║                                ║");
+            Console.WriteLine("║                       ║                                 ║");
             Console.SetCursorPosition(Left, Top + 13);
-            Console.WriteLine("║                       ║                                ║");
+            Console.WriteLine("║                       ║                                 ║");
             Console.SetCursorPosition(Left, Top + 14);
-            Console.WriteLine("╚═══════════════════════╩════════════════════════════════╝");
+            Console.WriteLine("╚═══════════════════════╩═════════════════════════════════╝");
         }
 
         private static void MonsterStats(Monster m)

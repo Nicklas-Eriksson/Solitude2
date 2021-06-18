@@ -33,6 +33,9 @@ namespace Solitude2.Controllers.System
             Db.SaveChanges();
             SystemView.WelcomeCharacter(newPlayer);
             PlayerController.CurrentPlayer = newPlayer;
+            newPlayer.InventoryId = PlayerController.CurrentPlayer.ID;
+            Db.Update(inventory);
+            Db.SaveChanges();
             if (!DbCommunication.CheckDatabaseForMonsters())
             {
                 MonsterSeed.MonsterForge();

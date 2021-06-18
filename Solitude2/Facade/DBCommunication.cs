@@ -31,11 +31,11 @@ namespace Solitude2.Facade
             return null;
         }
 
-        internal static IEnumerable<IItem> GetPlayerInventoryFromId(int id)
+        internal static IEnumerable<IItem> GetPlayerInventory(Player player)
         {
             try
             {
-                var inventoryIds = Db.Inventories.Where(p => p.Id == id).ToList();
+                var inventoryIds = Db.Inventories.Where(i => i.Id == player.InventoryId).ToList();
 
                 List<IItem> items = new();
                 foreach (var item in inventoryIds)

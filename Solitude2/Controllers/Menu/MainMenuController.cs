@@ -15,12 +15,12 @@ namespace Solitude2.Controllers.Menu
                 if (PlayerController.CurrentPlayer.IsAdmin)
                 {
                     MainMenuView.HomeAdmin();
-                    UserOptionsAdmin(Helper.GetUserInput(6));
+                    UserOptionsAdmin(Helper.GetUserInput(7));
                 }
                 else
                 {
                     MainMenuView.Home();
-                    UserOptions(Helper.GetUserInput(5));
+                    UserOptions(Helper.GetUserInput(6));
                 }
             }
         }
@@ -45,6 +45,9 @@ namespace Solitude2.Controllers.Menu
                     AdminPanelController.AdminPanel(); //OK
                     break;
                 case 6:
+                    SystemControllers.LogOut();
+                    break;
+                case 7:
                     SystemControllers.Exit();
                     break;
             }
@@ -67,6 +70,9 @@ namespace Solitude2.Controllers.Menu
                     SystemControllers.SaveGame();
                     break;
                 case 5:
+                    SystemControllers.LogOut();
+                    break;
+                case 6:
                     SystemControllers.Exit();
                     break;
             }

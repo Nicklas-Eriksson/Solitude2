@@ -26,6 +26,7 @@ namespace Solitude2.Views.Menu
                 "Inventory",
                 "Store",
                 "Save Game",
+                "Log Out",
                 "Exit Game"
             });
         }
@@ -42,6 +43,7 @@ namespace Solitude2.Views.Menu
                 "Store",
                 "Save Game",
                 "Admin Panel",
+                "Log Out",
                 "Exit Game"
             });
         }
